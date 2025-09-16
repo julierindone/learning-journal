@@ -1,0 +1,207 @@
+:root {
+	--black: #222;
+	--white: #fefefe;
+}
+
+/* =======================
+		SITE LAYOUT
+	======================== */
+
+html, body, h1, h2, p, img {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	color: var(--black);
+	display: grid;
+	gap: 1em;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto auto auto 1fr auto;
+	grid-template-areas:
+		"."
+		"navi"
+		"head"
+		"main"
+		"foot"
+	;
+	justify-items: stretch;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+nav {
+	grid-area: navi;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: baseline;
+	padding-inline: 3.5%;
+}
+
+.nav-links {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	gap: .9em;
+	align-items: center;
+}
+
+.site-header {
+	grid-area: head;
+	background: linear-gradient(
+		rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3),
+		rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.95)),
+		url("images/rainbow_keyboard.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	padding-block: 10em 1.5em;
+	padding-inline: 3.5%;
+}
+
+footer {
+	grid-area: foot;
+	background-color: var(--black);
+	border-top: .5px rgb(189, 255, 189) solid;
+	padding-block: 2em;
+}
+
+/* =======================
+		MAIN ELEMENT LAYOUT
+	======================== */
+#main-content {
+	grid-area: main;
+	display: grid;
+	/* grid-template-rows: repeat(3, 1fr) 4em; */
+	grid-template-columns: auto 1fr auto;
+	grid-template-areas:
+		". next1 ."
+		". next2 ."
+		". next3 ."
+		". view ."
+	;
+	row-gap: 2em;
+	column-gap: 1em;
+	padding-top: 1em;
+}
+
+#next-post-1 {
+	grid-area: next1;
+}
+
+#next-post-2 {
+	grid-area: next2;
+}
+
+#next-post-3 {
+	grid-area: next3;
+}
+
+
+
+.view-more {
+	grid-area: view;
+	padding-bottom: 1em;
+}
+
+/* =======================
+		TYPOGRAPHY
+	======================== */
+
+.roboto {
+	font-family: "Roboto", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-variation-settings:
+		"wdth"100;
+}
+
+nav * {
+	letter-spacing: -.02em;
+	font-weight: 900;
+}
+
+h1 {
+	font-size: 1.2rem;
+}
+
+p {
+	line-height: 1.4;
+}
+
+.nav-links a {
+	font-size: .9rem;
+	text-transform: uppercase;
+}
+
+a:link {
+	text-underline-offset: 3px;
+	color: inherit;
+}
+
+.header-post-date {
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+h2.header-post-title {
+	font-size: 1.8rem;
+	font-weight: 700;
+	margin-top: .2em;
+}
+
+.header-post-content {
+	font-size: 1.1rem;
+	line-height: 1.6;
+	margin-top: .4em;
+}
+
+#newest-post > * {
+	color: var(--white);
+	background-color: #00000030;
+	width: fit-content;
+	margin-top: .5rem
+}
+
+.blog-post p {
+	margin-top: .4em;
+}
+
+p.post-date {
+	font-size: .9rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+p.post-title {
+	font-size: 1.3rem;
+	font-weight: 900;
+}
+
+a.view-more:link {
+	font-weight: 700;
+	display: block;
+	text-align: center;
+}
+
+footer p {
+	color: var(--white);
+	text-align: center;
+	font-size: .8rem;
+}
+
+footer p:last-child {
+	font-size: .7rem;
+	margin-top: .3em;
+}
+
+/* =======================
+		IMAGES
+	======================== */
+
+.post-img {
+	width: 100%;
+}
