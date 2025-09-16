@@ -124,7 +124,7 @@ nav * {
 	font-weight: 900;
 }
 
-h1 {
+p.nav-title {
 	font-size: 1.2rem;
 }
 
@@ -147,7 +147,7 @@ a:link {
 	font-weight: 600;
 }
 
-h2.header-post-title {
+h1 {
 	font-size: 1.8rem;
 	font-weight: 700;
 	margin-top: .2em;

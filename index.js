@@ -11,7 +11,7 @@ function getNewestPost(){
 	newestPost.innerHTML =
 	`
 	<p class="header-post-date">${newestPostObject.date}</p>
-	<h2 class="header-post-title">${newestPostObject.title}</h2>
+	<h1 class="header-post-title">${newestPostObject.title}</h1>
 	<p class="header-post-content">${cutContent}...(<a href="placeholder.html">Click to continue</a>)</p>
 	`
 	}
