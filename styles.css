@@ -49,33 +49,36 @@ nav {
 	align-items: center;
 }
 
-.site-header {
+header {
 	grid-area: head;
-	background: linear-gradient(
-		rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3),
-		rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.95)),
+	padding-inline: 3.5%;
+	padding-bottom: 1.5em;
+}
+
+.site-header {
+	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3),
+			rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.95)),
 		url("images/rainbow_keyboard.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	padding-block: 10em 1.5em;
-	padding-inline: 3.5%;
+	padding-top: 10em;
 }
 
 footer {
 	grid-area: foot;
 	background-color: var(--black);
 	border-top: .5px rgb(189, 255, 189) solid;
-	padding-block: 2em;
+	padding-block: 1.5em;
 }
 
 /* =======================
 		MAIN ELEMENT LAYOUT
 	======================== */
-#main-content {
+
+main {
 	grid-area: main;
 	display: grid;
-	/* grid-template-rows: repeat(3, 1fr) 4em; */
 	grid-template-columns: auto 1fr auto;
 	grid-template-areas:
 		". next1 ."
@@ -100,8 +103,6 @@ footer {
 	grid-area: next3;
 }
 
-
-
 .view-more {
 	grid-area: view;
 	padding-bottom: 1em;
@@ -119,17 +120,28 @@ footer {
 		"wdth"100;
 }
 
+h1 {
+	font-size: 2.2rem;
+	font-weight: 700;
+	margin-top: .2em;
+}
+
+h2 {
+	font-size: 1.15rem;
+	font-weight: 600;
+}
+
 nav * {
 	letter-spacing: -.02em;
 	font-weight: 900;
 }
 
-p.nav-title {
-	font-size: 1.2rem;
-}
-
 p {
 	line-height: 1.4;
+}
+
+p.nav-title {
+	font-size: 1.2rem;
 }
 
 .nav-links a {
@@ -137,7 +149,7 @@ p {
 	text-transform: uppercase;
 }
 
-a:link {
+a:link, .nav-links a:visited {
 	text-underline-offset: 3px;
 	color: inherit;
 }
@@ -147,19 +159,13 @@ a:link {
 	font-weight: 600;
 }
 
-h1 {
-	font-size: 1.8rem;
-	font-weight: 700;
-	margin-top: .2em;
-}
-
 .header-post-content {
 	font-size: 1.1rem;
 	line-height: 1.6;
 	margin-top: .4em;
 }
 
-#newest-post > * {
+#newest-post>* {
 	color: var(--white);
 	background-color: #00000030;
 	width: fit-content;
@@ -204,4 +210,49 @@ footer p:last-child {
 
 .post-img {
 	width: 100%;
+}
+
+#about-img {
+	width: 48%;
+	min-width: 160px;
+	padding: 1px;
+	border: 3px dotted var(--black);
+	/* Trying out */
+	border-radius: 100%;
+}
+
+/* =======================
+		=======================
+		ABOUT PAGE STYLES
+		=======================
+		======================== */
+
+.about-header {
+	/* padding-block: .65em 0; */
+	padding-block: 1.3em 0;
+	border-top: solid 8px var(--black);
+}
+
+.about-header h1 {
+	margin-top: .6em;
+
+}
+
+.about-header p {
+	font-size: 1.6rem;
+	font-weight: 500;
+	margin-top: .35em;
+}
+
+#main-about p {
+	margin-top: .3em;
+}
+
+#main-about {
+	grid-template-areas:
+		". next1 ."
+		". next2 ."
+		". next3 ."
+	;
+	padding-top: .5em;
 }
