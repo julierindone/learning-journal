@@ -1,0 +1,70 @@
+/* =======================
+		=======================
+		ABOUT PAGE STYLES
+		=======================
+		======================== */
+
+:root {
+	--sides: 4%   /* This ould probably be put on the main style page and be 4% for both but i haven't tested. */
+}
+
+nav, header {
+	padding-inline: var(--sides)
+}
+.about-header {
+	/* padding-block: .65em 0; */
+	padding-block: 1.3em 0;
+	border-top: solid 3px var(--black);
+}
+
+#main-about-content {
+	grid-template-areas:
+		". about1 ."
+		". about2 ."
+		". about3 .";
+	padding-block: .5em;
+	column-gap: var(--sides);
+}
+
+#about1 {
+	grid-area: about1;
+}
+
+#about2 {
+	grid-area: about2;
+}
+
+#about3 {
+	grid-area: about3;
+}
+
+/* =======================
+		Typography
+	======================== */
+.about-header h1 {
+	margin-top: .6em;
+}
+
+.about-header p {
+	font-size: 1.6rem;
+	font-weight: 500;
+	margin-top: .35em;
+}
+
+#main-about-content p {
+	margin-top: .3em;
+}
+
+/* =======================
+		IMAGES
+	======================== */
+
+	#about-img {
+	width: 47%;
+	min-width: 160px;
+	padding: 1px;
+	border: 3px dotted var(--black);
+	/* Trying out */
+	border-radius: 100%;
+}
+
