@@ -62,7 +62,7 @@ header {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	padding-top: 10em;
+	padding-top: 7em;
 }
 
 footer {
@@ -80,15 +80,17 @@ main {
 	grid-area: main;
 	display: grid;
 	grid-template-columns: auto 1fr auto;
-	grid-template-areas:
-		". next1 ."
-		". next2 ."
-		". next3 ."
-		". view ."
-	;
 	row-gap: 2em;
 	column-gap: 1em;
 	padding-top: 1em;
+}
+
+#main-home-content {
+	grid-template-areas:
+	". next1 ."
+	". next2 ."
+	". next3 ."
+	". view .";
 }
 
 #next-post-1 {
@@ -212,47 +214,3 @@ footer p:last-child {
 	width: 100%;
 }
 
-#about-img {
-	width: 48%;
-	min-width: 160px;
-	padding: 1px;
-	border: 3px dotted var(--black);
-	/* Trying out */
-	border-radius: 100%;
-}
-
-/* =======================
-		=======================
-		ABOUT PAGE STYLES
-		=======================
-		======================== */
-
-.about-header {
-	/* padding-block: .65em 0; */
-	padding-block: 1.3em 0;
-	border-top: solid 8px var(--black);
-}
-
-.about-header h1 {
-	margin-top: .6em;
-
-}
-
-.about-header p {
-	font-size: 1.6rem;
-	font-weight: 500;
-	margin-top: .35em;
-}
-
-#main-about p {
-	margin-top: .3em;
-}
-
-#main-about {
-	grid-template-areas:
-		". next1 ."
-		". next2 ."
-		". next3 ."
-	;
-	padding-top: .5em;
-}
