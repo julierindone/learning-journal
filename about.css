@@ -12,8 +12,7 @@ nav, header {
 	padding-inline: var(--sides)
 }
 .about-header {
-	/* padding-block: .65em 0; */
-	padding-block: 1.3em 0;
+	padding-top: 1.3em;
 	border-top: solid 3px var(--black);
 }
 
