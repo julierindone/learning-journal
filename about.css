@@ -1,20 +1,12 @@
 /* =======================
 		=======================
-		ABOUT PAGE STYLES
+		ABOUT & BLOG PAGE STYLES
 		=======================
 		======================== */
 
-:root {
-	--sides: 4%   /* This ould probably be put on the main style page and be 4% for both but i haven't tested. */
-}
-
-nav, header {
-	padding-inline: var(--sides)
-}
 .about-header {
-	/* padding-block: .65em 0; */
 	padding-block: 1.3em 0;
-	border-top: solid 3px var(--black);
+	border-top: solid 2px var(--black);
 }
 
 #main-about-content {
@@ -22,7 +14,7 @@ nav, header {
 		". about1 ."
 		". about2 ."
 		". about3 .";
-	padding-block: .5em;
+	padding-block: .25em .5em;
 	column-gap: var(--sides);
 }
 
@@ -41,14 +33,16 @@ nav, header {
 /* =======================
 		Typography
 	======================== */
-.about-header h1 {
-	margin-top: .6em;
+#about-header h1 {
+	font-weight: 800;
+	font-size: clamp(1.7rem, 8.2vw, 8.2vw); /* stays on one line, up to the point where it would be smaller than the subheading */
 }
 
-.about-header p {
-	font-size: 1.6rem;
+#about-header p {
+	font-size: 1.5rem;
 	font-weight: 500;
-	margin-top: .35em;
+	line-height: 1.4;
+	margin-top: .55em;
 }
 
 #main-about-content p {
@@ -59,12 +53,21 @@ nav, header {
 		IMAGES
 	======================== */
 
-	#about-img {
+#about-img {
 	width: 47%;
 	min-width: 160px;
 	padding: 1px;
 	border: 3px dotted var(--black);
-	/* Trying out */
 	border-radius: 100%;
+	margin-bottom: .8em;
 }
 
+/* =======================
+=======================
+BLOG PAGE STYLES
+=======================
+======================== */
+
+#featured-blog-post > * {
+	margin-top: .5rem; /* This looks better as .5rem than .5em, otherwise the title has too big of a space. */
+}
