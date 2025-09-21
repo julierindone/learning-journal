@@ -1,6 +1,7 @@
 :root {
 	--black: #222;
 	--white: #fefefe;
+	--sides: 4%;
 }
 
 /* =======================
@@ -32,13 +33,16 @@ body {
 	box-sizing: border-box;
 }
 
+nav, header {
+	padding-inline: var(--sides)
+}
+
 nav {
 	grid-area: navi;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: baseline;
-	padding-inline: 3.5%;
 }
 
 .nav-links {
@@ -51,18 +55,25 @@ nav {
 
 header {
 	grid-area: head;
-	padding-inline: 3.5%;
 }
 
-.site-header {
-	padding-block: 7em 1.2em;
+#home-header {
+	padding-block: 7em 1.5em;
+}
+
+#home-header #featured-post>* {
+	text-shadow: 1px 1px 5px black;
+}
+
+#home-header .header-post-date {
+	font-size: 1.1rem;
 }
 
 footer {
 	grid-area: foot;
 	background-color: var(--black);
 	border-top: .5px rgb(189, 255, 189) solid;
-	padding-block: 1.5em;
+	padding-block: 1em;
 }
 
 /* =======================
@@ -73,12 +84,11 @@ main {
 	grid-area: main;
 	display: grid;
 	grid-template-columns: auto 1fr auto;
-	row-gap: 2em;
-	column-gap: 1em;
-	padding-top: 1em;
+	gap: 2em 1em;
+	padding-top: 0.5em;
 }
 
-#main-home-content {
+#main-home-content, #main-blog-content {
 	grid-template-areas:
 	". next1 ."
 	". next2 ."
@@ -100,7 +110,7 @@ main {
 
 .view-more {
 	grid-area: view;
-	padding-bottom: 1em;
+	padding-bottom: .25em;
 }
 
 /* =======================
@@ -116,9 +126,8 @@ main {
 }
 
 h1 {
-	font-size: 2.2rem;
+	font-size: 1.8rem;
 	font-weight: 700;
-	margin-top: .2em;
 }
 
 h2 {
@@ -132,19 +141,23 @@ nav * {
 }
 
 p {
-	line-height: 1.4;
+	line-height: 1.5;
 }
 
-p.nav-title {
+#nav-title {
 	font-size: 1.2rem;
 }
 
+#nav-title:link {
+	text-decoration-line: none;
+}
+
 .nav-links a {
-	font-size: .9rem;
+	font-size: .92rem;
 	text-transform: uppercase;
 }
 
-a:link, .nav-links a:visited {
+a:link, a:visited {
 	text-underline-offset: 3px;
 	color: inherit;
 }
@@ -155,20 +168,17 @@ a:link, .nav-links a:visited {
 }
 
 .header-post-content {
-	font-size: 1.1rem;
-	line-height: 1.6;
-	margin-top: .4em;
+	font-size: 1.05rem;
 }
 
-#newest-post>* {
+#featured-post>* {
 	color: var(--white);
-	background-color: #00000030;
 	width: fit-content;
-	margin-top: .5rem
+	margin-top: .5rem;
 }
 
-.blog-post p {
-	margin-top: .4em;
+div[id^=next-post] p, div[id^=next-post] h2 {
+	margin-top: .25rem; /* keep as rem */
 }
 
 p.post-date {
