@@ -38,7 +38,6 @@ nav {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: baseline;
-	padding-inline: 3.5%;
 }
 
 .nav-links {
@@ -135,16 +134,20 @@ p {
 	line-height: 1.4;
 }
 
-p.nav-title {
+#nav-title {
 	font-size: 1.2rem;
 }
 
+#nav-title:link {
+	text-decoration-line: none;
+}
+
 .nav-links a {
-	font-size: .9rem;
+	font-size: .92rem;
 	text-transform: uppercase;
 }
 
-a:link, .nav-links a:visited {
+a:link, a:visited {
 	text-underline-offset: 3px;
 	color: inherit;
 }
