@@ -11,6 +11,12 @@ function getNewestPost() {
 	<p class="header-post-date">${newestPostObject.date}</p>
 	<h1 class="header-post-title">${newestPostObject.title}</h1>
 	<p class="header-post-content">${cutContent}...(<a href="placeholder.html">Click to continue</a>)</p>`
+
+	document.getElementsByClassName('site-header')[0].style.cssText = `
+	background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.95)), url("${newestPostObject.image}");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;`
 }
 
 function getmainHomeContent() {
