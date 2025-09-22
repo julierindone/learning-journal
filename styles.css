@@ -63,6 +63,9 @@ header {
 
 #home-header #featured-post>* {
 	text-shadow: 1px 1px 5px black;
+  background-color: #00000014;
+	width: fit-content;
+	padding-right: .2em;
 }
 
 #home-header .header-post-date {

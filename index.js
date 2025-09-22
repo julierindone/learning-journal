@@ -13,11 +13,8 @@ function getFeaturedPost() {
 	<p class="header-post-content">${cutContent}...(<a href="placeholder.html">Click to continue</a>)</p>`
 
 	let backgroundCss = `
-		background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95)),
-			url("${featuredPostObject.image}");
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;`
+		background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url("${featuredPostObject.image}");
+			background-position: center; background-size: cover; background-repeat: no-repeat; background-color: #222;`
 	document.getElementById('home-header').style.cssText = backgroundCss
 }
 
