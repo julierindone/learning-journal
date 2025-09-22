@@ -132,6 +132,9 @@ main {
 }
 
 h1 {
+	font-size: 1.2rem;
+	line-height: 1.5;
+}
 
 h2 {
 	font-size: 1.8rem;
@@ -150,10 +153,6 @@ nav * {
 
 p {
 	line-height: 1.5;
-}
-
-#nav-title {
-	font-size: 1.2rem;
 }
 
 #nav-title:link {
