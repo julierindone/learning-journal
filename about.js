@@ -10,7 +10,7 @@ function getAboutContent() {
 		newDiv.className = "about-post"
 		newDiv.id = `about${i + 1}`
 		newDiv.innerHTML = `
-			<p class="post-title">${currentAboutPost.title}</p>
+			<h2 class="post-title">${currentAboutPost.title}</h2>
 			<p class="post-content">${currentAboutPost.content}</p>
 			`
 		mainAboutContent.appendChild(newDiv)

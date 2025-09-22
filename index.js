@@ -9,7 +9,7 @@ function getFeaturedPost() {
 
 	featuredPost.innerHTML = `
 	<p class="header-post-date">${featuredPostObject.date}</p>
-	<h1 class="header-post-title">${featuredPostObject.title}</h1>
+	<h2 class="header-post-title">${featuredPostObject.title}</h2>
 	<p class="header-post-content">${cutContent}...(<a href="placeholder.html">Click to continue</a>)</p>`
 
 	let backgroundCss = `
@@ -28,7 +28,7 @@ function getMainHomeContent() {
 			<div class="blog-post" id="next-post-${i}">
 				<img class="post-img" alt="image" src="${currentPost.image}">
 				<p class="post-date">${currentPost.date}</p>
-				<p class="post-title">${currentPost.title}</p>
+				<h2 class="post-title">${currentPost.title}</h2>
 				<p class="post-content">${cutContent}...(<a href="placeholder.html">Click to continue</a>)</p>
 			</div>
 		`

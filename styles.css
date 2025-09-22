@@ -61,15 +61,18 @@ header {
 	padding-block: 7em 1.5em;
 }
 
-#home-header #featured-post>* {
+#home-header #featured-post > * {
+	color: var(--white);
 	text-shadow: 1px 1px 5px black;
   background-color: #00000014;
 	width: fit-content;
 	padding-right: .2em;
+	margin-top: .4rem;
 }
 
 #home-header .header-post-date {
 	font-size: 1.1rem;
+	margin-top: 0 !important;
 }
 
 footer {
@@ -129,12 +132,14 @@ main {
 }
 
 h1 {
+
+h2 {
 	font-size: 1.8rem;
 	font-weight: 700;
 }
 
-h2 {
-	font-size: 1.15rem;
+main h2 {
+	font-size: 1.2rem;
 	font-weight: 600;
 }
 
@@ -172,12 +177,6 @@ a:link, a:visited {
 
 .header-post-content {
 	font-size: 1.05rem;
-}
-
-#featured-post>* {
-	color: var(--white);
-	width: fit-content;
-	margin-top: .5rem;
 }
 
 div[id^=next-post] p, div[id^=next-post] h2 {

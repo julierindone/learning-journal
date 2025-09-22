@@ -33,7 +33,7 @@
 /* =======================
 		Typography
 	======================== */
-#about-header h1 {
+#about-header h2 {
 	font-weight: 800;
 	font-size: clamp(1.7rem, 8.2vw, 8.2vw); /* stays on one line, up to the point where it would be smaller than the subheading */
 }
