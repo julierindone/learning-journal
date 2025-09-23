@@ -12,29 +12,34 @@
 	<link rel="stylesheet" href="about.css">
 </head>
 
-<body class="roboto">
-	<nav>
-		<a id="nav-title" href="index.html">
-			<h1>My Learning Journey</h1>
-		</a>
-		<div class="nav-links">
-			<a href="about.html">about me</a>
-			<a href="blog.html">blog</a>
-		</div>
-	</nav>
-	<header id="blog-header roboto">
-		<div id="featured-blog-post">
-			<img id="featured-blog-image" alt="" class="post-img" />
-			<p id="featured-blog-date" class="header-post-date featured-blog-date"></p>
-			<h2 id="featured-blog-title" class="header-post-title">Featured Blog</h2>
-			<p id="featured-blog-content" class="header-post-content"></p>
-		</div>
-	</header>
-	<main id="main-blog-content"></main>
-	<footer>
-		<p>Learning Journal Inc.</p>
-		<p>@2025</p>
-	</footer>
+<body id="blog-body" class="roboto">
+	<div class="wrapper">
+		<nav>
+			<a id="nav-title" href="index.html">
+				<h1>My Learning Journey</h1>
+			</a>
+			<div class="nav-links">
+				<a href="about.html">about me</a>
+				<a href="blog.html">blog</a>
+			</div>
+		</nav>
+		<header id="blog-header roboto">
+			<div id="featured-blog-post">
+				<div class="featured-blog-image-wrapper">
+						<img id="featured-blog-image" alt="" class="post-img" />
+				</div>
+				<p id="featured-blog-date" class="header-post-date featured-blog-date"></p>
+				<h2 id="featured-blog-title" class="header-post-title">Featured Blog</h2>
+				<p id="featured-blog-content" class="header-post-content"></p>
+			</div>
+			<p id="recent-posts">Recent Posts</p>
+		</header>
+		<main id="main-blog-content"></main>
+		<footer>
+			<p>Learning Journal Inc.</p>
+			<p>@2025</p>
+		</footer>
+	</div>
 	<script type="module" src="blog.js"></script>
 </body>
 

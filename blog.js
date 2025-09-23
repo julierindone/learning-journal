@@ -19,6 +19,16 @@ function getFeaturedPost() {
 	featuredBlogContent.innerText = featuredPost.content
 }
 
+let screenWidth = 0
+
+window.addEventListener('resize', () => {
+	if (window.innerWidth < 800) {
+		screenWidth = "mobile"
+	} else {
+		screenWidth = "desktop"
+	}
+})
+
 function getMainBlogContent() {
 	let mainContentHtml = ''
 	for (let i = 1; i < 4; i++) {
@@ -34,9 +44,8 @@ function getMainBlogContent() {
 			</div>
 		`
 	}
-	let viewMore = `<a class="view-more" href="all-posts.html">View more</a>`
 
-	mainBlogContent.innerHTML = mainContentHtml + viewMore
+	mainBlogContent.innerHTML = mainContentHtml
 }
 
 function renderBlogContent() {

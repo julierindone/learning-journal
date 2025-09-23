@@ -2,6 +2,16 @@ import { blogPostArray } from "./data.js"
 
 const mainHomeContent = document.getElementById('main-home-content')
 const featuredPost = document.getElementById('featured-post')
+let screenWidth = 0
+
+window.addEventListener('resize', () => {
+	if (window.innerWidth < 800) {
+		screenWidth = "mobile"
+	} else {
+		screenWidth = "desktop"
+	}
+})
+
 
 function getFeaturedPost() {
 	let featuredPostObject = blogPostArray[0]
