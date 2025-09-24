@@ -31,7 +31,7 @@ window.addEventListener('resize', () => {
 
 function getMainBlogContent() {
 	let mainContentHtml = ''
-	for (let i = 1; i < 4; i++) {
+	for (let i = 1; i < blogPostArray.length; i++) {
 		let currentPost = blogPostArray[i]
 		let cutContent = currentPost.content.slice(0, 200)
 
