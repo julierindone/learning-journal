@@ -36,14 +36,16 @@ function getMainHomeContent() {
 
 		mainContentHtml += `
 			<div class="blog-post" id="next-post-${i}">
-				<img class="post-img" alt="image" src="${currentPost.image}">
+				<div class="image-wrapper">
+					<img class="post-img" alt="image" src="${currentPost.image}">
+				</div>
 				<p class="post-date">${currentPost.date}</p>
 				<h2 class="post-title">${currentPost.title}</h2>
-				<p class="post-content">${cutContent}...(<a href="placeholder.html">Click to continue</a>)</p>
+				<p class="post-content">${cutContent}...(<a href="placeholder.html">continue reading</a>)</p>
 			</div>
 		`
 	}
-	let viewMore = `<a class="view-more" href="all-posts.html">View more</a>`
+	let viewMore = `<a class="view-more" href="all-posts.html">View more posts</a>`
 
 	mainHomeContent.innerHTML = mainContentHtml + viewMore
 }

@@ -293,7 +293,15 @@ footer p:last-child {
 		IMAGES
 	======================== */
 
+.image-wrapper {
+	width: 100%;
+	aspect-ratio: 8/5;
+	overflow: hidden;
+}
+
 .post-img {
 	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 

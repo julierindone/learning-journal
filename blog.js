@@ -37,10 +37,12 @@ function getMainBlogContent() {
 
 		mainContentHtml += `
 			<div class="blog-post" id="next-post-${i}">
-				<img class="post-img" alt="image" src="${currentPost.image}">
+				<div class="image-wrapper">
+					<img class="post-img" alt="image" src="${currentPost.image}">
+				</div>
 				<p class="post-date">${currentPost.date}</p>
-				<p class="post-title">${currentPost.title}</p>
-				<p class="post-content">${cutContent}...(<a href="placeholder.html">Click to continue</a>)</p>
+				<h2 class="post-title">${currentPost.title}</h2>
+				<p class="post-content">${cutContent}...(<a href="placeholder.html">continue reading</a>)</p>
 			</div>
 		`
 	}
