@@ -4,23 +4,36 @@ const mainHomeContent = document.getElementById('main-home-content')
 const featuredPost = document.getElementById('home-featured-post')
 let screenWidth = 0
 
-window.addEventListener('resize', () => {
+window.addEventListener('resize', function() {
+	getScreenWidth()
+})
+
+function getScreenWidth() {
 	if (window.innerWidth < 800) {
 		screenWidth = "mobile"
 	} else {
 		screenWidth = "desktop"
 	}
-})
-
+}
 
 function getFeaturedPost() {
 	let featuredPostObject = blogPostArray[0]
-	let cutContent = featuredPostObject.content.slice(0, 150)
+	let wordCount = 0
+	if (screenWidth == "mobile") {
+		wordCount = 70
+	} else {
+		wordCount = 100
+		console.log(`wordCount is ${wordCount}`);
+	}
+
+	let contentArray = (featuredPostObject.content).split(' ').slice(0, wordCount)
+	let cutContent = contentArray.join(' ')
 
 	featuredPost.innerHTML = `
 	<p class="header-post-date">${featuredPostObject.date}</p>
 	<h2 class="header-post-title">${featuredPostObject.title}</h2>
-	<p class="header-post-content">${cutContent}...(<a href="placeholder.html">Click to continue</a>)</p>`
+	<p class="header-post-content">${cutContent}
+	(<a href="placeholder.html">continue reading</a>)</p>`
 
 	let backgroundCss = `
 		background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url("${featuredPostObject.image}");
@@ -54,4 +67,5 @@ function renderHomeContent() {
 	getMainHomeContent()
 }
 
+getScreenWidth()
 renderHomeContent()
