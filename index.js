@@ -1,7 +1,7 @@
 import { blogPostArray } from "./data.js"
 
 const mainHomeContent = document.getElementById('main-home-content')
-const featuredPost = document.getElementById('featured-post')
+const featuredPost = document.getElementById('home-featured-post')
 let screenWidth = 0
 
 window.addEventListener('resize', () => {
@@ -23,8 +23,8 @@ function getFeaturedPost() {
 	<p class="header-post-content">${cutContent}...(<a href="placeholder.html">Click to continue</a>)</p>`
 
 	let backgroundCss = `
-		background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url("${featuredPostObject.image}");
-			background-position: center; background-size: cover; background-repeat: no-repeat; background-color: #222;`
+		background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url("${featuredPostObject.image}");
+		background-position: center; background-size: cover; background-repeat: no-repeat; background-color: #222;`
 	document.getElementById('home-header').style.cssText = backgroundCss
 }
 
@@ -40,14 +40,13 @@ function getMainHomeContent() {
 					<img class="post-img" alt="image" src="${currentPost.image}">
 				</div>
 				<p class="post-date">${currentPost.date}</p>
-				<h2 class="post-title">${currentPost.title}</h2>
+				<h2 class="main-post-title">${currentPost.title}</h2>
 				<p class="post-content">${cutContent}...(<a href="placeholder.html">continue reading</a>)</p>
 			</div>
 		`
 	}
-	let viewMore = `<a class="view-more" href="all-posts.html">View more posts</a>`
 
-	mainHomeContent.innerHTML = mainContentHtml + viewMore
+	mainHomeContent.innerHTML = mainContentHtml
 }
 
 function renderHomeContent() {

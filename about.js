@@ -10,27 +10,12 @@ function getAboutContent() {
 		newDiv.className = "about-post"
 		newDiv.id = `about${i + 1}`
 		newDiv.innerHTML = `
-			<h2 class="post-title">${currentAboutPost.title}</h2>
+			<h2 class="main-post-title">${currentAboutPost.title}</h2>
 			<p class="post-content">${currentAboutPost.content}</p>
 			`
 		mainAboutContent.appendChild(newDiv)
 
 	}
-
-
-
-
-	// 	newDiv.className = "about-section"
-	// 	// newDiv.id = `about${i + 1}`
-	// 	newDiv.id = `about${i}`
-	// 	newDiv.innerHTML = `
-	// 		<p class="post-title">${section.title}</p>
-	// 		<p>${section.content}</p>
-	// 		`
-
-	// 		console.log(mainAboutContent.innerHTML)
-	// 	// mainAboutContent.appendChild('newDiv')
-	// })
 }
 
 getAboutContent()

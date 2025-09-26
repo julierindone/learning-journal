@@ -15,7 +15,7 @@ function getFeaturedPost() {
 	let featuredBlogTitle = document.getElementById('featured-blog-title')
 	featuredBlogTitle.innerHTML = featuredPost.title
 
-	let featuredBlogContent = document.getElementById('featured-blog-content')
+	let featuredBlogContent = document.getElementById('blog-featured-content')
 	featuredBlogContent.innerText = featuredPost.content
 }
 
@@ -41,7 +41,7 @@ function getMainBlogContent() {
 					<img class="post-img" alt="image" src="${currentPost.image}">
 				</div>
 				<p class="post-date">${currentPost.date}</p>
-				<h2 class="post-title">${currentPost.title}</h2>
+				<h2 class="main-post-title">${currentPost.title}</h2>
 				<p class="post-content">${cutContent}...(<a href="placeholder.html">continue reading</a>)</p>
 			</div>
 		`
