@@ -18,22 +18,11 @@ function getScreenWidth() {
 
 function getFeaturedPost() {
 	let featuredPostObject = blogPostArray[0]
-	let wordCount = 0
-	if (screenWidth == "mobile") {
-		wordCount = 70
-	} else {
-		wordCount = 100
-		console.log(`wordCount is ${wordCount}`);
-	}
-
-	let contentArray = (featuredPostObject.content).split(' ').slice(0, wordCount)
-	let cutContent = contentArray.join(' ')
-
 	featuredPost.innerHTML = `
 	<p class="header-post-date">${featuredPostObject.date}</p>
 	<h2 class="header-post-title">${featuredPostObject.title}</h2>
-	<p class="header-post-content">${cutContent}
-	(<a href="placeholder.html">continue reading</a>)</p>`
+	<p class="header-post-content cut-off-text">${featuredPostObject.content}></p>
+	<a href="" class="expanded-all-caps continue-reading">continue reading >></a>`
 
 	let backgroundCss = `
 		background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url("${featuredPostObject.image}");
@@ -45,7 +34,6 @@ function getMainHomeContent() {
 	let mainContentHtml = ''
 	for (let i = 1; i < 4; i++) {
 		let currentPost = blogPostArray[i]
-		let cutContent = currentPost.content.slice(0, 200)
 
 		mainContentHtml += `
 			<div class="blog-post" id="next-post-${i}">
@@ -54,9 +42,9 @@ function getMainHomeContent() {
 				</div>
 				<p class="post-date">${currentPost.date}</p>
 				<h2 class="main-post-title">${currentPost.title}</h2>
-				<p class="post-content">${cutContent}...(<a href="placeholder.html">continue reading</a>)</p>
-			</div>
-		`
+				<p class="post-content cut-off-text">${currentPost.content}</p>
+				<a href="" class="expanded-all continue-reading">continue reading >></a>
+			</div>`
 	}
 
 	mainHomeContent.innerHTML = mainContentHtml
