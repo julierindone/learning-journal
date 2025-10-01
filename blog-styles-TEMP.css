@@ -1,0 +1,217 @@
+:root {
+	--black: #222;
+	--white: #fefefe;
+	--sides: 4%;
+}
+
+/* =======================
+		SITE LAYOUT
+	======================== */
+
+html, body, h1, h2, p, img {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	height: 100dvh;
+}
+body {
+	color: var(--black);
+	height: 100%;
+}
+
+.wrapper {
+	min-height: 100dvh;
+	display: grid;
+	grid-gap: 1em;
+	/* justify-items: stretch; */
+}
+
+#blog-body .wrapper {
+	min-height: 100dvh;
+	display: grid;
+	grid-template-areas:
+		"."
+		"navi"
+		"head"
+		"recent"
+		"main"
+		"foot";
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+nav, header {
+	padding-inline: var(--sides)
+}
+
+nav {
+	grid-area: navi;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.nav-links {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	gap: .9em;
+	align-items: center;
+}
+
+footer {
+	grid-area: foot;
+	background-color: var(--black);
+	padding-block: 1.15em;
+	margin-top: .75em;
+}
+
+/* =======================
+		HEADER LAYOUT
+	======================== */
+
+	header {
+	grid-area: head;
+}
+
+#featured-blog-post > p, #featured-blog-post > h2  {
+	margin-top: .6rem;  /* This looks better as .5rem than .5em, otherwise the title has too big of a space. */
+}
+
+#recent-posts {
+	grid-area: recent;
+	justify-self: center;
+	font-size: 1.2rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: -.02em;
+	padding-top: .75em;
+}
+
+/* MAIN ================================
+		MAIN ELEMENT LAYOUT
+	======================== */
+
+main {
+	grid-area: main;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+	/* grid-template-rows: repeat(2, 400px); */
+	grid-template-rows: repeat(2, fit-content);
+	grid-gap: 1.25em;
+	/* width: 100%; */
+	margin-inline: var(--sides);
+}
+
+@media (min-width: 800px) {
+	main {}
+}
+
+/* =======================
+		TYPOGRAPHY
+	======================== */
+
+.roboto {
+	font-family: "Roboto", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-variation-settings:
+		"wdth"100;
+}
+
+h1 {
+	font-size: clamp(1rem, 1.05rem + 0.46vw, 1.5rem);
+	line-height: 1.5;
+}
+
+h2 {
+	font-size: 1.8rem;
+	font-weight: 700;
+}
+
+main h2 {
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+nav * {
+	letter-spacing: -.015em;
+	font-weight: 900;
+}
+
+p {
+	line-height: 1.5;
+	word-wrap: break-word;
+}
+
+#nav-title:link {
+	text-decoration-line: none;
+}
+
+.nav-links a {
+  font-size: clamp(.9rem, 0.81rem + 0.46vw, 1.1rem);
+	text-transform: uppercase;
+}
+
+a:link, a:visited {
+	text-underline-offset: 3px;
+	color: inherit;
+}
+
+h2.header-post-title {
+	font-weight: 700;
+  font-size: clamp(1.3rem, 1.18rem + 1.8vw, 2.4rem);
+}
+
+.header-post-date {
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+div[id^=next-post] p, div[id^=next-post] h2 {
+	margin-top: .45rem; /* keep as rem */
+}
+
+p.post-date {
+	font-size: .9rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+h2.post-title {
+	font-size: 1.3rem;
+	font-weight: 700;
+}
+
+
+footer p {
+	color: var(--white);
+	text-align: center;
+	font-size: .8rem;
+}
+
+footer p:last-child {
+	font-size: .7rem;
+	margin-top: .3em;
+}
+
+/* =======================
+		IMAGES
+	======================== */
+
+.image-wrapper {
+	width: 100%;
+	aspect-ratio: 8/5;
+	overflow: hidden;
+}
+
+.post-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}

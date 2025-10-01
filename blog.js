@@ -15,28 +15,30 @@ function getFeaturedPost() {
 	let featuredBlogTitle = document.getElementById('featured-blog-title')
 	featuredBlogTitle.innerHTML = featuredPost.title
 
-	let featuredBlogContent = document.getElementById('featured-blog-content')
-	featuredBlogContent.innerText = featuredPost.content
+	let featuredBlogContent = document.getElementById('blog-featured-content')
+	featuredBlogContent.innerHTML = featuredPost.content
 }
+
 
 function getMainBlogContent() {
 	let mainContentHtml = ''
 	for (let i = 1; i < 4; i++) {
 		let currentPost = blogPostArray[i]
-		let cutContent = currentPost.content.slice(0, 200)
 
 		mainContentHtml += `
 			<div class="blog-post" id="next-post-${i}">
-				<img class="post-img" alt="image" src="${currentPost.image}">
-				<p class="post-date">${currentPost.date}</p>
-				<p class="post-title">${currentPost.title}</p>
-				<p class="post-content">${cutContent}...(<a href="placeholder.html">Click to continue</a>)</p>
-			</div>
-		`
+			<hr />
+				<div class="image-wrapper">
+					<img class="post-img" alt="image" src="${currentPost.image}">
+				</div>
+				<p class="post-date expanded-all-caps">${currentPost.date}</p>
+				<h2 class="main-post-title">${currentPost.title}</h2>
+			<p class="post-content cut-off-text">${currentPost.content}</p>
+			<a href="" class="continue-reading expanded-all-caps">continue reading >></a>
+		</div>`
 	}
-	let viewMore = `<a class="view-more" href="all-posts.html">View more</a>`
 
-	mainBlogContent.innerHTML = mainContentHtml + viewMore
+	mainBlogContent.innerHTML = mainContentHtml
 }
 
 function renderBlogContent() {

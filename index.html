@@ -7,28 +7,35 @@
 	<link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Learning Journal</title>
+	<title>Coder in a Coma</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="roboto">
-	<nav>
-		<a id="nav-title" href="index.html">
-			<h1>My Learning Journey</h1>
-		</a>
-		<div class="nav-links">
-			<a href="about.html">about me</a>
-			<a href="blog.html">blog</a>
+<body id="home-body" class="roboto">
+	<div class="wrapper">
+		<nav>
+			<a id="nav-title" href="index.html">
+				<h1>Coder in a Coma</h1>
+			</a>
+			<div class="nav-links">
+				<a href="about.html">about me</a>
+				<a href="blog.html">blog</a>
+			</div>
+		</nav>
+		<header id="home-header">
+			<div id="home-featured-post"></div>
+		</header>
+		<p id="recent-posts" class="expanded-all-caps">Recent Posts</p>
+		<main id="main-home-content"></main>
+		<div class="view-more">
+			<hr>
+			<a class="continue-reading expanded-all-caps" href="">View more posts >></a>
 		</div>
-	</nav>
-	<header id="home-header" class="roboto">
-		<div id="featured-post"></div>
-	</header>
-	<main id="main-home-content"></main>
-	<footer>
-		<p>Learning Journal Inc.</p>
-		<p>@2025</p>
-	</footer>
+		<footer>
+			<p>Learning Journal Inc.</p>
+			<p>@2025</p>
+		</footer>
+	</div>
 	<script type="module" src="index.js"></script>
 </body>
 

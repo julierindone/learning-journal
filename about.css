@@ -4,7 +4,7 @@
 		=======================
 		======================== */
 
-.about-header {
+#about-header {
 	padding-block: 1.3em 0;
 	border-top: solid 2px var(--black);
 }
@@ -31,7 +31,7 @@
 }
 
 /* =======================
-		Typography
+		Typography & Image
 	======================== */
 #about-header h2 {
 	font-weight: 800;
@@ -49,25 +49,19 @@
 	margin-top: .3em;
 }
 
-/* =======================
-		IMAGES
-	======================== */
-
 #about-img {
 	width: 47%;
 	min-width: 160px;
+	max-width:350px;
 	padding: 1px;
 	border: 3px dotted var(--black);
 	border-radius: 100%;
 	margin-bottom: .8em;
 }
 
-/* =======================
-=======================
-BLOG PAGE STYLES
-=======================
-======================== */
-
-#featured-blog-post > * {
-	margin-top: .5rem; /* This looks better as .5rem than .5em, otherwise the title has too big of a space. */
+@media (min-width: 800px) {
+	#about-header {
+		display: flex;
+		gap: 2rem;
+	}
 }
