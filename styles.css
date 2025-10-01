@@ -1,12 +1,12 @@
 :root {
-	--black: #222;
+	--black: #121212;
 	--white: #fefefe;
 	--sides: 3%;
 }
 
-/* =======================
+/* =============================
 		SITE LAYOUT
-	======================== */
+	============================== */
 
 html, body, h1, h2, p, img {
 	margin: 0;
@@ -18,22 +18,23 @@ html {
 }
 body {
 	color: var(--black);
+	background-color: var(--white);
 	height: 100%;
 }
 
 .wrapper {
 	min-height: 100dvh;
 	display: grid;
-	grid-gap: 1.3em;
+	grid-gap: 1.1rem;
 }
 
 #home-body .wrapper {
 	grid-template-columns: 1fr;
 	grid-template-rows: auto auto auto 1fr auto auto;
 	grid-template-areas:
-		"."
 		"navi"
 		"head"
+		"recent"
 		"main"
 		"view"
 		"foot";
@@ -41,9 +42,8 @@ body {
 
 #blog-body .wrapper {
 	min-height: 100dvh;
-	grid-template-rows: auto auto auto auto 1fr auto;
+	grid-template-rows: auto auto auto 1fr auto;
 	grid-template-areas:
-		"."
 		"navi"
 		"head"
 		"recent"
@@ -65,6 +65,8 @@ nav {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: baseline;
+  font-size: clamp(.9rem, 0.7rem + 1.7vw, 1.2rem);
+	margin-block: 1rem -.1rem;
 }
 
 .nav-links {
@@ -78,24 +80,32 @@ nav {
 footer {
     grid-area: foot;
     background-color: var(--black);
-    padding-block: 1.45em;
-    margin-top: .35em;
+    padding-block: 1.9dvh;
+    margin-top: .9dvh;
 }
 
-/* =======================
+/* =============================
 		HEADER LAYOUT
-	======================== */
+	============================== */
 
 header {
 	grid-area: head;
+	min-height: 40dvh;
+}
+header::before {
+	/* I don't this id doing anything */
+	height: 100dvh;
 }
 
 #home-header {
+	display: flex;
+	align-items: end;
+	/* padding-block: 4.5em 1em; */
 	padding-block: clamp(6.4em, 3.2em + 16vh, 14em) 1em;
 }
 
 #home-featured-post > * {
-	color: var(--white);
+	color: var(--white) !important;
 	text-shadow: 1px 1px 5px black;
   background-color: #00000014;
 	width: fit-content;
@@ -103,48 +113,49 @@ header {
 	margin-top: .4rem;
 }
 
-#home-featured-post .header-post-date {
-	margin-top: 0 !important;
+#home-featured-post > h2 {
+	font-size: 1.35em;
+}
+
+#home-featured-post p:first-child {
+	margin-top: 0;
 }
 #home-featured-post .header-post-content {
-	font-size: clamp(1rem, 0.7rem + 1.4vw, 1.5rem);
+	line-height: 1.67;
 }
 
 #recent-posts {
 	grid-area: recent;
+	font-size: 1.05rem;
+	font-weight: 500;
+	font-style: italic;
 	justify-self: center;
-	font-size: 1.2rem;
-	font-weight: 700;
-	text-transform: uppercase;
-	letter-spacing: -.02em;
-	padding-top: .85em;
+	margin-block: .6em -.6em;
 }
 
 @media (min-width: 800px) {
-
 	#home-header {
-		padding-block: clamp(16.4em, 15em + 9vh, 25em) 1.5em;
+    padding-block: clamp(8em, 5em + 8.75vh, 13em) 1.5em;
 	}
 
 	#home-featured-post {
-		width: 85%;
-		text-wrap: balance;
+		width: 95%;
 	}
 
 	#recent-posts {
-		font-size: 1.3rem;
-		padding-top: 1.4em;
+		font-size: 1.2rem;
+		margin-block: 0.6em -0.5em;
 	}
 }
 
-/* =======================
+/* =============================
 		MAIN ELEMENT LAYOUT
-	======================== */
+	============================== */
 
 main {
 	grid-area: main;
 	display: grid;
-	gap: 2em 1.35em;
+	gap: 2em 0.9em;
 }
 
 #main-blog-content {
@@ -153,28 +164,27 @@ main {
 		grid-template-rows: 1fr auto;
 }
 
-#home-header .continue-reading {
-	font-size: .8em;
-}
-
-#main-home-content .continue-reading {
-	font-size: .9em;
-}
-
 @media (min-width: 800px) {
 	#main-home-content {
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: 1fr auto;
 	}
+
+	.blog-post {
+		margin-top: .1em !important;
+	}
+	.blog-post hr {
+		display: none;
+	}
+
+	.image-wrapper {
+		padding-top: 0;
+	}
 }
 
-.view-more {
-	grid-area: view;
-}
-
-/* =======================
+/* =============================
 		TYPOGRAPHY
-	======================== */
+	============================== */
 
 .roboto {
 	font-family: "Roboto", sans-serif;
@@ -182,11 +192,11 @@ main {
 	font-style: normal;
 	font-variation-settings:
 		"wdth"100;
+	letter-spacing: .5px;
 }
 
 h1 {
-	font-size: clamp(1rem, 1.05rem + 0.46vw, 1.5rem);
-	line-height: 1.5;
+	font-size: .97em !important;
 }
 
 h2 {
@@ -198,41 +208,41 @@ main h2 {
 }
 
 p {
-	line-height: 1.5;
-	word-wrap: break-word;
+	line-height: 1.55;
 }
 
 nav * {
 	letter-spacing: -.015em;
-	font-weight: 900;
+	font-weight: 800;
 }
 
 #nav-title:link {
 	text-decoration-line: none;
 }
 
+a, a:link, a:visited {
+	text-decoration: none;
+}
 .nav-links a {
-  font-size: clamp(.9rem, 0.81rem + 0.46vw, 1.1rem);
+	font-size: .83em;
 	text-transform: uppercase;
 }
 
 a:link, a:visited {
-	text-underline-offset: 3px;
 	color: inherit;
 }
-
-#home-featured-post h2 {
-  font-size: clamp(1.1rem, 0.85rem + 1.8vw, 2.4rem);
-}
-
 
 #blog-featured-post h2 {
   font-size: clamp(1.3rem, 0.92rem + 1.9vw, 2.5rem);
 }
 
 .header-post-date {
-	font-size: 1rem;
-	font-weight: 500;
+	font-size: 1.05em;
+}
+
+p.post-date {
+	font-size: .9rem;
+	margin-top: .8em;
 }
 
 #blog-featured-post > p, #blog-featured-post > h2  {
@@ -243,22 +253,22 @@ a:link, a:visited {
 	font-size: 1rem;
 }
 
-p.post-date {
-	font-size: .9rem;
-	font-weight: 700;
-	text-transform: uppercase;
-	margin-top: .7em;
+#next-post-1 hr {
+	display: none;
+}
+
+#next-post-1 .image-wrapper {
+	padding-top: 0;
+}
+
+.post-content {
+	margin-block:.6em;
 }
 
 h2.main-post-title {
 	font-size: 1.3rem;
-	margin-top: .3em;
+	margin-top: .5em;
 }
-
-a.view-more:link {
-	font-weight: 700;
-	display: block;
-	text-align: center;
 
 .cut-off-text {
 	overflow: hidden;
@@ -273,7 +283,7 @@ a.view-more:link {
 
 .header-post-content {
 	--line-height: 1.67;
-	--max-lines: 6;
+	--max-lines: 7;
 }
 
 .cut-off-text::before {
@@ -286,15 +296,23 @@ a.view-more:link {
 }
 
 #home-featured-post .cut-off-text::before {
-	background: linear-gradient(to bottom, transparent, black);
+	background: linear-gradient(to bottom, transparent, 65%, rgba(0, 0, 0, 1));
 }
 
+/* ===============================
+		FOOTER, ETC
+	================================ */
+
+#recent-posts p {
+	text-align: center;
+	margin-top: .5em;
 }
 
 footer p {
 	color: var(--white);
 	text-align: center;
 	font-size: .8rem;
+	line-height: 1.35;
 }
 
 footer p:last-child {
@@ -302,18 +320,94 @@ footer p:last-child {
 	margin-top: .3em;
 }
 
-/* =======================
+.view-more {
+	grid-area: view;
+	margin-top: 0.9em;
+}
+
+.view-more a:link {
+	display: block;
+	font-size: 1.05rem;
+	font-weight: 500;
+	text-align: center;
+	padding-top: 1.3em;
+	margin: 0 auto;
+}
+
+
+/* =============================
 		IMAGES
-	======================== */
+	============================== */
 
 .image-wrapper {
 	width: 100%;
 	aspect-ratio: 8/5;
 	overflow: hidden;
+	padding-top: 1.7em
 }
 
 .post-img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+@media (min-width: 800px) {
+	.image-wrapper {
+		padding-top: 0;
+	}
+}
+
+/* =============================
+		Utility Classes
+	============================== */
+
+	.expanded-all-caps {
+	/* text-transform: uppercase; */
+	letter-spacing: 1.5px;
+	color: #00000099 !important;
+}
+
+hr {
+    border: 0;
+    width: 70vw;
+		height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+		margin: 0 auto;
+}
+
+/* Continue reading has to be down here... otherwise expanded-all-caps overrides it. */
+.continue-reading {
+	font-size: .8em;
+	font-style: italic;
+	font-weight: 400;
+	display: block;
+}
+
+#home-featured-post .continue-reading {
+	opacity: 0.95;
+	padding-top: .2em;
+}
+
+.blog-post .continue-reading {
+	font-size: .9em;
+	text-transform: lowercase;
+}
+
+@media (min-width: 800px) {
+	hr {
+		width:50%;
+	}
+
+	.blog-post hr {
+		display: none;
+	}
+	.view-more {
+		font-size: 1.2rem;
+		margin-top: .4em;
+	}
+
+	.image-wrapper {
+		padding-top: 0;
+	}
 }
