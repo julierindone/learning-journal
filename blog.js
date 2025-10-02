@@ -2,6 +2,21 @@ import { blogPostArray } from "./data.js"
 
 const mainBlogContent = document.getElementById('main-blog-content')
 
+// I think the thing I added the event listener for turned out to not be needed. Saving for now since I can't remember.
+let screenWidth = 0
+
+window.addEventListener('resize', function () {
+	getScreenWidth()
+})
+
+function getScreenWidth() {
+	if (window.innerWidth < 800) {
+		screenWidth = "mobile"
+	} else {
+		screenWidth = "desktop"
+	}
+}
+
 function getFeaturedPost() {
 	let featuredPost = blogPostArray[0]
 
@@ -46,4 +61,5 @@ function renderBlogContent() {
 	getMainBlogContent()
 }
 
+getScreenWidth()
 renderBlogContent()
