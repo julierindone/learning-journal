@@ -2,6 +2,8 @@
 	--black: #121212;
 	--white: #fefefe;
 	--sides: 3.5%;
+	--serif-font: 'Arvo', Cambria, Cochin, Georgia, Times, serif;
+
 }
 
 /* =============================
@@ -27,7 +29,6 @@ body {
 	display: grid;
 	grid-gap: 1.1rem;
 }
-	/* #about-body > .wrapper:not(#blog-header) { */
 
 header:not(#home-header),
 main:not(#main-home-content),
@@ -82,24 +83,14 @@ nav, #blog-header, #about-header, main {
 	margin-bottom: 0;
 }
 
-/* nav {
-	grid-area: navi;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: baseline;
-  font-size: clamp(.9rem, 0.7rem + 1.7vw, 1.2rem);
-	margin-block: 1rem -.1rem;
-} */
-
 nav {
 	grid-area: navi;
 	background-color: var(--black);
 }
 
-/* Nav in black */
 nav>#nav-item-container {
 	display: flex !important;
+	font-family: var(--serif-font);
 	flex-wrap: nowrap;
 	flex-direction: row;
 	align-items: baseline;
@@ -160,7 +151,10 @@ header::before {
 }
 
 #home-featured-post > h2 {
-	font-size: 1.35em;
+	font-size: 1.66em;
+	font-family: var(--serif-font);
+	font-weight: 500;
+	text-shadow: 0 0 1.5px white;
 }
 
 #home-featured-post p:first-child {
@@ -236,7 +230,6 @@ a, a:link, a:visited {
 }
 .nav-links a {
 	font-size: .83em;
-	text-transform: uppercase;
 }
 
 a:link, a:visited {
@@ -245,21 +238,23 @@ a:link, a:visited {
 
 #blog-featured-post h2 {
   font-size: clamp(1.3rem, 0.92rem + 1.9vw, 2.5rem);
+	font-family: var(--serif-font);
+	margin-top: .3em;
 }
 
 #about-header h2 {
-	font-size: clamp(1.75rem, 7.2vw, 5rem);
+	font-size: clamp(1.6rem, 7vw, 2.5rem);
 	font-weight: 800;
 	text-wrap: nowrap;
+	font-family: var(--serif-font);
+	text-shadow: 0 0 1px black;
 }
 
 #about-header p {
-	/* font-size: clamp(1.05rem, 3.95vw, 2.37rem); */
-	font-size: clamp(1.05rem, 3.96vw, 2.6rem);
-	font-weight: 600;
-	line-height: 1.45;
-	max-width: 77%;
-	margin-top: .3em;
+	font-size: clamp(1.05rem, 3.46vw, 2rem);
+	line-height: 1.375;
+	max-width: 95%;
+	margin-top: 0.4em;
 }
 
 #main-about-content p {
@@ -406,7 +401,6 @@ footer p:last-child {
 	============================== */
 
 	.expanded-all-caps {
-		/* text-transform: uppercase; */
 		letter-spacing: 1.5px;
 	color: #00000099 !important;
 }
@@ -423,7 +417,6 @@ hr {
 	display: none;
 }
 
-/* Continue reading has to be down here... otherwise expanded-all-caps overrides it. */
 .continue-reading {
 	font-size: .9rem;
 	font-style: italic;
@@ -489,27 +482,32 @@ MEDIA QUERIES
 
 /* ================================================================ */
 
+@media (min-width: 560px) and (max-width: 749.99px) {
+	#about-header h2 {
+		font-size: clamp(1rem, 8.2vw, 3.5rem);
+		letter-spacing: .045em;
+		text-wrap: unset;
+	}
+	#about-header p {
+		font-size: clamp(1.05rem, 2.75vw, 1.2rem);
+	}
 
-/* @media (min-width: 800px) { */
+	.line-break {
+		display: unset;
+	}
+
+	#about-img {
+		flex-basis: 54%;
+	}
+}
+
+/* ================================================================ */
+
 @media (min-width: 700px) {
 	/* HEADER */
 
 	#home-header {
 		padding-block: clamp(8em, 5em + 8.75vh, 13em) 1.5em;
-	}
-
-	#about-header h2 {
-		/* font-size: clamp(1rem, 6vw, 4rem); */
-		font-size: clamp(1rem, 6vw, 4.5rem);
-		text-wrap: nowrap;
-		text-align: center;
-	}
-
-	#about-header p {
-		/* font-size: clamp(1.05rem, 3.3vw, 2.1rem); */
-		font-size: clamp(1.05rem, 3.3vw, 1.45rem);
-		margin-inline: auto;
-		max-width: 87%;
 	}
 
 	#home-featured-post {
@@ -554,22 +552,17 @@ MEDIA QUERIES
 
 /* ================================================================ */
 
-@media (min-width: 560px) and (max-width: 799.99px) {
+@media (min-width: 750px) {
 	#about-header h2 {
-		font-size: clamp(1rem, 8.3vw, 3.3rem);
-		letter-spacing: 2px;
-		text-wrap: unset;
+		text-wrap: nowrap;
+		font-size: clamp(2.2rem, 5.05vw, 3.8rem);
+		text-align: center;
 	}
+
 	#about-header p {
-		font-size: clamp(1.05rem, 2.9vw, 1.3rem);
-	}
-
-	.line-break {
-		display: unset;
-	}
-
-	#about-img {
-		flex-basis: 54%;
+		font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+		margin-inline: auto;
+		max-width: 90%;
 	}
 }
 
