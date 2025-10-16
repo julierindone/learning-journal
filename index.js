@@ -3,18 +3,22 @@ import { blogPostArray } from "./data.js"
 const mainHomeContent = document.getElementById('main-home-content')
 const featuredPost = document.getElementById('home-featured-post')
 
-// I think the thing I added the event listener for turned out to not be needed. Saving for now since I can't remember.
-let screenWidth = 0
 
-window.addEventListener('resize', function () {
-	getScreenWidth()
+window.addEventListener('load', function () {
+	detectScreenOrientation()
 })
 
-function getScreenWidth() {
-	if (window.innerWidth < 800) {
-		screenWidth = "mobile"
+window.addEventListener('resize', function () {
+	detectScreenOrientation()
+})
+
+function detectScreenOrientation() {
+	if (window.innerHeight < 600 && window.innerWidth > 500) {
+		document.getElementById('home-header').style.height = 'unset'
+		document.querySelector('#home-featured-post p:first-child').style.marginTop = '1em'
 	} else {
-		screenWidth = "desktop"
+		document.getElementById('home-header').style.removeProperty('height')
+		document.querySelector('#home-featured-post p:first-child').style.removeProperty('margin-top')
 	}
 }
 
@@ -23,13 +27,14 @@ function getFeaturedPost() {
 	let featuredPostHtml = `
 	<p class="header-post-date">${featuredPostObject.date}</p>
 	<h2 class="header-post-title">${featuredPostObject.title}</h2>
-	<p class="header-post-content cut-off-text">${featuredPostObject.content}></p>
+	<p class="header-post-content cut-off-text">${featuredPostObject.content}</p>
 	<a href="post.html" class="expanded-all-caps continue-reading">continue reading >></a>`
 
-	let backgroundCss = `
-		background-image: linear-gradient(rgba(0, 0, 0, 0.1),  41%, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8), rgb(0, 0, 0)), url("${featuredPostObject.image}");
-		background-position: center; background-size: cover; background-repeat: no-repeat; background-color: #222;`
-	document.getElementById('home-header').style.cssText = backgroundCss
+	document.getElementById('home-header').style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3), 41%, rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.7), rgb(0, 0, .8)), url("${featuredPostObject.image}")`;
+	document.getElementById('home-header').style.backgroundPosition = 'center';
+	document.getElementById('home-header').style.backgroundSize = 'cover';
+	document.getElementById('home-header').style.backgroundRepeat = 'no-repeat';
+	document.getElementById('home-header').style.backgroundColor = '#222';
 
 		featuredPost.innerHTML = featuredPostHtml
 }
@@ -60,5 +65,4 @@ function renderHomeContent() {
 	getMainHomeContent()
 }
 
-getScreenWidth()
 renderHomeContent()
