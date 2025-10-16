@@ -1,3 +1,4 @@
+import { createPostHtml } from "./sharedFunctions.js"
 import { blogPostArray } from "./data.js"
 
 const mainHomeContent = document.getElementById('main-home-content')
@@ -42,21 +43,12 @@ function getFeaturedPost() {
 function getMainHomeContent() {
 	let mainContentHtml = ''
 	for (let i = 1; i < 7; i++) {
-		let currentPost = blogPostArray[i]
+		let postToBuild = blogPostArray[i]
+		mainContentHtml += createPostHtml(postToBuild)
 
-		mainContentHtml += `
-		<div class="blog-post" id="next-post-${i}">
-			<hr />
-			<div class="image-wrapper">
-				<img class="post-img" alt="image" src="${currentPost.image}">
-			</div>
-			<p class="post-date expanded-all-caps">${currentPost.date}</p>
-			<h2 class="main-post-title">${currentPost.title}</h2>
-			<p class="post-content cut-off-text">${currentPost.content}</p>
-			<a href="" class="continue-reading expanded-all-caps">continue reading >></a>
-		</div>`
+		displayedPostCount++
+		unpostedPostCount -= 1
 	}
-
 	mainHomeContent.innerHTML = mainContentHtml
 }
 
