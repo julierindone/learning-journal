@@ -1,0 +1,110 @@
+#about-body > .wrapper {
+	/* REMOVE - not needed but scared to make change at the mo */
+	/* grid-template-rows: auto auto auto 1fr auto; */
+	grid-template-areas:
+	"navi"
+	"head"
+	"main"
+	"view"
+	"foot";
+}
+
+#about-header {
+	min-height: unset;
+	padding-block: 1.3em 0;
+	padding-inline: var(--sides);
+	margin-bottom: 0;
+}
+
+#about-header h2 {
+	font-size: clamp(1.6rem, 7vw, 2.5rem);
+	font-weight: 800;
+	text-wrap: nowrap;
+	text-shadow: 0 0 1px black;
+}
+
+#about-header p {
+	font-size: clamp(1.05rem, 3.46vw, 2rem);
+	line-height: 1.375;
+	text-wrap: pretty;
+	margin-top: 0.6em;
+}
+
+.main-post-title {
+	margin-top: 1em;
+}
+
+#about-img {
+	width: min(55%, 210px);
+	padding: 2px;
+	border: 3px dotted var(--black);
+	border-radius: 100%;
+	margin-bottom: .8em;
+}
+
+/* ===============================
+MEDIA QUERIES
+================================ */
+
+@media (width >= 560px) {
+	#about-header {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	#about-header > * {
+		text-align: center;
+		justify-items: center;
+	}
+
+	.main-post-title {
+		font-size: clamp(1.45rem, 3.3vw, 1.7rem);
+	}
+
+	#about1 hr {
+		display: none;
+	}
+}
+
+/* ================================================================ */
+
+@media (560px <= width < 750px) {
+	#about-header h2 {
+		font-size: clamp(1rem, 7.7vw, 3.2rem);
+		letter-spacing: .045em;
+		text-wrap: unset;
+		line-height: 1.125;
+		margin-top: .2em;
+	}
+
+	#about-header p {
+		font-size: clamp(1.05rem, 2.75vw, 1.2rem);
+	}
+
+	.line-break {
+		display: unset;
+	}
+
+	/* WATCH: If there's an issue, it's probably this. */
+	#about-img {
+		flex-basis: 50%;
+	}
+}
+
+/* ================================================================ */
+
+@media (width >= 750px) {
+	#about-header h2 {
+		text-wrap: nowrap;
+		font-size: clamp(2.2rem, 5.05vw, 3.8rem);
+		text-align: center;
+	}
+
+	#about-header p {
+		font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+		margin-inline: auto;
+		max-width: 90%;
+	}
+}

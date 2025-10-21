@@ -57,30 +57,9 @@ main:not(#main-home-content),
 		"foot";
 }
 
-#about-body > .wrapper {
-	grid-template-rows: auto auto auto 1fr auto auto;
-	grid-template-areas:
-		"navi"
-		"head"
-		"main"
-		"view"
-		"foot";
-}
-
 *, *::before, *::after {
 	box-sizing: border-box;
 }
-
-nav, #blog-header, #about-header, main {
-	padding-inline: var(--sides);
-}
-
-#about-header {
-	padding-block: 1.3em 0;
-	min-height: unset;
-	margin-bottom: 0;
-}
-
 nav {
 	grid-area: navi;
 	background-color: var(--black);
@@ -117,8 +96,6 @@ nav>#nav-item-container {
 	i {
 		font-size: 1.1em;
 	}
-
-
 
 #home-body nav {
 	margin-bottom: -1rem;
@@ -239,29 +216,7 @@ a:link, a:visited {
 	margin-top: .3em;
 }
 
-#about-header h2 {
-	font-size: clamp(1.6rem, 7vw, 2.5rem);
-	font-weight: 800;
-	text-wrap: nowrap;
-	text-shadow: 0 0 1px black;
-}
-
-#about-header p {
-	font-size: clamp(1.05rem, 3.46vw, 2rem);
-	line-height: 1.375;
-	max-width: 95%;
-	margin-top: 0.4em;
-}
-
-#main-about-content p {
-	margin-bottom: 0;
-}
-
-#main-about-content>.about-post:not(#about1) h2.main-post-title {
-	margin-top: 1em;
-	/* color: red !important; */
-}
-
+/* REMOVE~!~!~! */
 .header-post-date {
 	font-size: 1.025em;
 	margin-top: .4rem;
@@ -385,14 +340,6 @@ footer p:last-child {
 	object-fit: cover;
 }
 
-#about-img {
-	width: 15%;
-	min-width: 185px;
-	padding: 2px;
-	border: 3px dotted var(--black);
-	border-radius: 100%;
-	margin-bottom: .8em;
-}
 
 /* =============================
 		Utility Classes
@@ -449,58 +396,11 @@ MEDIA QUERIES
 	.image-wrapper {
 		padding-top: 0;
 	}
-
-	#about-header {
-		display: flex;
-		gap: 1rem;
-		align-items: center;
-		justify-content: space-around;
-	}
-
-	#about-header h2 {
-		text-wrap: unset;
-		font-size: clamp(3.2rem, 4.7vw, 5.4rem);
-	}
-
-	#about-img {
-		flex-basis: 26%;
-	}
-
-	#about-header > * {
-		text-align: center;
-		justify-items: center;
-	}
-
-	.about-post > h2.main-post-title {
-		font-size: clamp(1.45rem, 3.3vw, 1.7rem);
-		margin-top: 0;
-	}
-
-	#about1 hr {
-		display: none;
-	}
 }
 
 /* ================================================================ */
 
 @media (min-width: 560px) and (max-width: 749.99px) {
-	#about-header h2 {
-		font-size: clamp(1rem, 8.2vw, 3.5rem);
-		letter-spacing: .045em;
-		text-wrap: unset;
-	}
-	#about-header p {
-		font-size: clamp(1.05rem, 2.75vw, 1.2rem);
-	}
-
-	.line-break {
-		display: unset;
-	}
-
-	#about-img {
-		flex-basis: 54%;
-	}
-
 	.blog-post {
 		display: flex;
 		flex-direction: column;
@@ -568,17 +468,6 @@ MEDIA QUERIES
 			height: calc(100dvh - 4em);
 	}
 
-	#about-header h2 {
-		text-wrap: nowrap;
-		font-size: clamp(2.2rem, 5.05vw, 3.8rem);
-		text-align: center;
-	}
-
-	#about-header p {
-		font-size: clamp(1.05rem, 2.5vw, 1.35rem);
-		margin-inline: auto;
-		max-width: 90%;
-	}
 }
 
 /* ================================================================ */
