@@ -16,6 +16,7 @@ html, body, h1, h2, p, img {
 html {
 	height: 100dvh;
 }
+
 body {
 	color: var(--black);
 	background-color: var(--white);
@@ -25,17 +26,15 @@ body {
 .wrapper {
 	min-height: 100dvh;
 	display: grid;
-	grid-gap: 1.1rem;
+	gap: 1.1rem;
 }
 
-header:not(#home-header),
-main:not(#main-home-content),
-#nav-item-container:not(#home-nav > #nav-item-container) {
-	max-width: 1200px;
-	margin-inline: auto;
+#blog-header, main {
+	padding-inline: var(--sides);
 }
 
-#home-body > .wrapper {
+#home-body .wrapper,
+#blog-body .wrapper {
 	grid-template-rows: auto auto auto 1fr auto auto;
 	grid-template-areas:
 		"navi"
@@ -174,10 +173,9 @@ main {
 }
 
 #main-home-content {
-	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
 	grid-template-rows: 1fr auto;
 }
-
 
 /* =============================
 		TYPOGRAPHY

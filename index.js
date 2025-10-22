@@ -26,7 +26,6 @@ function detectScreenOrientation() {
 function getFeaturedPost() {
 	let featuredPostObject = blogPostArray[0]
 	let featuredPostHtml = `
-	<p class="header-post-date">${featuredPostObject.date}</p>
 	<h2 class="header-post-title">${featuredPostObject.title}</h2>
 	<p class="header-post-content cut-off-text">${featuredPostObject.content}</p>
 	<a href="post.html" class="expanded-all-caps continue-reading">continue reading >></a>`
