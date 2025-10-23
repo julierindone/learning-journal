@@ -10,7 +10,7 @@ export function createPostHtml(postToBuild) {
 	}
 
 	return `
-			<div class="blog-post" id="next-post-${postToBuild.id}">
+			<div class="post" id="next-post-${postToBuild.id}">
 				<hr />
 				<div class="post-wrapper">
 					<div class="image-wrapper">

@@ -106,10 +106,11 @@ i {
 	flex-wrap: nowrap;
 	gap: .8em;
 	align-items: center;
-	/* TODO: Currently a p, was an a, needs to be a button, so including all 3 for now. */
-	a, p, button {
+	/* TODO: Currently a p, was an a, needs to be an a, so including both for now. */
+	a, p {
 		font-size: .8em;
 		font-weight: 450;
+		color: hotpink !important;
 	}
 }
 
@@ -212,9 +213,6 @@ p {
 
 a, a:link, a:visited {
 	text-decoration: none;
-}
-.nav-links a {
-	font-size: .83em;
 }
 
 a:link, a:visited {
@@ -379,7 +377,7 @@ hr {
 	padding-top: .2em;
 }
 
-.blog-post .continue-reading {
+.post .continue-reading {
 	font-size: .9em;
 	text-transform: lowercase;
 }
@@ -394,7 +392,7 @@ MEDIA QUERIES
 	#home-header {
 		height: calc(100dvh - 3.5em);
 		}
-	#main-home-content>.blog-post hr {
+	#main-home-content>.post hr {
 		display: none;
 	}
 
@@ -406,7 +404,7 @@ MEDIA QUERIES
 /* ================================================================ */
 
 @media (min-width: 560px) and (max-width: 749.99px) {
-	.blog-post {
+	.post {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -414,7 +412,7 @@ MEDIA QUERIES
 		margin-bottom: .2em;
 	}
 
-	.blog-post .post-wrapper {
+	.post .post-wrapper {
 		display: flex;
 		flex-direction: column;
 	}
