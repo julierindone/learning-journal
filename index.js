@@ -5,23 +5,23 @@ const mainHomeContent = document.getElementById('main-home-content')
 const featuredPost = document.getElementById('home-featured-post')
 
 
-window.addEventListener('load', function () {
-	detectScreenOrientation()
-})
+// window.addEventListener('load', function () {
+// 	detectScreenOrientation()
+// })
 
-window.addEventListener('resize', function () {
-	detectScreenOrientation()
-})
+// window.addEventListener('resize', function () {
+// 	detectScreenOrientation()
+// })
 
-function detectScreenOrientation() {
-	if (window.innerHeight < 600 && window.innerWidth > 500) {
-		document.getElementById('home-header').style.height = 'unset'
-		document.querySelector('#home-featured-post p:first-child').style.marginTop = '1em'
-	} else {
-		document.getElementById('home-header').style.removeProperty('height')
-		document.querySelector('#home-featured-post p:first-child').style.removeProperty('margin-top')
-	}
-}
+// function detectScreenOrientation() {
+// 	if (window.innerHeight < 600 && window.innerWidth > 500) {
+// 		document.getElementById('home-header').style.height = 'unset'
+// 		document.querySelector('#home-featured-post p:first-child').style.marginTop = '1em'
+// 	} else {
+// 		document.getElementById('home-header').style.removeProperty('height')
+// 		document.querySelector('#home-featured-post p:first-child').style.removeProperty('margin-top')
+// 	}
+// }
 
 function getFeaturedPost() {
 	let featuredPostObject = blogPostArray[0]
@@ -36,7 +36,7 @@ function getFeaturedPost() {
 	document.getElementById('home-header').style.backgroundRepeat = 'no-repeat';
 	document.getElementById('home-header').style.backgroundColor = '#222';
 
-		featuredPost.innerHTML = featuredPostHtml
+	featuredPost.innerHTML = featuredPostHtml
 }
 
 function getMainHomeContent() {
@@ -45,8 +45,8 @@ function getMainHomeContent() {
 		let postToBuild = blogPostArray[i]
 		mainContentHtml += createPostHtml(postToBuild)
 
-		displayedPostCount++
-		unpostedPostCount -= 1
+		// displayedPostCount++
+		// unpostedPostCount -= 1
 	}
 	mainHomeContent.innerHTML = mainContentHtml
 }
