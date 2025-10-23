@@ -2,6 +2,8 @@
 	--black: #121212;
 	--white: #fefefe;
 	--sides: 3.5%;
+	--serif: 'Aleo', cambria, cochin, georgia, times, serif;
+	--expanded-spacing: 1.5px;
 }
 
 /* =============================
@@ -69,15 +71,16 @@ nav>#nav-item-container {
 	flex-wrap: nowrap;
 	align-items: baseline;
 	justify-content: space-between;
-	font-family: 'Aleo', Cambria, Cochin, Georgia, Times, serif;
-	font-size: clamp(0.85rem, 0.65rem + 1.33vw, 1.65rem);
+	font-size: clamp(0.83rem, 0.63rem + 1.35vw, 1.25rem);
+	padding-block: 1.3em 0.95em;
+}
+
+#nav-title, .nav-links {
+	font-family: var(--serif);
 	color: var(--white);
-	font-weight: 800;
-	-webkit-text-stroke-color: black;
-	-webkit-text-stroke-width: 0.5px;
-	word-spacing: .5px;
 	text-transform: uppercase;
-	padding-block: 1.6em 0.7em;
+	letter-spacing: 1.1px;
+
 }
 
 #nav-title {
@@ -86,26 +89,32 @@ nav>#nav-item-container {
 	flex-wrap: nowrap;
 	gap: .25em;
 	align-items: baseline;
-}
-
-#nav-item-container>#nav-title>h1 {
-	font-size: .96em;
-}
-
-	i {
-		font-size: 1.1em;
+	font-weight: 600;
+	word-spacing: 1.2px;
+	h1 {
+		font-size: .95em;
 	}
+}
 
-#home-body nav {
-	margin-bottom: -1rem;
+i {
+	font-size: 1.06em;
 }
 
 .nav-links {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
-	gap: .9em;
+	gap: .8em;
 	align-items: center;
+	/* TODO: Currently a p, was an a, needs to be a button, so including all 3 for now. */
+	a, p, button {
+		font-size: .8em;
+		font-weight: 450;
+	}
+}
+
+#home-body nav {
+	margin-bottom: -1rem;
 }
 
 footer {
@@ -155,7 +164,8 @@ header {
 
 #recent-posts-divider {
 	grid-area: recent;
-	font-size: 1.05rem;
+	font-family: var(--serif);
+	font-size: 1.1rem;
 	font-weight: 500;
 	font-style: italic;
 	justify-self: center;
@@ -182,7 +192,7 @@ main {
 	============================== */
 
 .roboto {
-	font-family: "Roboto", sans-serif;
+	font-family: "Roboto Flex", sans-serif;
 	font-optical-sizing: auto;
 	font-style: normal;
 	font-variation-settings:
@@ -191,10 +201,12 @@ main {
 }
 
 h2 {
-	font-family: 'Aleo', Cambria, Cochin, Georgia, Times, serif;
+	font-family: var(--serif);
 	letter-spacing: normal;
 	}
 
+p {
+	font-size: 1rem;
 	line-height: 1.55;
 }
 
