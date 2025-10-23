@@ -31,12 +31,15 @@ body {
 	gap: 1.1rem;
 }
 
-#blog-header, main {
+/* TODO: Remove all commented-out blog styles! */
+
+/* REMOVE: moved blog-header */
+main {
 	padding-inline: var(--sides);
 }
 
-#home-body .wrapper,
-#blog-body .wrapper {
+/* REMOVE: moved #blog-body .wrapper */
+#home-body .wrapper {
 	grid-template-rows: auto auto auto 1fr auto auto;
 	grid-template-areas:
 		"navi"
@@ -44,17 +47,6 @@ body {
 		"recent"
 		"main"
 		"view"
-		"foot";
-}
-
-#blog-body .wrapper {
-	min-height: 100dvh;
-	grid-template-rows: auto auto auto 1fr auto;
-	grid-template-areas:
-		"navi"
-		"head"
-		"recent"
-		"main"
 		"foot";
 }
 
@@ -80,7 +72,6 @@ nav>#nav-item-container {
 	color: var(--white);
 	text-transform: uppercase;
 	letter-spacing: 1.1px;
-
 }
 
 #nav-title {
@@ -138,7 +129,6 @@ header {
 	display: flex;
 	align-items: end;
 	height: calc(100dvh - 2.7em);
-}
 }
 
 #home-featured-post > * {
@@ -219,10 +209,12 @@ a:link, a:visited {
 	color: inherit;
 }
 
-#blog-featured-post h2 {
-  font-size: clamp(1.3rem, 0.92rem + 1.9vw, 2.5rem);
-	margin-top: .3em;
-}
+/* #blog-featured-post h2 {
+	font-size: clamp(1.6rem, 1.15rem + 2.85vw, 2.7rem);
+	font-weight: 900;
+	letter-spacing: -.005em;
+	margin-top: .4em;
+} */
 
 /* REMOVE~!~!~! */
 .header-post-date {
@@ -236,13 +228,20 @@ p.post-date {
 	margin-top: .8em;
 }
 
+/* THIS BLOG RULE ELIMINATED ALTOGETHER.
 #blog-featured-post > p, #blog-featured-post > h2  {
-	margin-top: .6rem;  /* keep as rem. */
-}
+	margin-top: .6rem;
+} */
 
-#blog-featured-content {
+/* #blog-featured-content {
+	margin-top: 1em;
 	font-size: 1rem;
-}
+} */
+
+/*
+#featured-blog-date {
+	margin-top: 0.15em;
+} */
 
 #next-post-1 hr {
 	display: none;
@@ -258,12 +257,6 @@ p.post-date {
 
 .main-post-title {
 	font-size: 1.3em;
-	margin-top: .5em;
-}
-
-#main-blog-content .main-post-title {
-	font-size: 1.2em;
-	font-weight: 600;
 	margin-top: .5em;
 }
 
@@ -317,11 +310,18 @@ footer p:last-child {
 	margin-top: .3em;
 }
 
+/* should be older-posts or something */
 .view-more {
 	grid-area: view;
 	margin-top: 0.9em;
 }
 
+/* REMOVE: This was changed from #view-more-posts. */
+/* #view-more-posts */
+#view-older-posts {
+	font-size: 1.05rem;
+	padding-top: 1.3em;
+}
 .view-more a:link {
 	display: block;
 	font-size: 1.05rem;
@@ -442,10 +442,10 @@ MEDIA QUERIES
 		margin-block: 0.6em -0.5em;
 	}
 
-	#main-blog-content {
+	/* #main-blog-content {
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: 1fr auto;
-	}
+	} */
 
 	/* UTILITIES */
 
