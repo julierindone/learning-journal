@@ -28,7 +28,7 @@ function getFeaturedPost() {
 	let featuredPostHtml = `
 	<h2 class="header-post-title">${featuredPostObject.title}</h2>
 	<p class="header-post-content cut-off-text">${featuredPostObject.content}</p>
-	<a href="post.html" class="continue-reading">continue reading >></a>`
+	<a href="post.html" class="continue-reading">continue reading&thinsp;<span>&#187;</span></a>`
 
 	document.getElementById('home-header').style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3), 41%, rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.7), rgb(0, 0, .8)), url("${featuredPostObject.image}")`;
 	document.getElementById('home-header').style.backgroundPosition = 'center';
