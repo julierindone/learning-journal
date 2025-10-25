@@ -10,7 +10,7 @@ function getAboutContent() {
 		mainContentHtml += `
 		<div class="about-post" id="about${i + 1}">
 			<hr />
-			<h2 class="main-post-title">${currentAboutPost.title}</h2>
+			<h2 class="about-post-title">${currentAboutPost.title}</h2>
 			<p class="post-content">${currentAboutPost.content}</p>
 		</div>`
 		mainAboutContent.innerHTML = mainContentHtml

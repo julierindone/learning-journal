@@ -2,6 +2,8 @@
 	--black: #121212;
 	--white: #fefefe;
 	--sides: 3.5%;
+	--serif: 'Aleo', cambria, cochin, georgia, times, serif;
+	--expanded-spacing: 1.5px;
 }
 
 /* =============================
@@ -29,12 +31,8 @@ body {
 	gap: 1.1rem;
 }
 
-#blog-header, main {
-	padding-inline: var(--sides);
-}
 
-#home-body .wrapper,
-#blog-body .wrapper {
+#home-body .wrapper {
 	grid-template-rows: auto auto auto 1fr auto auto;
 	grid-template-areas:
 		"navi"
@@ -45,23 +43,15 @@ body {
 		"foot";
 }
 
-#blog-body .wrapper {
-	min-height: 100dvh;
-	grid-template-rows: auto auto auto 1fr auto;
-	grid-template-areas:
-		"navi"
-		"head"
-		"recent"
-		"main"
-		"foot";
-}
-
 *, *::before, *::after {
 	box-sizing: border-box;
 }
+
 nav {
 	grid-area: navi;
 	background-color: var(--black);
+	padding-inline: 2.5%;
+	margin-bottom: -0.2em;
 }
 
 nav>#nav-item-container {
@@ -69,15 +59,15 @@ nav>#nav-item-container {
 	flex-wrap: nowrap;
 	align-items: baseline;
 	justify-content: space-between;
-	font-family: 'Arvo', Cambria, Cochin, Georgia, Times, serif;
-	font-size: clamp(0.85rem, 0.65rem + 1.33vw, 1.65rem);
+	font-size: clamp(0.83rem, 0.63rem + 1.35vw, 1.25rem);
+	padding-block: 1.3em 0.95em;
+}
+
+#nav-title, .nav-links {
+	font-family: var(--serif);
 	color: var(--white);
-	font-weight: 800;
-	-webkit-text-stroke-color: black;
-	-webkit-text-stroke-width: 0.5px;
-	word-spacing: .5px;
 	text-transform: uppercase;
-	padding-block: 1.6em 0.7em;
+	letter-spacing: 1.1px;
 }
 
 #nav-title {
@@ -86,32 +76,38 @@ nav>#nav-item-container {
 	flex-wrap: nowrap;
 	gap: .25em;
 	align-items: baseline;
-}
-
-#nav-item-container>#nav-title>h1 {
-	font-size: .96em;
-}
-
-	i {
-		font-size: 1.1em;
+	h1 {
+		font-size: .95em;
+		font-weight: 600;
+		word-spacing: 1.2px;
 	}
+}
 
-#home-body nav {
-	margin-bottom: -1rem;
+i {
+	font-size: 1.06em;
 }
 
 .nav-links {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
-	gap: .9em;
+	gap: .8em;
 	align-items: center;
+	/* TODO: Currently a p, was an a, needs to be an a, so including both for now. */
+	a, p {
+		font-size: .8em;
+		font-weight: 475;
+	}
+}
+
+#home-body nav {
+	margin-bottom: -1rem;
 }
 
 footer {
     grid-area: foot;
     background-color: var(--black);
-    padding-block: 1.9dvh;
+	padding-block: 2dvh 1.9dvh;
     margin-top: .9dvh;
 }
 
@@ -129,37 +125,44 @@ header {
 	align-items: end;
 	height: calc(100dvh - 2.7em);
 }
+
+#home-featured-post {
+	padding-inline: var(--sides);
+	padding-block: 4em 2.55em;
+	background: linear-gradient(rgb(0, 0, 0, 0.05), rgb(0, 0, 0, 0.15), rgb(0, 0, 0, 0.2), rgb(0, 0, 0, 0.4), 45%, rgb(0, 0, 0, 0.5), rgb(0, 0, 0, .95));
+	font-size: clamp(0.9rem, 0.7rem + 1.15vw, 1.1rem);
 }
 
 #home-featured-post > * {
 	color: var(--white) !important;
-	width: fit-content;
-	margin-top: .6rem;
-	backdrop-filter: contrast(90%);
+	word-spacing: .05em;
 }
 
+/* NOTE: Leave this alone, FFS. */
 #home-featured-post > h2 {
-	font-size: 1.9em;
-	font-weight: 500;
-	text-shadow: 0 0 1.5px white;
+	font-size: 2.05em;
+	font-weight: 825;
+	letter-spacing: .02em;
+	line-height: 1.35;
 }
 
-#home-featured-post p:first-child {
-	margin-top: 0;
+#home-featured-post > .header-post-content {
+	font-size: 1.25em;
+	font-weight: 450;
+	margin-top: 0.8em;
 }
 
-.header-post-content {
-	line-height: 1.65;
-	font-size: 1.2em;
-}
-
-#recent-posts {
+#recent-posts-divider {
 	grid-area: recent;
-	font-size: 1.05rem;
+	justify-self: center;
+	font-family: var(--serif);
+	font-size: 1.1rem;
 	font-weight: 500;
 	font-style: italic;
-	justify-self: center;
-	margin-block: .6em -.6em;
+	letter-spacing: var(--expanded-spacing);
+	opacity: .75;
+	padding-top: 1em;
+	margin-bottom: -0.4em;
 }
 
 /* =============================
@@ -182,7 +185,7 @@ main {
 	============================== */
 
 .roboto {
-	font-family: "Roboto", sans-serif;
+	font-family: "Roboto Flex", sans-serif;
 	font-optical-sizing: auto;
 	font-style: normal;
 	font-variation-settings:
@@ -191,70 +194,50 @@ main {
 }
 
 h2 {
-	font-family: 'Arvo', Cambria, Cochin, Georgia, Times, serif;
+	font-family: var(--serif);
 	letter-spacing: normal;
 	}
 
+p {
+	font-size: 1rem;
 	line-height: 1.55;
 }
 
 a, a:link, a:visited {
 	text-decoration: none;
 }
-.nav-links a {
-	font-size: .83em;
-}
 
 a:link, a:visited {
 	color: inherit;
 }
 
-#blog-featured-post h2 {
-  font-size: clamp(1.3rem, 0.92rem + 1.9vw, 2.5rem);
-	margin-top: .3em;
-}
+/* #blog-featured-post h2 {
+	font-size: clamp(1.6rem, 1.15rem + 2.85vw, 2.7rem);
+	font-weight: 900;
+	letter-spacing: -.005em;
+	margin-top: .4em;
+} */
 
-/* REMOVE~!~!~! */
-.header-post-date {
-	font-size: 1.025em;
-	margin-top: .4rem;
-}
+/* #blog-featured-content {
+	margin-top: 1em;
+	font-size: 1rem;
+} */
 
 p.post-date {
-	font-size: .9rem;
-	font-weight: 500;
-	margin-top: .8em;
-}
-
-#blog-featured-post > p, #blog-featured-post > h2  {
-	margin-top: .6rem;  /* keep as rem. */
-}
-
-#blog-featured-content {
-	font-size: 1rem;
+	font-size: .85rem;
+	font-weight: 320;
+	text-transform: uppercase;
+	letter-spacing: var(--expanded-spacing);
+	opacity: 0.9;
+	margin-top: .65em;
 }
 
 #next-post-1 hr {
 	display: none;
 }
 
-#next-post-1 .image-wrapper {
-	padding-top: 0;
-}
-
 .post-content {
 	margin-block:.5em;
-}
-
-.main-post-title {
-	font-size: 1.3em;
-	margin-top: .5em;
-}
-
-#main-blog-content .main-post-title {
-	font-size: 1.2em;
-	font-weight: 600;
-	margin-top: .5em;
 }
 
 .post-content.cut-off-text {
@@ -262,9 +245,21 @@ p.post-date {
 	--max-lines: 10;
 }
 
+/* FYI: Didn't move this class to blog.css since it can be used in singular blog post pages AND in blog.html. */
+.full-blog-posts-title {
+	font-size: clamp(1.3rem, calc(0.35rem + 4.3vw), 2.3rem);
+	font-weight: 800;
+	line-height: 1.2;
+	margin-top: .5em;
+}
+
+.full-blog-posts-content {
+	margin-top: .5em;
+}
+
 .header-post-content.cut-off-text {
-	--line-height: 1.65;
-	--max-lines: 10;
+	--line-height: 1.55;
+	--max-lines: 9;
 }
 
 .cut-off-text {
@@ -290,7 +285,7 @@ p.post-date {
 		FOOTER, ETC
 	================================ */
 
-#recent-posts p {
+#recent-posts-divider p {
 	text-align: center;
 	margin-top: .5em;
 }
@@ -307,19 +302,25 @@ footer p:last-child {
 	margin-top: .3em;
 }
 
+/* should be older-posts or something */
 .view-more {
 	grid-area: view;
+	text-align: center;
 	margin-top: 0.9em;
+	p {
+		font-size: 1.08rem;
+	padding-top: 1.3em;
+}
 }
 
-.view-more a:link {
+/* .view-more a:link {
 	display: block;
 	font-size: 1.05rem;
 	font-weight: 500;
 	text-align: center;
 	padding-top: 1.3em;
 	margin: 0 auto;
-}
+} */
 
 /* =============================
 		IMAGES
@@ -338,15 +339,9 @@ footer p:last-child {
 	object-fit: cover;
 }
 
-
 /* =============================
 		Utility Classes
 	============================== */
-
-	.expanded-all-caps {
-		letter-spacing: 1.5px;
-	color: #00000099 !important;
-}
 
 hr {
     border: 0;
@@ -361,18 +356,26 @@ hr {
 }
 
 .continue-reading {
-	font-size: .9rem;
-	font-style: italic;
-	font-weight: 400;
 	display: block;
+	font-size: .92rem;
+	font-weight: 320;
+	font-style: italic;
+	opacity: 0.6;
+	letter-spacing: var(--expanded-spacing);
+	text-transform: lowercase;
+	padding-top: 1.0em;
+}
+.continue-reading > span {
+	font-size: large;
 }
 
 #home-featured-post .continue-reading {
-	opacity: 0.95;
-	padding-top: .2em;
+	font-size: 1.125em;
+	font-weight: 350;
+	opacity: 0.8;
 }
 
-.blog-post .continue-reading {
+.post .continue-reading {
 	font-size: .9em;
 	text-transform: lowercase;
 }
@@ -387,7 +390,7 @@ MEDIA QUERIES
 	#home-header {
 		height: calc(100dvh - 3.5em);
 		}
-	#main-home-content>.blog-post hr {
+	#main-home-content>.post hr {
 		display: none;
 	}
 
@@ -399,7 +402,7 @@ MEDIA QUERIES
 /* ================================================================ */
 
 @media (min-width: 560px) and (max-width: 749.99px) {
-	.blog-post {
+	.post {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -407,7 +410,7 @@ MEDIA QUERIES
 		margin-bottom: .2em;
 	}
 
-	.blog-post .post-wrapper {
+	.post .post-wrapper {
 		display: flex;
 		flex-direction: column;
 	}
@@ -432,15 +435,15 @@ MEDIA QUERIES
 
 	/* MAIN */
 
-	#recent-posts {
+	#recent-posts-divider {
 		font-size: 1.2rem;
 		margin-block: 0.6em -0.5em;
 	}
 
-	#main-blog-content {
+	/* #main-blog-content {
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: 1fr auto;
-	}
+	} */
 
 	/* UTILITIES */
 

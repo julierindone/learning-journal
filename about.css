@@ -30,7 +30,7 @@
 	margin-top: 0.6em;
 }
 
-.main-post-title {
+.about-post-title {
 	margin-top: 1em;
 }
 
@@ -59,7 +59,7 @@ MEDIA QUERIES
 		justify-items: center;
 	}
 
-	.main-post-title {
+	.about-post-title {
 		font-size: clamp(1.45rem, 3.3vw, 1.7rem);
 	}
 
