@@ -1,7 +1,7 @@
 import { createPostHtml } from "./sharedFunctions.js"
 import { blogPostArray } from "./data.js"
 
-const mainBlogContent = document.getElementById('main-blog-content')
+const mainBlogContent = document.getElementById('full-posts-wrapper')
 
 // I think the thing I added the event listener for turned out to not be needed. Saving for now since I can't remember.
 let screenWidth = 0

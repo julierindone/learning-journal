@@ -1,11 +1,13 @@
 export function createPostHtml(postToBuild) {
 	let path = window.location.pathname
+	let postTitleClass = ''
+	let postContentClass = 'post-content cut-off-text'
 	let continueReading = `
 		<a href="" class="continue-reading">continue reading&thinsp;<span>&#187;</span></a>`
-	let postContentClass = 'post-content cut-off-text'
 
 	if (path.includes('blog.html')) {
-		postContentClass = 'blog-page-post-content cut-off-text'
+		postTitleClass = 'full-blog-posts-title'
+		postContentClass = 'full-blog-posts-content'
 		continueReading = ``
 	}
 
