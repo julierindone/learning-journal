@@ -31,15 +31,13 @@ body {
 	gap: 1.1rem;
 }
 
-
 #home-body .wrapper {
-	grid-template-rows: auto auto auto 1fr auto auto;
+	grid-template-rows: auto auto auto 1fr auto;
 	grid-template-areas:
 		"navi"
 		"head"
-		"recent"
-		"main"
-		"view"
+		"divider"
+		"aside"
 		"foot";
 }
 
@@ -128,13 +126,13 @@ header {
 
 #home-featured-post {
 	padding-inline: var(--sides);
-	padding-block: 4em 2.55em;
-	background: linear-gradient(rgb(0, 0, 0, 0.05), rgb(0, 0, 0, 0.15), rgb(0, 0, 0, 0.2), rgb(0, 0, 0, 0.4), 45%, rgb(0, 0, 0, 0.5), rgb(0, 0, 0, .95));
+	padding-block: 4.5em 2.55em;
+	background: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.05), rgb(0, 0, 0, 0.15), rgb(0, 0, 0, 0.2), rgb(0, 0, 0, 0.42), 43%, rgb(0, 0, 0, 0.5), rgb(0, 0, 0, .95));
 	font-size: clamp(0.9rem, 0.7rem + 1.15vw, 1.1rem);
 }
 
 #home-featured-post > * {
-	color: var(--white) !important;
+	color: var(--white);
 	word-spacing: .05em;
 }
 
@@ -142,12 +140,13 @@ header {
 #home-featured-post > h2 {
 	font-size: 2.05em;
 	font-weight: 825;
-	letter-spacing: .02em;
+	letter-spacing: .025em;
 	line-height: 1.35;
 }
 
+/* TODO: This could probably just be p. */
 #home-featured-post > .header-post-content {
-	font-size: 1.25em;
+	font-size: 1.27em;
 	font-weight: 450;
 	margin-top: 0.8em;
 }
@@ -171,11 +170,14 @@ header {
 
 main {
 	grid-area: main;
+aside {
+	grid-area: aside;
 	display: grid;
-	gap: 2em 0.9em;
+	gap: 2.3em 0.9em;
+	padding-inline: var(--sides);
 }
 
-#main-home-content {
+.post-card-grid {
 	grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
 	grid-template-rows: 1fr auto;
 }
@@ -224,7 +226,7 @@ a:link, a:visited {
 } */
 
 p.post-date {
-	font-size: .85rem;
+	font-size: .9rem;
 	font-weight: 320;
 	text-transform: uppercase;
 	letter-spacing: var(--expanded-spacing);
@@ -253,6 +255,19 @@ p.post-date {
 	margin-top: .5em;
 }
 
+.post-card-grid-title {
+	margin-top: .7em;
+}
+
+.post-card-grid-content {
+	margin-top: .5em;
+}
+
+.post-card-grid-content.cut-off-text {
+	--line-height: 1.60;
+	--max-lines: 5;
+}
+
 .full-blog-posts-content {
 	margin-top: .5em;
 }
@@ -278,7 +293,7 @@ p.post-date {
 }
 
 #home-featured-post .cut-off-text::before {
-	background: linear-gradient(to bottom, transparent, 65%, rgba(0, 0, 0, 1));
+	background: linear-gradient(to bottom, transparent, rgb(0, 0, 0, 0.85));
 }
 
 /* ===============================
@@ -386,11 +401,33 @@ MEDIA QUERIES
 ===============================
 ================================ */
 
-@media (min-width: 560px) {
+@media (width >= 560px) {
 	#home-header {
 		height: calc(100dvh - 3.5em);
 		}
-	#main-home-content>.post hr {
+
+	.post {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.post-card-grid-title {
+		font-size: 1.2rem;
+		font-weight: 800;
+	}
+
+	p.post-card-grid-content {
+	font-size: .97rem;
+	}
+
+	p.post-card-grid-content.cut-off-text {
+		--line-height: 1.55;
+	/* TODO: Do I need max-lines: 5 repeated here? */
+		--max-lines: 5;
+	}
+
+	.post hr {
 		display: none;
 	}
 
@@ -401,7 +438,7 @@ MEDIA QUERIES
 
 /* ================================================================ */
 
-@media (min-width: 560px) and (max-width: 749.99px) {
+@media (560px <= width < 750px) {
 	.post {
 		display: flex;
 		flex-direction: column;
@@ -425,11 +462,12 @@ MEDIA QUERIES
 		padding-block: clamp(8em, 5em + 8.75vh, 13em) 1.5em;
 	}
 
-	#home-featured-post {
-		width: 95%;
+	.header-post-content {
+		line-height: 1.7;
 	}
 
 	.header-post-content.cut-off-text {
+		--line-height: 1.7;
 		--max-lines: 6;
 	}
 
@@ -440,12 +478,10 @@ MEDIA QUERIES
 		margin-block: 0.6em -0.5em;
 	}
 
-	/* #main-blog-content {
+		.post-card-grid {
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: 1fr auto;
-	} */
-
-	/* UTILITIES */
+	}
 
 	.line-break {
 		display: none;
@@ -463,17 +499,15 @@ MEDIA QUERIES
 
 /* ================================================================ */
 
-@media (min-width: 750px) {
-
+@media (width >= 750px) {
 	#home-header {
 			height: calc(100dvh - 4em);
 	}
-
 }
 
 /* ================================================================ */
 
-@media (min-width: 1200px) {
+@media (width >=1200px) {
 header:not(#home-header),
 main:not(#main-home-content),
 #nav-item-container:not(#home-nav > #nav-item-container) {

@@ -1,7 +1,7 @@
 import { createPostHtml } from "./sharedFunctions.js"
 import { blogPostArray } from "./data.js"
 
-const mainHomeContent = document.getElementById('main-home-content')
+const homePostCardGrid = document.getElementById('home-post-card-grid')
 const featuredPost = document.getElementById('home-featured-post')
 
 
@@ -28,9 +28,15 @@ function getFeaturedPost() {
 	let featuredPostHtml = `
 	<h2 class="header-post-title">${featuredPostObject.title}</h2>
 	<p class="header-post-content cut-off-text">${featuredPostObject.content}</p>
-	<a href="post.html" class="continue-reading">continue reading&thinsp;<span>&#187;</span></a>`
+	<a href="post.html" class="continue-reading">read more&thinsp;<span>&#187;</span></a>`
 
-	document.getElementById('home-header').style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3), 41%, rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.7), rgb(0, 0, .8)), url("${featuredPostObject.image}")`;
+	document.getElementById('home-header').style.backgroundImage =
+	`linear-gradient(rgb(0, 0, 0, 0.1),
+	rgb(0, 0, 0, 0.3),
+	41%,
+	rgb(0, 0, 0, 0.66),
+	rgb(0, 0, 0, 0.7),
+	rgb(0, 0, 0, 0.8)), url("${featuredPostObject.image}")`;
 	document.getElementById('home-header').style.backgroundPosition = 'center';
 	document.getElementById('home-header').style.backgroundSize = 'cover';
 	document.getElementById('home-header').style.backgroundRepeat = 'no-repeat';
@@ -39,21 +45,21 @@ function getFeaturedPost() {
 	featuredPost.innerHTML = featuredPostHtml
 }
 
-function getMainHomeContent() {
-	let mainContentHtml = ''
+function getHomePostCardGrid() {
+	let postCardHtml = ''
 	for (let i = 1; i < 7; i++) {
 		let postToBuild = blogPostArray[i]
-		mainContentHtml += createPostHtml(postToBuild)
+		postCardHtml += createPostHtml(postToBuild, "grid-card")
 
 		// displayedPostCount++
 		// unpostedPostCount -= 1
 	}
-	mainHomeContent.innerHTML = mainContentHtml
+	homePostCardGrid.innerHTML = postCardHtml
 }
 
 function renderHomeContent() {
 	getFeaturedPost()
-	getMainHomeContent()
+	getHomePostCardGrid()
 }
 
 renderHomeContent()
