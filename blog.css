@@ -1,11 +1,11 @@
 #blog-body .wrapper {
 	min-height: 100dvh;
-	grid-template-rows: auto auto auto 1fr auto auto;
 	grid-template-areas:
 		"navi"
 		"head"
 		"recent"
 		"main"
+		"divider"
 		"aside"
 		"foot";
 }

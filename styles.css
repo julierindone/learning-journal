@@ -37,7 +37,7 @@ body {
 	grid-template-areas:
 		"navi"
 		"head"
-		"divider"
+		"recent"
 		"aside"
 		"foot";
 }
@@ -152,17 +152,29 @@ header {
 	margin-top: 0.8em;
 }
 
-#recent-posts-divider {
-	grid-area: recent;
+.divider {
+	grid-area: divider;
+	margin-bottom: -0.6em;
+}
+
+.divider p {
 	justify-self: center;
 	font-family: var(--serif);
-	font-size: 1.1rem;
+	font-size: 1.2rem;
 	font-weight: 500;
 	font-style: italic;
+	font-variant: petite-caps;
 	letter-spacing: var(--expanded-spacing);
 	opacity: .75;
-	padding-top: 1em;
-	margin-bottom: -0.4em;
+	margin-top: 1em;
+}
+
+.recent-divider {
+	grid-area: recent;
+}
+
+#home-body .recent-divider {
+margin-bottom: -0.3em;
 }
 
 /* =============================
@@ -311,11 +323,6 @@ aside#home-post-card-grid .post:first-of-type > .post-card-wrapper {
 		FOOTER, ETC
 	================================ */
 
-#recent-posts-divider p {
-	text-align: center;
-	margin-top: .5em;
-}
-
 footer p {
 	color: var(--white);
 	text-align: center;
@@ -377,33 +384,26 @@ hr {
 		margin: 0 auto;
 }
 
-.line-break {
-	display: none;
-}
-
 .continue-reading {
 	display: block;
-	font-size: .92rem;
+	font-size: .89rem;
 	font-weight: 320;
 	font-style: italic;
-	opacity: 0.6;
+	opacity: 0.65;
 	letter-spacing: var(--expanded-spacing);
 	text-transform: lowercase;
-	padding-top: 1.0em;
+	padding-top: 0.5em;
 }
 .continue-reading > span {
 	font-size: large;
+	text-decoration: none !important;
 }
 
 #home-featured-post .continue-reading {
 	font-size: 1.125em;
-	font-weight: 350;
-	opacity: 0.8;
-}
-
-.post .continue-reading {
-	font-size: .9em;
-	text-transform: lowercase;
+	font-weight: 300;
+	opacity: 0.75;
+	padding-top: 1em;
 }
 
 /* ===============================
@@ -416,6 +416,11 @@ MEDIA QUERIES
 	#home-header {
 		height: calc(100dvh - 3.5em);
 		}
+
+		/* Negates the  value set in the base so it matches .divider */
+	#home-body .recent-divider {
+		margin-bottom: -0.6em;
+	}
 
 	.post {
 		display: flex;
@@ -458,11 +463,10 @@ MEDIA QUERIES
 		--max-lines: 6;
 	}
 
-	/* MAIN */
-
-	#recent-posts-divider {
-		font-size: 1.2rem;
-		margin-block: 0.6em -0.5em;
+	.divider {
+		margin-top: 1em;
+		margin-inline: 0;
+		font-size: 1.15rem;
 	}
 
 		.post-card-grid {
