@@ -5,6 +5,7 @@
 	"navi"
 	"head"
 	"main"
+	"aside"
 	"view"
 	"foot";
 }
@@ -39,7 +40,21 @@
 	padding: 2px;
 	border: 3px dotted var(--black);
 	border-radius: 100%;
-	margin-bottom: .8em;
+#about-full-posts-wrapper  hr {
+	display: none;
+}
+
+#about-full-posts-wrapper .single-full-post-wrapper {
+	margin-top: 0.2em;
+	h2 {
+		font-family: 'Roboto Flex', sans-serif;
+		font-weight: 600;
+		font-size: 1.27rem;
+		margin-top: 0;
+	}
+	p.post-content {
+		margin-top: 0.5em;
+	}
 }
 
 /* ===============================
@@ -87,15 +102,14 @@ MEDIA QUERIES
 		display: unset;
 	}
 
-	/* WATCH: If there's an issue, it's probably this. */
-	#about-img {
-		flex-basis: 50%;
+	#about-full-posts-wrapper .single-full-post-wrapper h2 {
+		font-size: clamp(1.45rem, 3.3vw, 1.7rem);
 	}
 }
 
 /* ================================================================ */
 
-@media (width >= 750px) {
+@media (width >= 800px) {
 	#about-header h2 {
 		text-wrap: nowrap;
 		font-size: clamp(2.2rem, 5.05vw, 3.8rem);

@@ -1,14 +1,8 @@
 import { createPostHtml } from "./sharedFunctions.js"
 import { blogPostArray } from "./data.js"
 
-const mainBlogContent = document.getElementById('full-posts-wrapper')
-
-// I think the thing I added the event listener for turned out to not be needed. Saving for now since I can't remember.
-let screenWidth = 0
-
-window.addEventListener('resize', function () {
-	getScreenWidth()
-})
+const blogFullPostWrapper = document.getElementById('blog-full-posts-wrapper')
+let blogThumbnailCardGrid = document.getElementById('blog-thumbnail-card-grid')
 
 function getScreenWidth() {
 	if (window.innerWidth < 800) {
@@ -35,19 +29,21 @@ function getFeaturedPost() {
 	featuredBlogContent.innerHTML = featuredPost.content
 }
 
-
-function getMainBlogContent() {
-	let mainContentHtml = ''
+function getFullBlogPosts() {
+	let fullPostsHtml = ''
 	for (let i = 1; i < 4; i++) {
 		let postToBuild = blogPostArray[i]
-		mainContentHtml += createPostHtml(postToBuild)
+		fullPostsHtml += createPostHtml(postToBuild, "full")
 	}
-	mainBlogContent.innerHTML = mainContentHtml
+	blogFullPostWrapper.innerHTML = fullPostsHtml
+}
+
 }
 
 function renderBlogContent() {
 	getFeaturedPost()
-	getMainBlogContent()
+	getFullBlogPosts()
+	getPostCardGrid()
 }
 
 getScreenWidth()

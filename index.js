@@ -4,7 +4,6 @@ import { blogPostArray } from "./data.js"
 const homePostCardGrid = document.getElementById('home-post-card-grid')
 const featuredPost = document.getElementById('home-featured-post')
 
-
 // window.addEventListener('load', function () {
 // 	detectScreenOrientation()
 // })
@@ -49,7 +48,7 @@ function getHomePostCardGrid() {
 	let postCardHtml = ''
 	for (let i = 1; i < 7; i++) {
 		let postToBuild = blogPostArray[i]
-		postCardHtml += createPostHtml(postToBuild, "grid-card")
+		postCardHtml += createPostHtml(postToBuild)
 
 		// displayedPostCount++
 		// unpostedPostCount -= 1

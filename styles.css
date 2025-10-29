@@ -4,6 +4,7 @@
 	--sides: 3.5%;
 	--serif: 'Aleo', cambria, cochin, georgia, times, serif;
 	--expanded-spacing: 1.5px;
+	--wrapper-gap-height: 1.7em;
 }
 
 /* =============================
@@ -173,7 +174,7 @@ main {
 aside {
 	grid-area: aside;
 	display: grid;
-	gap: 2.3em 0.9em;
+	gap: var(--wrapper-gap-height) 0.9em;
 	padding-inline: var(--sides);
 }
 
@@ -213,18 +214,6 @@ a:link, a:visited {
 	color: inherit;
 }
 
-/* #blog-featured-post h2 {
-	font-size: clamp(1.6rem, 1.15rem + 2.85vw, 2.7rem);
-	font-weight: 900;
-	letter-spacing: -.005em;
-	margin-top: .4em;
-} */
-
-/* #blog-featured-content {
-	margin-top: 1em;
-	font-size: 1rem;
-} */
-
 p.post-date {
 	font-size: .9rem;
 	font-weight: 320;
@@ -234,42 +223,64 @@ p.post-date {
 	margin-top: .65em;
 }
 
-#next-post-1 hr {
-	display: none;
+aside#home-post-card-grid .post:first-of-type hr:first-of-type {
+  display: none;
 }
 
-.post-content {
-	margin-block:.5em;
+aside#home-post-card-grid .post:first-of-type > .post-card-wrapper {
+	margin-top: 0;
 }
 
 .post-content.cut-off-text {
 	--line-height: 1.55;
-	--max-lines: 10;
+	--max-lines: 4;
 }
 
-/* FYI: Didn't move this class to blog.css since it can be used in singular blog post pages AND in blog.html. */
-.full-blog-posts-title {
-	font-size: clamp(1.3rem, calc(0.35rem + 4.3vw), 2.3rem);
-	font-weight: 800;
-	line-height: 1.2;
-	margin-top: .5em;
+#blog-full-posts-wrapper, #about-full-posts-wrapper {
+	margin-block: .5em;
+	display: grid;
+	grid-template-rows: auto;
+	gap: var(--wrapper-gap-height);
 }
 
-.post-card-grid-title {
+.single-full-post-wrapper {
+	margin-top: var(--wrapper-gap-height);
+	h2 {
+		font-size: clamp(1.3rem, calc(0.39rem + 4vw), 2.3rem);
+		font-weight: 800;
+		line-height: 1.2;
+		margin-top: .55em;
+	}
+	p.post-content {
+		margin-top: 0.8em;
+	}
+}
+
+.post-card-wrapper {
+	margin-top: var(--wrapper-gap-height);
+}
+
+.post-card-wrapper h2 {
 	margin-top: .7em;
 }
 
-.post-card-grid-content {
+.post-card-wrapper .post-content {
 	margin-top: .5em;
+	font-size: .95em;
 }
 
-.post-card-grid-content.cut-off-text {
+.post-card-wrapper .post.content.cut-off-text {
 	--line-height: 1.60;
 	--max-lines: 5;
 }
 
-.full-blog-posts-content {
-	margin-top: .5em;
+.post-card-grid h2 {
+		font-size: 1.2rem;
+		font-weight: 800;
+}
+
+.post-card-grid .post-date {
+	font-size: .805rem;
 }
 
 .header-post-content.cut-off-text {
@@ -412,14 +423,9 @@ MEDIA QUERIES
 		justify-content: space-between;
 	}
 
-	.post-card-grid-title {
-		font-size: 1.2rem;
-		font-weight: 800;
-	}
-
-	p.post-card-grid-content {
-	font-size: .97rem;
-	}
+	.post-card-wrapper {
+	margin-top: 0.6em !important;
+}
 
 	p.post-card-grid-content.cut-off-text {
 		--line-height: 1.55;
@@ -427,7 +433,7 @@ MEDIA QUERIES
 		--max-lines: 5;
 	}
 
-	.post hr {
+	.post-card-grid>.post hr {
 		display: none;
 	}
 
@@ -438,28 +444,9 @@ MEDIA QUERIES
 
 /* ================================================================ */
 
-@media (560px <= width < 750px) {
-	.post {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		margin-top: .1em !important;
-		margin-bottom: .2em;
-	}
-
-	.post .post-wrapper {
-		display: flex;
-		flex-direction: column;
-	}
-}
-
-/* ================================================================ */
-
-@media (min-width: 700px) {
-	/* HEADER */
-
-	#home-header {
-		padding-block: clamp(8em, 5em + 8.75vh, 13em) 1.5em;
+@media (width >= 700px) {
+	.post-card-grid .post-date {
+		font-size: 0.85rem;
 	}
 
 	.header-post-content {
@@ -512,6 +499,5 @@ header:not(#home-header),
 main:not(#main-home-content),
 #nav-item-container:not(#home-nav > #nav-item-container) {
 		margin-inline: auto;
-		padding-inline: 0 !important;
 	}
 }
