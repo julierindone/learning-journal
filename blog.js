@@ -13,20 +13,14 @@ function getScreenWidth() {
 }
 
 function getFeaturedPost() {
-	let featuredPost = blogPostArray[0]
+	let featuredPostObject = blogPostArray[0]
+	let featuredPostHtml = `
+			<img class="post-img" src="${featuredPostObject.image}" alt="${featuredPostObject.altText}" />
+			<h2>${featuredPostObject.title}</h2>
+			<p class="post-date">${featuredPostObject.date}</p>
+			<p class="post-content">${featuredPostObject.content}</p>`
 
-	let featuredBlogImage = document.getElementById('featured-blog-image')
-	featuredBlogImage.src = featuredPost.image
-	featuredBlogImage.alt = featuredPost.altText
-
-	let featuredBlogDate = document.getElementById('featured-blog-date')
-	featuredBlogDate.innerHTML = featuredPost.date
-
-	let featuredBlogTitle = document.getElementById('featured-blog-title')
-	featuredBlogTitle.innerHTML = featuredPost.title
-
-	let featuredBlogContent = document.getElementById('blog-featured-content')
-	featuredBlogContent.innerHTML = featuredPost.content
+			blogFeaturedPost.innerHTML = featuredPostHtml
 }
 
 function getFullBlogPosts() {
