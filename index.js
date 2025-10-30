@@ -29,13 +29,9 @@ function getFeaturedPost() {
 	<p class="header-post-content cut-off-text">${featuredPostObject.content}</p>
 	<a href="post.html" class="continue-reading">read more&thinsp;<span>&#187;</span></a>`
 
-	document.getElementById('home-header').style.backgroundImage =
-	`linear-gradient(rgb(0, 0, 0, 0.1),
-	rgb(0, 0, 0, 0.3),
-	41%,
-	rgb(0, 0, 0, 0.66),
-	rgb(0, 0, 0, 0.7),
-	rgb(0, 0, 0, 0.8)), url("${featuredPostObject.image}")`;
+	document.getElementById('home-header').style.backgroundImage = `linear-gradient(
+		rgb(0, 0, 0, 0.1), rgb(0, 0, 0, 0.3), 41%, rgb(0, 0, 0, 0.66), rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.8)),
+		url("${featuredPostObject.image}")`;
 	document.getElementById('home-header').style.backgroundPosition = 'center';
 	document.getElementById('home-header').style.backgroundSize = 'cover';
 	document.getElementById('home-header').style.backgroundRepeat = 'no-repeat';

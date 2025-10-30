@@ -1,6 +1,7 @@
 import { createPostHtml } from "./sharedFunctions.js"
 import { blogPostArray } from "./data.js"
 
+const blogFeaturedPost = document.getElementById('blog-featured-post')
 const blogFullPostWrapper = document.getElementById('blog-full-posts-wrapper')
 let blogThumbnailCardGrid = document.getElementById('blog-thumbnail-card-grid')
 
