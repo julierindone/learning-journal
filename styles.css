@@ -97,6 +97,10 @@ i {
 		font-size: .8em;
 		font-weight: 475;
 	}
+
+	a, a:link, a:visited {
+		text-decoration: none;
+	}
 }
 
 #home-body nav {
@@ -106,7 +110,7 @@ i {
 footer {
     grid-area: foot;
     background-color: var(--black);
-	padding-block: 2dvh 1.9dvh;
+		padding-block: 2.1dvh 2dvh;
     margin-top: .9dvh;
 }
 
@@ -213,7 +217,8 @@ aside {
 
 h2 {
 	font-family: var(--serif);
-	letter-spacing: normal;
+	letter-spacing: 0.006em;
+	word-spacing: .035em;
 	}
 
 p {
@@ -222,7 +227,9 @@ p {
 }
 
 a, a:link, a:visited {
-	text-decoration: none;
+	/* text-decoration: none; */
+	text-decoration: underline dotted #0000006a;
+	text-underline-offset: 2.6px;
 }
 
 a:link, a:visited {
@@ -230,12 +237,12 @@ a:link, a:visited {
 }
 
 p.post-date {
-	font-size: .9rem;
+	font-size: 0.9rem;
 	font-weight: 320;
 	text-transform: uppercase;
 	letter-spacing: var(--expanded-spacing);
-	opacity: 0.9;
-	margin-top: .65em;
+	opacity: 0.82;
+	margin-top: .05em;
 }
 
 aside#home-post-card-grid .post:first-of-type hr:first-of-type {
@@ -329,13 +336,12 @@ aside#home-post-card-grid .post:first-of-type > .post-card-wrapper {
 footer p {
 	color: var(--white);
 	text-align: center;
-	font-size: .8rem;
-	line-height: 1.35;
+	font-size: .825rem;
 }
 
 footer p:last-child {
-	font-size: .7rem;
-	margin-top: .3em;
+	font-size: .725rem;
+	margin-top: .45em;
 }
 
 /* should be older-posts or something */
@@ -348,15 +354,6 @@ footer p:last-child {
 	padding-top: 1.3em;
 }
 }
-
-/* .view-more a:link {
-	display: block;
-	font-size: 1.05rem;
-	font-weight: 500;
-	text-align: center;
-	padding-top: 1.3em;
-	margin: 0 auto;
-} */
 
 /* =============================
 		IMAGES
