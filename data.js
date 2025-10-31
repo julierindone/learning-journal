@@ -1,5 +1,6 @@
 export const blogPostArray = [
 	{
+		id: 0,
 		title: `There is a Light that Never Goes Out`,
 		date: `September 15, 2025`,
 		image: "./images/rainbow_keyboard.jpg",
@@ -12,6 +13,7 @@ export const blogPostArray = [
 		And if a double-decker bus, crashes into us, to die by your side, is such a heavenly way to die, and if a ten-ton truck, kills the both of us, to die by your side, well, the pleasure - the privilege is mine. Oh, there is a light and it never goes out, there is a light and it never goes out, there is a light and it never goes out, there is a light and it never goes out, there is a light and it never goes out, there is a light and it never goes out, there is a light and it never goes out, there is a light and it never goes out, there is a light and it never goes out.`,
 	},
 	{
+		id: 1,
 		title: `Rusholme Ruffians`,
 		date: `September 14, 2025`,
 		image: "./images/portland1.jpg",
@@ -24,6 +26,7 @@ export const blogPostArray = [
 		... Oh, walk home alone, I might walk home alone, but my faith in love is still devout, I might walk home alone, but my faith in love is still devout, I might walk home alone, but my faith in love is still devout!`,
 	},
 	{
+		id: 2,
 		title: `Cemetry Gates`,
 		date: `September 13, 2025`,
 		image: "./images/portland2.jpg",
@@ -34,6 +37,7 @@ export const blogPostArray = [
 		A dreaded sunny day, so let's go where we're happy, and I meet you at the cemetry gates, oh, Keats and Yeats are on your side, a dreaded sunny day, so let's go where we're wanted, and I meet you at the cemetry gates, Keats and Yeats are on your side, but you lose, 'cause Whale Blubber Wilde is on mine... Sugar!`,
 	},
 	{
+		id: 3,
 		title: `A Rush and a Push and the Land is Ours`,
 		date: `September 12, 2025`,
 		image: "./images/normal1.jpg",
@@ -43,6 +47,7 @@ export const blogPostArray = [
 	Oh, but don't mention love, no - no, don't mention love! A rush and a push and the land that we stand on is ours, your youth may be gone, but you're still a young man, so phone me, phone me, phone me, so phone me, phone me, phone me. Oh, I think I'm in love, oh, I think I'm in love, oh, I think I'm in love (think I'm in love,) urrgh, I think I'm in lerv, oh...`,
 	},
 	{
+		id: 4,
 		title: `What Difference Does it Make?`,
 		date: `September 11, 2025`,
 		image: "./images/normal2.jpg",
@@ -51,7 +56,8 @@ export const blogPostArray = [
 		Oh, what difference does it make? Oh, it makes none, but now you have gone, and your prejudice won't keep you warm tonight. Oh, the devil will find work for idle hands to do, I stole, and then I lied, just because you asked me to, but now you know the truth about me, you won't see me anymore, well, I'm still fond of you.`,
 	},
 	{
-		title: `Rubber Ring`,
+		id: 5,
+		title: `Stop Me If You Think You've Heard This One Before`,
 		date: `September 10, 2025`,
 		image: "./images/normal3.jpg",
 		content: `A sad fact widely known, the most impassionate song, to a lonely soul, is so easily outgrown, but don't forget the songs that made you smile, and the songs that made you cry, when you lay in awe, on the bedroom floor, and said: "Oh, oh, smother me Mother..." No... Rubber ring, rubber ring, rubber ring, rubber ring... The passing of time, and all of its crimes, is making me sad again, the passing of time, and all of its sickening crimes, is making me sad again, but don't forget the songs that made you cry, and the songs that saved your life, yes, you're older now, and you're a clever swine, but they were the only ones who ever stood by you.<br><br>
@@ -61,6 +67,7 @@ export const blogPostArray = [
 		You are sleeping, you do not want to believe, you are sleeping, you do not want to believe, you are sleeping, you do not want to believe, you are sleeping.`,
 	},
 	{
+		id: 6,
 		title: `Unhappy Birthday`,
 		date: `September 9, 2025`,
 		image: "./images/normal4.jpg",
@@ -69,6 +76,7 @@ export const blogPostArray = [
 		I've come to wish you an unhappy birthday, I've come to wish you an unhappy birthday, 'cause you're evil, and you lie, and if you should die, I may feel slightly sad, (but I won't cry.) Loved and lost, and some may say: "When usually it's nothing, surely you're happy, it should be this way!" I said "No," And then I shot myself, so, drink, drink, drink, and be ill tonight. From the one you left behind, from the one you left behind, from the one you left behind, from the one you left behind.`,
 	},
 	{
+		id: 7,
 		title: `Ask`,
 		date: `September 8, 2025`,
 		image: "./images/normal5.jpg",
@@ -85,6 +93,7 @@ export const blogPostArray = [
 		Nature is a language, can't you read? Nature is a language, can't you read? So ask me, ask me, ask me, ask me, ask me, ask me. Because if it's not love, then it's the bomb, that will bring us together.`,
 	},
 	{
+		id: 8,
 		title: `Sheila, Take a Bow`,
 		date: `September 7, 2025`,
 		image: "./images/normal6.jpg",
@@ -99,6 +108,7 @@ export const blogPostArray = [
 export const aboutMeArray = [
 	{
 		section: "Tech Journey Summary ",
+		id: 1000,
 		title: `"Why are all your blog posts so weird?"`,
 		latestUpdate: `September 30, 2025`,
 		content: `This blog interface started out as a solo project for a module on <a href="https://scrimba.com/learn-responsive-web-design-c029">responsive design</a> on <a href="https://scrimba.com/">Scrimba.com</a>. But as always, I couldn't get myself to just copy the design provided, and did a bit of customization. I need to stop endlessly fiddling with the CSS and move on to something else (SQL), but I'd like to use this as an actual blog, with actual posts, at some point.<br><br>
@@ -107,7 +117,8 @@ export const aboutMeArray = [
 	},
 	{
 		section: `Skills?`,
-		title: `If I seem a little strange`,
+		id: 1001,
+		title: `And if I seem a little strange...`,
 		latestUpdate: `September 29, 2025`,
 		content: `I know I'm unloveable, you don't have to tell me, I don't have much in my life, but take it - it's yours, I know I'm unloveable, you don't have to tell me, message received, loud and clear, I don't have much in my life, but take it - it's yours.<br><br>
 
@@ -115,7 +126,8 @@ export const aboutMeArray = [
 	},
 	{
 		section: `No Idea`,
-		title: `Everybody's clever nowadays...`,
+		id: 1002,
+		title: `Everybody's clever nowadays.`,
 		latestUpdate: `September 28, 2025`,
 		content: `A sad fact widely known, the most impassionate song, to a lonely soul, is so easily outgrown, but don't forget the songs, that made you smile, and the songs that made you cry, when you lay in awe, on the bedroom floor, and said: "Oh, oh, smother me Mother..." No... Rubber ring, rubber ring, rubber ring, rubber ring...<br><br>
 

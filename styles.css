@@ -329,6 +329,42 @@ aside#home-post-card-grid .post:first-of-type > .post-card-wrapper {
 	background: linear-gradient(to bottom, transparent, rgb(0, 0, 0, 0.85));
 }
 
+.thumbnail-card-grid {
+	grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+	gap: .25rem;
+}
+
+.thumbnail-card-wrapper .image-wrapper {
+	position: relative;
+	aspect-ratio: 1/1;
+}
+
+.thumbnail-card-wrapper h2 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	min-height: 37%;
+	font-family: 'Roboto Flex', sans-serif;
+	color: var(--white);
+	font-size: clamp(1.15rem, 0.8rem + 2.15vw, 1.6rem);
+	font-weight: 550;
+	text-shadow: 0px 0px 2px var(--black);
+	letter-spacing: 0.55px;
+	word-spacing: 1.2px;
+	text-align: center;
+	font-variant: all-petite-caps;
+	text-wrap: balance;
+	line-height: 1.1;
+	background-color: #00000090;
+	padding-block: 0.4em;
+	padding-inline: 1em;
+}
+
 /* ===============================
 		FOOTER, ETC
 	================================ */
@@ -449,6 +485,10 @@ MEDIA QUERIES
 	.image-wrapper {
 		padding-top: 0;
 	}
+
+	.thumbnail-card-grid {
+		gap: .45rem;
+	}
 }
 
 /* ================================================================ */
@@ -493,17 +533,32 @@ MEDIA QUERIES
 @media (width >= 750px) {
 	#home-header {
 			height: calc(100dvh - 4em);
-	}
-}
+		}
 
-/* ================================================================ */
+		.thumbnail-card-grid {
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		}
+
+		.thumbnail-card-wrapper .image-wrapper {
+			aspect-ratio: 11/8;
+		}
+	}/* ================================================================ */
 
 /* TODO: This entire section could probably exclude the homepage. */
 @media (width >=1200px) {
+
 	header:not(#home-header),
 	main,
 	#nav-item-container:not(#home-nav > #nav-item-container) {
 		max-width: calc(1200px - var(--sides));
 		margin-inline: auto;
+	}
+
+	.thumbnail-card-grid {
+		grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+	}
+
+	.thumbnail-card-wrapper .image-wrapper {
+		aspect-ratio: 4/3;
 	}
 }
