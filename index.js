@@ -36,6 +36,8 @@ function getFeaturedPost() {
 	document.getElementById('home-header').style.backgroundSize = 'cover';
 	document.getElementById('home-header').style.backgroundRepeat = 'no-repeat';
 	document.getElementById('home-header').style.backgroundColor = '#222';
+	document.getElementById('home-header').role = 'img';
+	document.getElementById('home-header').ariaLabel = `image of ${featuredPostObject.alt}`;
 
 	featuredPost.innerHTML = featuredPostHtml
 }
