@@ -1,12 +1,35 @@
-import { createPostHtml, createThumbnailCardHtml } from "./sharedFunctions.js"
+import { createPostHtml, getThumbnailCardGrid } from "./sharedFunctions.js"
 import { blogPostArray } from "./data.js"
 
 const blogFeaturedPost = document.getElementById('blog-featured-post')
 const blogFullPostWrapper = document.getElementById('blog-full-posts-wrapper')
-let blogThumbnailCardGrid = document.getElementById('blog-thumbnail-card-grid')
-let displayedPostCount = 0
-let unpostedPostCount = blogPostArray.length
+const blogThumbnailOlderPostsButton = document.getElementById('blog-thumbnail-older-posts-button')
 
+// State variables for getThumbnailCardGrid:
+let unpostedPostCount = blogPostArray.length;
+let thumbnailCardHtml = '';
+let displayedPostCount = 0;
+const blogThumbnailCardGrid = document.getElementById('blog-thumbnail-card-grid');
+
+blogThumbnailOlderPostsButton.addEventListener('click', function () {
+	loadThumbnails()
+})
+
+function loadThumbnails() {
+	// 1. create state object to pass:
+	let currentState = {
+		unpostedPostCount,
+		thumbnailCardHtml,
+		displayedPostCount,
+		blogThumbnailCardGridElement: blogThumbnailCardGrid // Pass the actual DOM element
+	};
+
+	// 2 Call getThumbnailCardGrid() and update local state with the returned values
+	const updatedState = getThumbnailCardGrid(currentState, 2);
+	unpostedPostCount = updatedState.unpostedPostCount;
+	thumbnailCardHtml = updatedState.thumbnailCardHtml;
+	displayedPostCount = updatedState.displayedPostCount;
+}
 
 function getFeaturedPost() {
 	let featuredPostObject = blogPostArray[0]
@@ -34,26 +57,10 @@ function getFullBlogPosts() {
 	blogFullPostWrapper.innerHTML = fullPostsHtml
 }
 
-function getThumbnailCardGrid() {
-	let thumbnailCardHtml = ''
-	// thumbnailStartingIndex keeps track of the index that should be created
-	let thumbnailStartingIndex = displayedPostCount
-
-	// TODO: Cut off at 4 and then add button to load more
-	for (let i = thumbnailStartingIndex; i < blogPostArray.length; i++) {
-		let postToBuild = blogPostArray[i]
-		thumbnailCardHtml += createThumbnailCardHtml(postToBuild)
-		displayedPostCount++
-		unpostedPostCount -= 1
-	}
-
-	blogThumbnailCardGrid.innerHTML = thumbnailCardHtml
-}
-
 function renderBlogContent() {
 	getFeaturedPost()
 	getFullBlogPosts()
-	getThumbnailCardGrid()
+	loadThumbnails()
 }
 
 renderBlogContent()

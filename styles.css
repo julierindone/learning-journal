@@ -332,6 +332,7 @@ aside#home-post-card-grid .post:first-of-type > .post-card-wrapper {
 .thumbnail-card-grid {
 	grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
 	gap: .25rem;
+	margin-top: 0.5em;
 }
 
 .thumbnail-card-wrapper .image-wrapper {
@@ -343,12 +344,12 @@ aside#home-post-card-grid .post:first-of-type > .post-card-wrapper {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	top: 50%;
-	left: 50%;
 	position: absolute;
-	transform: translate(-50%, -50%);
+	inset: 0;
+	margin: auto;
 	width: 100%;
-	min-height: 37%;
+	height: fit-content;
+	min-height: 36%;
 	font-family: 'Roboto Flex', sans-serif;
 	color: var(--white);
 	font-size: clamp(1.15rem, 0.8rem + 2.15vw, 1.6rem);
@@ -360,7 +361,7 @@ aside#home-post-card-grid .post:first-of-type > .post-card-wrapper {
 	font-variant: all-petite-caps;
 	text-wrap: balance;
 	line-height: 1.1;
-	background-color: #00000090;
+	background-color: #000000c0;
 	padding-block: 0.4em;
 	padding-inline: 1em;
 }
@@ -549,6 +550,7 @@ MEDIA QUERIES
 
 	header:not(#home-header),
 	main,
+	aside,
 	#nav-item-container:not(#home-nav > #nav-item-container) {
 		max-width: calc(1200px - var(--sides));
 		margin-inline: auto;
