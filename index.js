@@ -5,20 +5,24 @@ const homePostCardGrid = document.getElementById('home-post-card-grid')
 const featuredPost = document.getElementById('home-featured-post')
 
 window.addEventListener('load', function () {
-	detectScreenOrientation()
+	detectLandscapePhoneOrientation()
 })
 
 window.addEventListener('resize', function () {
+	detectLandscapePhoneOrientation()
 	detectScreenOrientation()
 })
 
-function detectScreenOrientation() {
+function detectLandscapePhoneOrientation() {
 	if (window.innerHeight < 600 && window.innerWidth > 500) {
 		document.getElementById('home-header').style.height = 'unset'
-		document.querySelector('#home-featured-post p:first-child').style.marginTop = '1em'
+		document.querySelector('#home-featured-post').style.paddingTop = '2em'
+		document.querySelector('#home-featured-post').style.background = 'linear-gradient(rgb(0, 0, 0, 0.4), 55%, rgb(0, 0, 0, .65))'
+
 	} else {
 		document.getElementById('home-header').style.removeProperty('height')
-		document.querySelector('#home-featured-post p:first-child').style.removeProperty('margin-top')
+		document.querySelector('#home-featured-post').style.removeProperty('padding-top')
+		document.querySelector('#home-featured-post').style.removeProperty('background')
 	}
 }
 
