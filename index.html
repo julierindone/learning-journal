@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/fd264b1039.js" crossorigin="anonymous"></script>
 	<meta charset="UTF-8">
@@ -32,10 +32,14 @@
 		<div id="home-card-grid-divider" class="divider recent-divider">
 			<p>Recent Posts</p>
 		</div>
-		<aside id="home-post-card-grid" class="post-card-grid"></aside>
-		<!-- <div class="view-more">
-			removing view more for now... what should be the process for finding older posts beyond the grid? do i want infinite scrolling or what?
-		<!-- </div> -->
+		<div class="card-grid-wrapper">
+
+			<aside id="home-post-card-grid" class="post-card-grid" aria-label="older posts"></aside>
+			<div class="divider older-posts-button-div older-posts-divider"">
+				<button id=" home-older-posts-button" class="older-posts">Load more posts</button>
+			</div>
+		</div>
+
 		<footer>
 			<p>Learning Journal Inc.</p>
 			<p>@2025</p>

@@ -3,6 +3,7 @@ import { blogPostArray } from "./data.js"
 
 const homePostCardGrid = document.getElementById('home-post-card-grid')
 const featuredPost = document.getElementById('home-featured-post')
+const homeOlderPostsButton = document.getElementById('home-older-posts-button')
 
 window.addEventListener('load', function () {
 	detectLandscapePhoneOrientation()
@@ -10,7 +11,10 @@ window.addEventListener('load', function () {
 
 window.addEventListener('resize', function () {
 	detectLandscapePhoneOrientation()
-	detectScreenOrientation()
+})
+
+homeOlderPostsButton.addEventListener('click', function () {
+	getOlderPosts()
 })
 
 function detectLandscapePhoneOrientation() {

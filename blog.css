@@ -5,7 +5,7 @@
 		"head"
 		"recent"
 		"main"
-		"divider"
+		"older"
 		"aside"
 		"foot";
 }
@@ -33,7 +33,7 @@
 
 @media (width >= 700px) {
 	#blog-header {
-		margin-block: 0.6em 0;
+		margin-block: 0;
 	}
 
 	#blog-featured-post .post-date {
