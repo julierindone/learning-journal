@@ -1,9 +1,14 @@
 import { createPostHtml } from "./sharedFunctions.js"
 import { blogPostArray } from "./data.js"
 
-const homePostCardGrid = document.getElementById('home-post-card-grid')
 const featuredPost = document.getElementById('home-featured-post')
 const homeOlderPostsButton = document.getElementById('home-older-posts-button')
+
+// state variables for getHomePostCardGrid
+let unpostedHomePostCount = blogPostArray.length;
+let homePostCardHtml = '';
+let homedisplayedPostCount = 0;
+const homePostCardGrid = document.getElementById('home-post-card-grid')
 
 window.addEventListener('load', function () {
 	detectLandscapePhoneOrientation()
@@ -14,7 +19,7 @@ window.addEventListener('resize', function () {
 })
 
 homeOlderPostsButton.addEventListener('click', function () {
-	getOlderPosts()
+	loadHomePostCards(3)
 })
 
 function detectLandscapePhoneOrientation() {
@@ -47,24 +52,61 @@ function getFeaturedPost() {
 	document.getElementById('home-header').role = 'img';
 	document.getElementById('home-header').ariaLabel = `image of ${featuredPostObject.alt}`;
 
-	featuredPost.innerHTML = featuredPostHtml
+	homedisplayedPostCount++;
+	unpostedHomePostCount--;
+
+	featuredPost.innerHTML = featuredPostHtml;
 }
 
-function getHomePostCardGrid() {
-	let postCardHtml = ''
-	for (let i = 1; i < 7; i++) {
-		let postToBuild = blogPostArray[i]
-		postCardHtml += createPostHtml(postToBuild)
+function loadHomePostCards(postsToAdd = 2) {
+	// 1. create state object to pass:
+	let currentState = {
+		unpostedHomePostCount,
+		homePostCardHtml,
+		homedisplayedPostCount,
+		homePostCardGridElement: homePostCardGrid
+	};
 
-		// displayedPostCount++
-		// unpostedPostCount -= 1
+	// 2 call getHomePostCardGrid() and update local state with the returned values
+	const updatedState = getHomePostCardGrid(currentState, postsToAdd)
+	unpostedHomePostCount = updatedState.unpostedHomePostCount
+	homePostCardHtml = updatedState.homePostCardHtml
+	homedisplayedPostCount = updatedState.homedisplayedPostCount
+}
+
+function getHomePostCardGrid(currentState, postsToAdd) {
+	let postCardHtml = ''
+
+	// Extract properties of currentState into local variables.
+	let { unpostedHomePostCount, homePostCardHtml, homedisplayedPostCount, homePostCardGridElement } = currentState
+
+	// Assign starting index
+	let homePostCardStartingIndex = homedisplayedPostCount
+
+	// Determine if postsToAdd needs to be altered to match end of array.
+	if (postsToAdd > unpostedHomePostCount) {
+		postsToAdd = unpostedHomePostCount
 	}
-	homePostCardGrid.innerHTML = postCardHtml
+
+	// Call createPostHtml for each post to add. Update count variables.
+	for (let i = homePostCardStartingIndex; i < homePostCardStartingIndex + postsToAdd; i++) {
+		let postToBuild = blogPostArray[i]
+		homePostCardHtml += createPostHtml(postToBuild)
+
+		homedisplayedPostCount++;
+		unpostedHomePostCount--;
+	}
+
+	// Update DOM
+	homePostCardGridElement.innerHTML = homePostCardHtml;
+
+	// Return updated State
+	return { unpostedHomePostCount, homePostCardHtml, homedisplayedPostCount };
 }
 
 function renderHomeContent() {
 	getFeaturedPost()
-	getHomePostCardGrid()
+	loadHomePostCards()
 }
 
 renderHomeContent()

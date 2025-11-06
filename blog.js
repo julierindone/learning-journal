@@ -15,22 +15,6 @@ blogThumbnailOlderPostsButton.addEventListener('click', function () {
 	loadThumbnails()
 })
 
-function loadThumbnails() {
-	// 1. create state object to pass:
-	let currentState = {
-		unpostedPostCount,
-		thumbnailCardHtml,
-		displayedPostCount,
-		blogThumbnailCardGridElement: blogThumbnailCardGrid // Pass the actual DOM element
-	};
-
-	// 2 Call getThumbnailCardGrid() and update local state with the returned values
-	const updatedState = getThumbnailCardGrid(currentState, 2);
-	unpostedPostCount = updatedState.unpostedPostCount;
-	thumbnailCardHtml = updatedState.thumbnailCardHtml;
-	displayedPostCount = updatedState.displayedPostCount;
-}
-
 function getFeaturedPost() {
 	let featuredPostObject = blogPostArray[0]
 	let featuredPostHtml = `
@@ -55,6 +39,22 @@ function getFullBlogPosts() {
 	}
 
 	blogFullPostWrapper.innerHTML = fullPostsHtml
+}
+
+function loadThumbnails() {
+	// 1. create state object to pass:
+	let currentState = {
+		unpostedPostCount,
+		thumbnailCardHtml,
+		displayedPostCount,
+		blogThumbnailCardGridElement: blogThumbnailCardGrid // Pass the actual DOM element
+	};
+
+	// 2. Call getThumbnailCardGrid() and update local state with the returned values
+	const updatedState = getThumbnailCardGrid(currentState, 2);
+	unpostedPostCount = updatedState.unpostedPostCount;
+	thumbnailCardHtml = updatedState.thumbnailCardHtml;
+	displayedPostCount = updatedState.displayedPostCount;
 }
 
 function renderBlogContent() {
