@@ -72,32 +72,33 @@ export function getThumbnailCardGrid(currentState, postsToAdd = 2) {
 	return { unpostedPostCount, thumbnailCardHtml, displayedPostCount, blogThumbnailCardGridElement };
 }
 
-export function getHomePostCardGrid(currentState, postsToAdd) {
-	let postCardHtml = ''
+export function getPostCardGrid(currentState, postsToAdd) {
+// Is it going to cause a problem to be eliminating this local var?
+	// let postCardHtml = ''
 
 	// Extract properties of currentState into local variables.
-	let { unpostedHomePostCount, homePostCardHtml, homedisplayedPostCount, homePostCardGridElement } = currentState
+	let { unpostedPostCount, postCardHtml, displayedPostCount, postCardGridElement } = currentState
 
 	// Assign starting index
-	let homePostCardStartingIndex = homedisplayedPostCount
+	let postCardStartingIndex = displayedPostCount
 
 	// Determine if postsToAdd needs to be altered to match end of array.
-	if (postsToAdd > unpostedHomePostCount) {
-		postsToAdd = unpostedHomePostCount
+	if (postsToAdd > unpostedPostCount) {
+		postsToAdd = unpostedPostCount
 	}
 
 	// Call createPostHtml for each post to add. Update count variables.
-	for (let i = homePostCardStartingIndex; i < homePostCardStartingIndex + postsToAdd; i++) {
+	for (let i = postCardStartingIndex; i < postCardStartingIndex + postsToAdd; i++) {
 		let postToBuild = blogPostArray[i]
-		homePostCardHtml += createPostHtml(postToBuild)
+		postCardHtml += createPostHtml(postToBuild)
 
-		homedisplayedPostCount++;
-		unpostedHomePostCount--;
+		displayedPostCount++;
+		unpostedPostCount--;
 	}
 
 	// Update DOM
-	homePostCardGridElement.innerHTML = homePostCardHtml;
+	postCardGridElement.innerHTML = postCardHtml;
 
 	// Return updated State
-	return { unpostedHomePostCount, homePostCardHtml, homedisplayedPostCount };
+	return { unpostedPostCount, postCardHtml, displayedPostCount };
 }

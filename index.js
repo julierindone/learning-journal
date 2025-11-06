@@ -1,10 +1,10 @@
-import { getHomePostCardGrid } from "./sharedFunctions.js"
+import { getPostCardGrid } from "./sharedFunctions.js"
 import { blogPostArray } from "./data.js"
 
 const featuredPost = document.getElementById('home-featured-post')
 const homeOlderPostsButton = document.getElementById('home-older-posts-button')
 
-// state variables for getHomePostCardGrid
+// state variables for getPostCardGrid
 let unpostedHomePostCount = blogPostArray.length;
 let homePostCardHtml = '';
 let homedisplayedPostCount = 0;
@@ -61,17 +61,17 @@ function getFeaturedPost() {
 function loadHomePostCards(postsToAdd = 2) {
 	// 1. create state object to pass:
 	let currentState = {
-		unpostedHomePostCount,
-		homePostCardHtml,
-		homedisplayedPostCount,
-		homePostCardGridElement: homePostCardGrid
+		unpostedPostCount: unpostedHomePostCount,
+		postCardHtml: homePostCardHtml,
+		displayedPostCount: homedisplayedPostCount,
+		postCardGridElement: homePostCardGrid
 	};
 
-	// 2 call getHomePostCardGrid() and update local state with the returned values
-	const updatedState = getHomePostCardGrid(currentState, postsToAdd)
-	unpostedHomePostCount = updatedState.unpostedHomePostCount
-	homePostCardHtml = updatedState.homePostCardHtml
-	homedisplayedPostCount = updatedState.homedisplayedPostCount
+	// 2 call getPostCardGrid() and update local state with the returned values
+	const updatedState = getPostCardGrid(currentState, postsToAdd)
+	unpostedHomePostCount = updatedState.unpostedPostCount
+	homePostCardHtml = updatedState.postCardHtml
+	homedisplayedPostCount = updatedState.displayedPostCount
 }
 
 function renderHomeContent() {
