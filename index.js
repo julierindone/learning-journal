@@ -1,4 +1,4 @@
-import { createPostHtml } from "./sharedFunctions.js"
+import { getHomePostCardGrid } from "./sharedFunctions.js"
 import { blogPostArray } from "./data.js"
 
 const featuredPost = document.getElementById('home-featured-post')
@@ -72,36 +72,6 @@ function loadHomePostCards(postsToAdd = 2) {
 	unpostedHomePostCount = updatedState.unpostedHomePostCount
 	homePostCardHtml = updatedState.homePostCardHtml
 	homedisplayedPostCount = updatedState.homedisplayedPostCount
-}
-
-function getHomePostCardGrid(currentState, postsToAdd) {
-	let postCardHtml = ''
-
-	// Extract properties of currentState into local variables.
-	let { unpostedHomePostCount, homePostCardHtml, homedisplayedPostCount, homePostCardGridElement } = currentState
-
-	// Assign starting index
-	let homePostCardStartingIndex = homedisplayedPostCount
-
-	// Determine if postsToAdd needs to be altered to match end of array.
-	if (postsToAdd > unpostedHomePostCount) {
-		postsToAdd = unpostedHomePostCount
-	}
-
-	// Call createPostHtml for each post to add. Update count variables.
-	for (let i = homePostCardStartingIndex; i < homePostCardStartingIndex + postsToAdd; i++) {
-		let postToBuild = blogPostArray[i]
-		homePostCardHtml += createPostHtml(postToBuild)
-
-		homedisplayedPostCount++;
-		unpostedHomePostCount--;
-	}
-
-	// Update DOM
-	homePostCardGridElement.innerHTML = homePostCardHtml;
-
-	// Return updated State
-	return { unpostedHomePostCount, homePostCardHtml, homedisplayedPostCount };
 }
 
 function renderHomeContent() {

@@ -71,3 +71,33 @@ export function getThumbnailCardGrid(currentState, postsToAdd = 2) {
 	// Return the updated state
 	return { unpostedPostCount, thumbnailCardHtml, displayedPostCount, blogThumbnailCardGridElement };
 }
+
+export function getHomePostCardGrid(currentState, postsToAdd) {
+	let postCardHtml = ''
+
+	// Extract properties of currentState into local variables.
+	let { unpostedHomePostCount, homePostCardHtml, homedisplayedPostCount, homePostCardGridElement } = currentState
+
+	// Assign starting index
+	let homePostCardStartingIndex = homedisplayedPostCount
+
+	// Determine if postsToAdd needs to be altered to match end of array.
+	if (postsToAdd > unpostedHomePostCount) {
+		postsToAdd = unpostedHomePostCount
+	}
+
+	// Call createPostHtml for each post to add. Update count variables.
+	for (let i = homePostCardStartingIndex; i < homePostCardStartingIndex + postsToAdd; i++) {
+		let postToBuild = blogPostArray[i]
+		homePostCardHtml += createPostHtml(postToBuild)
+
+		homedisplayedPostCount++;
+		unpostedHomePostCount--;
+	}
+
+	// Update DOM
+	homePostCardGridElement.innerHTML = homePostCardHtml;
+
+	// Return updated State
+	return { unpostedHomePostCount, homePostCardHtml, homedisplayedPostCount };
+}
