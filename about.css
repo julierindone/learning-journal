@@ -1,16 +1,3 @@
-#about-body > .wrapper {
-	/* REMOVE - not needed but scared to make change at the mo */
-	/* grid-template-rows: auto auto auto 1fr auto; */
-	grid-template-areas:
-	"navi"
-	"head"
-	"main"
-	"recent"
-	"aside"
-	"view"
-	"foot";
-}
-
 #about-header {
 	min-height: unset;
 	padding-block: 1.3em 0;

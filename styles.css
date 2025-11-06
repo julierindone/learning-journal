@@ -33,12 +33,10 @@ body {
 }
 
 #home-body .wrapper {
-	grid-template-rows: auto auto auto 1fr auto;
 	grid-template-areas:
 		"navi"
 		"head"
-		"recent"
-		"home-aside"
+		"aside"
 		"foot";
 }
 

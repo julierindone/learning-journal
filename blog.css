@@ -1,15 +1,3 @@
-#blog-body .wrapper {
-	min-height: 100dvh;
-	grid-template-areas:
-		"navi"
-		"head"
-		"recent"
-		"main"
-		"older"
-		"aside"
-		"foot";
-}
-
 #blog-header {
 	padding-inline: var(--sides);
 	margin-bottom: 1em;
