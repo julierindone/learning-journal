@@ -43,19 +43,20 @@ export function createThumbnailCardHtml(postToBuild) {
 		</div>`
 }
 
-export function getThumbnailCardGrid(currentState, postsToAdd = 2) {
-	// Extract properties of currentState into local variables
-	let { unpostedPostCount, thumbnailCardHtml, displayedPostCount, blogThumbnailCardGridElement } = currentState;
+export function getThumbnailCardGrid(currentState, postsToAdd = 3) {
+
+	// extract properties of currentState into local variables
+	let { unpostedPostCount, thumbnailCardHtml, displayedPostCount, blogThumbnailGridElement } = currentState;
 
 	// thumbnailStartingIndex keeps track of the index that should be created
 	let thumbnailStartingIndex = displayedPostCount;
 
-	// Can't add more posts than are available
+	// can't add more posts than are available
 	if (unpostedPostCount < postsToAdd) {
 		postsToAdd = unpostedPostCount;
 	}
 
-	// TODO: Cut off at 2. Once there are more posts it could get increased to load 3 or 4 at a time.
+	// get html for each thumbnail
 	for (let i = thumbnailStartingIndex; i < thumbnailStartingIndex + postsToAdd; i++) {
 		let postToBuild = blogPostArray[i];
 		thumbnailCardHtml += createThumbnailCardHtml(postToBuild);
@@ -63,31 +64,30 @@ export function getThumbnailCardGrid(currentState, postsToAdd = 2) {
 		unpostedPostCount -= 1;
 	}
 
-	// Update the DOM element directly if it's passed
-	if (blogThumbnailCardGridElement) {
-		blogThumbnailCardGridElement.innerHTML = thumbnailCardHtml;
+	// update DOM
+	blogThumbnailGridElement.innerHTML = thumbnailCardHtml;
+
+	// if there are no more posts to load, remove load button and add end message
+	if (unpostedPostCount == 0) {
+		document.getElementById('load-more-thumbnails-btn').remove()
+		const asideSection = document.getElementById('aside-section')
+		const endOfThumbnails = document.createElement('p')
+		endOfThumbnails.classList.add('divider', 'end-of-thumbnails')
+		endOfThumbnails.innerHTML = "You've reached the end."
+		asideSection.appendChild(endOfThumbnails)
 	}
 
-	// Return the updated state
-	return { unpostedPostCount, thumbnailCardHtml, displayedPostCount, blogThumbnailCardGridElement };
+	return { unpostedPostCount, thumbnailCardHtml, displayedPostCount };
 }
 
-export function getPostCardGrid(currentState, postsToAdd) {
-// Is it going to cause a problem to be eliminating this local var?
-	// let postCardHtml = ''
-
-	// Extract properties of currentState into local variables.
+export function getPostCardGrid(currentState, postsToAdd = 3) {
 	let { unpostedPostCount, postCardHtml, displayedPostCount, postCardGridElement } = currentState
-
-	// Assign starting index
 	let postCardStartingIndex = displayedPostCount
 
-	// Determine if postsToAdd needs to be altered to match end of array.
 	if (postsToAdd > unpostedPostCount) {
 		postsToAdd = unpostedPostCount
 	}
 
-	// Call createPostHtml for each post to add. Update count variables.
 	for (let i = postCardStartingIndex; i < postCardStartingIndex + postsToAdd; i++) {
 		let postToBuild = blogPostArray[i]
 		postCardHtml += createPostHtml(postToBuild)
@@ -96,8 +96,16 @@ export function getPostCardGrid(currentState, postsToAdd) {
 		unpostedPostCount--;
 	}
 
-	// Update DOM
 	postCardGridElement.innerHTML = postCardHtml;
+
+	if (unpostedPostCount == 0) {
+		document.getElementById('load-more-post-cards-btn').remove()
+		const asideSection = document.getElementById('aside-section')
+		const endOfPostCards = document.createElement('p')
+		endOfPostCards.classList.add('divider', 'end-of-post-cards')
+		endOfPostCards.innerHTML = "You've reached the end."
+		asideSection.appendChild(endOfPostCards)
+	}
 
 	// Return updated State
 	return { unpostedPostCount, postCardHtml, displayedPostCount };

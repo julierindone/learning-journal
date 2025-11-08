@@ -5,6 +5,7 @@
 	--serif: 'Aleo', cambria, cochin, georgia, times, serif;
 	--expanded-spacing: 1.5px;
 	--wrapper-gap-height: 1.7rem;
+	--rule-gradient: linear-gradient(to right, rgb(0, 0, 0, 0.05), rgb(0, 0, 0, 0.55), rgb(0, 0, 0, 0.05));
 }
 
 /* =============================
@@ -30,6 +31,12 @@ body {
 	min-height: 100dvh;
 	display: grid;
 	gap: 1.4rem;
+	grid-template-areas:
+		"navi"
+		"head"
+		"main"
+		"aside"
+		"foot";
 }
 
 #home-body .wrapper {
@@ -108,7 +115,7 @@ i {
 footer {
     grid-area: foot;
     background-color: var(--black);
-		padding-block: 2.1dvh 2dvh;
+		padding-block: 2.4dvh 2.4dvh;
     margin-top: .9dvh;
 }
 
@@ -154,11 +161,6 @@ header {
 	margin-top: 0.8em;
 }
 
-
-/* =============================
-		MAIN ELEMENT LAYOUT
-	============================== */
-
 main {
 	grid-area: main;
 		padding-inline: var(--sides);
@@ -166,14 +168,7 @@ main {
 
 aside {
 	grid-area: aside;
-	display: grid;
-	gap: var(--wrapper-gap-height) 0.9em;
-	padding-inline: var(--sides);
-}
-
-.post-card-grid {
-	grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-	grid-template-rows: 1fr auto;
+	margin-block: 0.7em -1.7dvh;
 }
 
 /* =============================
@@ -200,7 +195,7 @@ p {
 	line-height: 1.55;
 }
 
-a, a:link, a:visited, .divider>button {
+a, a:link, a:visited, button {
 	text-decoration: underline dotted #0000006a;
 	text-underline-offset: 4.5px;
 }
@@ -218,17 +213,20 @@ p.post-date {
 	margin-top: .05em;
 }
 
-aside#home-post-card-grid .post:first-of-type hr:first-of-type,
-main#blog-full-posts-wrapper .post:first-of-type hr:first-of-type {
+.post:first-of-type hr:first-of-type {
   display: none;
 }
 
-main#blog-full-posts-wrapper .post:first-of-type .single-full-post-wrapper:first-of-type {
-	margin-top: 1.5em;
- }
-
-aside#home-post-card-grid .post:first-of-type > .post-card-wrapper {
+/* TODO: combine blog- and about-full-posts-wrapper. Can any of this other mess be simplified? */
+div#home-post-card-grid .post:first-of-type > .post-card-wrapper:first-of-type,
+div#blog-full-posts-wrapper .post:first-of-type .single-full-post-wrapper:first-of-type,
+div#about-full-posts-wrapper .single-full-post-wrapper:first-of-type,
+div#about-post-card-grid .post:first-of-type .post-card-wrapper:first-of-type {
 	margin-top: 0;
+}
+
+div#home-post-card-grid {
+	margin-top: 0.1em;
 }
 
 .post-content.cut-off-text {
@@ -236,7 +234,6 @@ aside#home-post-card-grid .post:first-of-type > .post-card-wrapper {
 }
 
 #blog-full-posts-wrapper, #about-full-posts-wrapper {
-	margin-block: 0 .5em;
 	display: grid;
 	grid-template-rows: auto;
 	gap: var(--wrapper-gap-height);
@@ -256,25 +253,29 @@ aside#home-post-card-grid .post:first-of-type > .post-card-wrapper {
 }
 
 .post-card-wrapper {
-	margin-top: calc(var(--wrapper-gap-height) + 1rem);
+	margin-top: calc(var(--wrapper-gap-height) + 0.8rem);
+	h2 {
+		margin-top: .7em;
+	}
+	.post-content {
+		margin-top: 0.7em;
+		font-size: .95em;
+	}
 }
 
-.post-card-wrapper h2 {
-	margin-top: .7em;
-}
-
-.post-card-wrapper .post-content {
-	margin-top: 0.7em;
-	font-size: .95em;
-}
-.post-card-grid h2 {
+.post-card-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+	gap: var(--wrapper-gap-height) 0.9em;
+	padding-inline: var(--sides);
+	h2 {
 		font-size: 1.3rem;
 		font-weight: 800;
-}
-
-.post-card-grid .post-date {
-	font-size: .805rem;
-	margin-top: 0.2em
+	}
+	p.post-date {
+		font-size: 1rem;
+		margin-top: 0;
+	}
 }
 
 .header-post-content.cut-off-text {
@@ -304,7 +305,7 @@ aside#home-post-card-grid .post:first-of-type > .post-card-wrapper {
 .thumbnail-card-grid {
 	grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
 	gap: .25rem;
-	margin-top: 0.5em;
+	margin-top: 0.8em;
 }
 
 .thumbnail-card-wrapper .image-wrapper {
@@ -345,98 +346,78 @@ aside#home-post-card-grid .post:first-of-type > .post-card-wrapper {
 footer p {
 	color: var(--white);
 	text-align: center;
-	font-size: .825rem;
+	font-size: .9rem;
 }
 
 footer p:last-child {
-	font-size: .725rem;
-	margin-top: .45em;
-}
-
-/* should be older-posts or something */
-.view-more {
-	grid-area: view;
-	text-align: center;
-	margin-top: 0.9em;
-	p {
-		font-size: 1.08rem;
-	padding-top: 1.3em;
-}
+	font-size: .7rem;
+	margin-top: .7em;
 }
 
 .divider {
-	grid-area: divider;
-	margin-bottom: -0.6em;
-}
-
-.divider p, .divider .older-posts {
 	justify-self: center;
 	font-family: var(--serif);
-	font-size: 1.2rem;
+	font-size: 1.25rem;
 	font-weight: 500;
 	font-style: italic;
 	font-variant: petite-caps;
 	text-transform: capitalize;
 	letter-spacing: var(--expanded-spacing);
-	opacity: .75;
-	margin-top: 1em;
+	opacity: .8;
 }
 
-.older-posts-button-div button.older-posts {
+button.divider, .end-of-post-cards, .end-of-thumbnails {
+	padding: 0.75em 1.6em;
+	opacity: .75;
+	margin-top: 1.2em;
+}
+
+button.divider {
 	display: block;
-	opacity: .55;
+	font-size: 1.1rem;
 	background-color: unset;
-	text-underline-offset: 7px;
-	margin-block: 2.5em 0.6em;
+	text-underline-offset: .35em;
 	border: none;
 }
 
-button#blog-thumbnail-older-posts-button {
+#load-more-thumbnails-btn, .end-of-thumbnails {
+	font-size: 1.1rem;
 	text-transform: lowercase;
-	margin-block: 1.7em 0.6em;
+	font-variant: all-petite-caps;
+	margin-top: 0.6em;
+}
 
+.end-of-post-cards, .end-of-thumbnails {
+	font-variant: all-petite-caps;
+	opacity: 60%;
 }
 
 @media (hover: hover) {
-	.older-posts-button-div button.older-posts:hover,
-	.older-posts-button-div button.older-posts:active {
+	.older-posts-button-div button.divider:hover,
+	.older-posts-button-div button.divider:active {
 		border: 2.3px dotted #0000004a;
 		text-decoration: none;
-		background: #0000000f;
+		background: var(--white);
 		border-radius: 5px;
 		padding: 0.35em 1.6em;
-		margin-top: 0.7em;
+		margin-top: 0.5em;
 	}
 }
 
-.recent-divider {
-	grid-area: recent;
-}
-
-#home-body .recent-divider {
-	margin-bottom: -0.3em;
-}
-
-.older-posts-divider {
-	grid-area: older;
-	p {
-		margin-top: 1.4em;
-	}
-}
-
-.two-hr-flex-divider {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
+.divider-top-bottom-border {
 	gap: .23em;
-	align-items: center;
-	hr, p {
-		margin: 0;
-	}
-	p {
-		padding-block: 0.7em;
-	}
+	width: 85%;
+	border: #ffffff00 solid 1.7px;
+	border-image: var(--rule-gradient) 1;
+	border-inline: none;
+	padding-block: .7em ;
+	text-align: center;
 }
+
+.divider-only-top-border {
+	border-bottom: none;
+	padding-block: 1.4em 0;
+	}
 
 /* =============================
 		IMAGES
@@ -465,14 +446,10 @@ button#blog-thumbnail-older-posts-button {
 
 hr {
     border: 0;
-    width: 75%;
+    width: 92%;
 		height: 1px;
-		background-image: linear-gradient(to right, rgb(0, 0, 0, 0.08), rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.08));
-		margin: 0.4em auto;
-}
-
-.post hr {
-	width: 90%;
+		background-image: var(--rule-gradient);
+		margin: 4px auto;
 }
 
 .continue-reading {
@@ -485,7 +462,7 @@ hr {
 	text-transform: lowercase;
 	padding-top: 1em;
 }
-a.continue-reading>span, #home-older-posts-button span {
+a.continue-reading>span {
 	font-size: larger;
 	vertical-align: middle;
 }
@@ -507,9 +484,8 @@ MEDIA QUERIES
 		height: calc(100dvh - 3.5em);
 		}
 
-		/* Negates the  value set in the base so it matches .divider */
-	#home-body .recent-divider {
-		margin-bottom: -0.6em;
+	aside {
+		margin-block: 0.7em -1dvh;
 	}
 
 	.post {
@@ -522,7 +498,7 @@ MEDIA QUERIES
 	margin-top: 0.6em !important;
 	}
 
-	.post-card-grid>.post hr {
+	.post-card-grid > .post hr {
 		display: none;
 	}
 
@@ -537,11 +513,7 @@ MEDIA QUERIES
 
 /* ================================================================ */
 
-@media (width >= 700px) {
-	.post-card-grid .post-date {
-		font-size: 0.85rem;
-	}
-
+@media (width >=700px) {
 	.header-post-content {
 		line-height: 1.7;
 	}
@@ -551,24 +523,12 @@ MEDIA QUERIES
 		--max-lines: 6;
 	}
 
-	.divider {
-		margin-top: 1em;
-		margin-inline: 0;
-		font-size: 1.15rem;
+	.divider-top-bottom-border {
+		margin-top: 0.8em;
+		width: 90%;
 	}
-
 		.post-card-grid {
 		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: 1fr auto;
-	}
-
-	hr {
-		width: 77%;
-	}
-
-	.view-more {
-		font-size: 1.2rem;
-		margin-top: .4em;
 	}
 }
 
@@ -586,11 +546,12 @@ MEDIA QUERIES
 		.thumbnail-card-wrapper .image-wrapper {
 			aspect-ratio: 11/8;
 		}
-	}/* ================================================================ */
+}
+
+/* ================================================================ */
 
 /* TODO: This entire section could probably exclude the homepage. */
 @media (width >=1200px) {
-
 	header:not(#home-header),
 	main,
 	aside,

@@ -2,12 +2,12 @@ import { getPostCardGrid } from "./sharedFunctions.js"
 import { blogPostArray } from "./data.js"
 
 const featuredPost = document.getElementById('home-featured-post')
-const homeOlderPostsButton = document.getElementById('home-older-posts-button')
+const loadMorePostCardsBtn = document.getElementById('load-more-post-cards-btn')
 
 // state variables for getPostCardGrid
-let unpostedHomePostCount = blogPostArray.length;
-let homePostCardHtml = '';
-let homedisplayedPostCount = 0;
+let unpostedPostCount = blogPostArray.length;
+let postCardHtml = '';
+let displayedPostCount = 0;
 const homePostCardGrid = document.getElementById('home-post-card-grid')
 
 window.addEventListener('load', function () {
@@ -18,7 +18,7 @@ window.addEventListener('resize', function () {
 	detectLandscapePhoneOrientation()
 })
 
-homeOlderPostsButton.addEventListener('click', function () {
+loadMorePostCardsBtn.addEventListener('click', function () {
 	loadHomePostCards(3)
 })
 
@@ -52,26 +52,27 @@ function getFeaturedPost() {
 	document.getElementById('home-header').role = 'img';
 	document.getElementById('home-header').ariaLabel = `image of ${featuredPostObject.alt}`;
 
-	homedisplayedPostCount++;
-	unpostedHomePostCount--;
+	displayedPostCount++;
+	unpostedPostCount--;
 
 	featuredPost.innerHTML = featuredPostHtml;
 }
 
-function loadHomePostCards(postsToAdd = 2) {
+// same as loadAboutPostCards
+function loadHomePostCards(postsToAdd) {
 	// 1. create state object to pass:
 	let currentState = {
-		unpostedPostCount: unpostedHomePostCount,
-		postCardHtml: homePostCardHtml,
-		displayedPostCount: homedisplayedPostCount,
+		unpostedPostCount,
+		postCardHtml,
+		displayedPostCount,
 		postCardGridElement: homePostCardGrid
 	};
 
-	// 2 call getPostCardGrid() and update local state with the returned values
+	// 2. call getPostCardGrid() and update local state with the returned values
 	const updatedState = getPostCardGrid(currentState, postsToAdd)
-	unpostedHomePostCount = updatedState.unpostedPostCount
-	homePostCardHtml = updatedState.postCardHtml
-	homedisplayedPostCount = updatedState.displayedPostCount
+	unpostedPostCount = updatedState.unpostedPostCount
+	postCardHtml = updatedState.postCardHtml
+	displayedPostCount = updatedState.displayedPostCount
 }
 
 function renderHomeContent() {

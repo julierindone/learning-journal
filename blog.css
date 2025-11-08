@@ -5,26 +5,29 @@
 
 #blog-featured-post {
 	h2 {
-		font-size: clamp(1.6rem, 1.025rem + 2.65vw, 2.7rem);
+		font-size: clamp(1.6rem, 1.1rem + 2.65vw, 2.7rem);
 		font-weight: 900;
 		letter-spacing: -.005em;
-		margin-top: .37em;
+		margin-top: .4em;
 	}
+
 	p.post-date {
-		margin-top: 0.25em;
+		font-size: 1.16rem;
+		margin-top: 0em;
 	}
+
 	p.post-content {
 		font-size: 1.12rem;
 		margin-top: 0.7em;
 	}
 }
 
-@media (width >= 700px) {
+#blog-full-posts-wrapper {
+	margin-block: 1.6em -.2em;
+}
+
+@media (width >=700px) {
 	#blog-header {
 		margin-block: 0;
-	}
-
-	#blog-featured-post .post-date {
-			font-size: 0.92rem;
 	}
 }

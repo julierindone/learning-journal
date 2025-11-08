@@ -30,23 +30,15 @@
 		<header id="blog-header">
 			<div id="blog-featured-post"></div>
 		</header>
-		<div id="card-grid-divider" class="divider recent-divider two-hr-flex-divider">
-			<hr>
-			<p>Recent Posts</p>
-			<hr>
-		</div>
-		<main id="blog-full-posts-wrapper" class="single-full-post-wrapper"></main>
-		<div class="divider older-posts older-posts-divider">
-			<hr>
-			<p>Older Posts</p>
-		</div>
-		<div class="card-grid-wrapper">
-			<aside id="blog-thumbnail-card-grid" class="post-card-grid thumbnail-card-grid" aria-label="older posts"></aside>
-			<div class="divider older-posts-button-div">
-				<button id="blog-thumbnail-older-posts-button" class="older-posts">Load more</button>
-			</div>
-			</aside>
-		</div>
+		<main id="blog-main">
+			<p class="divider divider-top-bottom-border">Recent Posts</p>
+			<div id="blog-full-posts-wrapper"></div>
+		</main>
+		<aside id="aside-section">
+			<p class="divider divider-top-bottom-border divider-only-top-border">Older Posts</p>
+			<div id="blog-thumbnail-grid" class="post-card-grid thumbnail-card-grid" aria-label="older posts"></div>
+			<button id="load-more-thumbnails-btn" class="divider">Load More</button>
+		</aside>
 		<footer>
 			<p>Learning Journal Inc.</p>
 			<p>@2025</p>

@@ -36,21 +36,21 @@
 				<p>My name is Julie, and I'm a frontend developer in Portland, Oregon.</p>
 			</div>
 		</header>
-		<main id="about-full-posts-wrapper"></main>
-		<div id="card-grid-divider" class="divider recent-divider">
+		<main id="about-main">
 			<hr>
-			<p>Recent Posts</p>
-		</div>
-		<aside id="about-post-card-grid" class="post-card-grid"></aside>
-		<div class="view-more">
-			<!-- <hr> -->
-			<p class="continue-reading" href="">View more posts&thinsp;<span>&#187;</span></>
-		</div>
+			<div id="about-full-posts-wrapper"></div>
+		</main>
+		<aside id="aside-section">
+			<p class="divider divider-top-bottom-border">Recent Posts</p>
+			<div id="about-post-card-grid" class="post-card-grid" aria-label="recent posts"></div>
+			<button id="load-more-post-cards-btn" class="divider">Load More Posts</button>
+		</aside>
 		<footer>
 			<p>Learning Journal Inc.</p>
 			<p>@2025</p>
 		</footer>
 	</div>
+	<script type="module" src="sharedFunctions.js"></script>
 	<script type="module" src="about.js"></script>
 </body>
 

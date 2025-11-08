@@ -1,9 +1,20 @@
 import { aboutMeArray, blogPostArray } from "./data.js";
-import { createPostHtml } from "./sharedFunctions.js";
+import { createPostHtml, getPostCardGrid } from "./sharedFunctions.js";
 
 const aboutFullPostsWrapper = document.getElementById('about-full-posts-wrapper')
-let postCardGrid = document.getElementById('about-post-card-grid')
+const loadMorePostCardsBtn = document.getElementById('load-more-post-cards-btn')
+const aboutPostCardGrid = document.getElementById('about-post-card-grid')
 
+// State variables for loadAboutPostCards/getThumbnailCardGrid:
+let unpostedPostCount = blogPostArray.length;
+let postCardHtml = '';
+let displayedPostCount = 0;
+
+loadMorePostCardsBtn.addEventListener('click', function () {
+	loadAboutPostCards(3)
+})
+
+// TODO: refactor to use createPostHtml here.
 function getAboutContent() {
 	let fullPostsHtml = ''
 	for (let i = 0; i < aboutMeArray.length; i++) {
@@ -19,15 +30,25 @@ function getAboutContent() {
 	}
 }
 
-function getPostCardGrid() {
-	let postCardHtml = ''
+function loadAboutPostCards(postsToAdd) {
+	// 1. create state object to pass:
+	let currentState = {
+		unpostedPostCount,
+		postCardHtml,
+		displayedPostCount,
+		postCardGridElement: aboutPostCardGrid
+	};
 
-	for (let i = 0; i < 3; i++) {
-		let postToBuild = blogPostArray[i]
-		postCardHtml += createPostHtml(postToBuild)
-	}
-	postCardGrid.innerHTML = postCardHtml
+	// 2. call getPostCardGrid() and update local state with the returned values
+	const updatedState = getPostCardGrid(currentState, postsToAdd)
+	unpostedPostCount = updatedState.unpostedPostCount;
+	postCardHtml = updatedState.postCardHtml;
+	displayedPostCount = updatedState.displayedPostCount;
 }
 
-getAboutContent()
-getPostCardGrid()
+function renderAboutContent() {
+	getAboutContent()
+	loadAboutPostCards()
+}
+
+renderAboutContent()

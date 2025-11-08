@@ -3,16 +3,16 @@ import { blogPostArray } from "./data.js"
 
 const blogFeaturedPost = document.getElementById('blog-featured-post')
 const blogFullPostWrapper = document.getElementById('blog-full-posts-wrapper')
-const blogThumbnailOlderPostsButton = document.getElementById('blog-thumbnail-older-posts-button')
+const blogThumbnailGrid = document.getElementById('blog-thumbnail-grid');
+const loadMoreThumbnailsBtn = document.getElementById('load-more-thumbnails-btn')
 
-// State variables for getThumbnailCardGrid:
+// state variables for loadThumbnails/getThumbnailCardGrid:
 let unpostedPostCount = blogPostArray.length;
 let thumbnailCardHtml = '';
 let displayedPostCount = 0;
-const blogThumbnailCardGrid = document.getElementById('blog-thumbnail-card-grid');
 
-blogThumbnailOlderPostsButton.addEventListener('click', function () {
-	loadThumbnails()
+loadMoreThumbnailsBtn.addEventListener('click', function () {
+	loadThumbnails(3)
 })
 
 function getFeaturedPost() {
@@ -29,6 +29,7 @@ function getFeaturedPost() {
 	blogFeaturedPost.innerHTML = featuredPostHtml
 }
 
+// TODO: Move to sharedFunctions so it can be used by About Me page
 function getFullBlogPosts() {
 	let fullPostsHtml = ''
 	for (let i = 1; i < 4; i++) {
@@ -41,17 +42,17 @@ function getFullBlogPosts() {
 	blogFullPostWrapper.innerHTML = fullPostsHtml
 }
 
-function loadThumbnails() {
+function loadThumbnails(postsToAdd) {
 	// 1. create state object to pass:
 	let currentState = {
 		unpostedPostCount,
 		thumbnailCardHtml,
 		displayedPostCount,
-		blogThumbnailCardGridElement: blogThumbnailCardGrid // Pass the actual DOM element
+		blogThumbnailGridElement: blogThumbnailGrid // Pass the actual DOM element
 	};
 
 	// 2. Call getThumbnailCardGrid() and update local state with the returned values
-	const updatedState = getThumbnailCardGrid(currentState, 2);
+	const updatedState = getThumbnailCardGrid(currentState, postsToAdd);
 	unpostedPostCount = updatedState.unpostedPostCount;
 	thumbnailCardHtml = updatedState.thumbnailCardHtml;
 	displayedPostCount = updatedState.displayedPostCount;
