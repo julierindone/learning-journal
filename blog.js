@@ -20,7 +20,7 @@ function getFeaturedPost() {
 	let featuredPostHtml = `
 			<img class="post-img" src="${featuredPostObject.image}" alt="${featuredPostObject.altText}" />
 			<h2>${featuredPostObject.title}</h2>
-			<p class="post-date">${featuredPostObject.date}</p>
+			<time>${featuredPostObject.date}</time>
 			<p class="post-content">${featuredPostObject.content}</p>`
 
 	displayedPostCount++

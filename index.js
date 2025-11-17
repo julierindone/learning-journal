@@ -39,7 +39,7 @@ function getFeaturedPost() {
 	let featuredPostObject = blogPostArray[0]
 	let featuredPostHtml = `
 	<h2 class="header-post-title">${featuredPostObject.title}</h2>
-	<p class="header-post-content cut-off-text">${featuredPostObject.content}</p>
+	<p class="header-post-content cut-off-text line-break">${featuredPostObject.content}</p>
 	<a href="post.html" class="continue-reading">read more&thinsp;<span>&#187;</span></a>`
 
 	document.getElementById('home-header').style.backgroundImage = `linear-gradient(

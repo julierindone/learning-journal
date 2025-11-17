@@ -26,8 +26,8 @@ export function createPostHtml(postToBuild, purpose = "grid-card") {
 						<img class="post-img" alt="${postToBuild.alt}" src="${postToBuild.image}" />
 					</div>
 						<h2>${postToBuild.title}</h2>
-					<p class="post-date">${postToBuild.date}</p>
-					<p class="${postContentClass}">${postToBuild.content}</p>
+						<time>${postToBuild.date}</time>
+						<p class="${postContentClass}">${postToBuild.content}</p>
 				</div>
 				${continueReading}
 			</div>`;
@@ -36,10 +36,10 @@ export function createPostHtml(postToBuild, purpose = "grid-card") {
 export function createThumbnailCardHtml(postToBuild) {
 	return `
 		<div class="thumbnail-card-wrapper " id="id-${postToBuild.id}">
-				<div class="image-wrapper">
-					<img class="post-img" alt="${postToBuild.alt}" src="${postToBuild.image}" />
-						<h2>${postToBuild.title}</h2>
-				</div>
+			<div class="image-wrapper">
+				<img class="post-img" alt="${postToBuild.alt}" src="${postToBuild.image}" />
+				<h2>${postToBuild.title}</h2>
+			</div>
 		</div>`
 }
 
