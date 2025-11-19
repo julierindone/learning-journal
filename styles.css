@@ -594,6 +594,10 @@ MEDIA QUERIES
 
 	#home-header {
 		height: calc(100dvh - 3.5em);
+
+    &.landscape-mobile {
+      height: unset;
+    }
 	}
 
 	#home-featured-post {
@@ -604,8 +608,17 @@ MEDIA QUERIES
 			--max-lines: 6;
 		}
 
+    &.landscape-mobile {
+      background: linear-gradient(rgb(0, 0, 0, 0.4), 55%, rgb(0, 0, 0, .65));
+      padding-block: 1.5em;
+
 		> * {
-			width: min(80%, calc(.8 * var(--max-screen-width)));
+        width: unset;
+      }
+
+      & p.cut-off-text {
+        --max-lines: 4 !important;
+      }
 		}
 	}
 

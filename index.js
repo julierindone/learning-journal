@@ -23,15 +23,16 @@ loadMorePostCardsBtn.addEventListener('click', function () {
 })
 
 function detectLandscapePhoneOrientation() {
-	if (window.innerHeight < 600 && window.innerWidth > 500) {
-		document.getElementById('home-header').style.height = 'unset'
-		document.querySelector('#home-featured-post').style.paddingTop = '2em'
-		document.querySelector('#home-featured-post').style.background = 'linear-gradient(rgb(0, 0, 0, 0.4), 55%, rgb(0, 0, 0, .65))'
+	let homeHeader = document.querySelector('#home-header');
+	let featuredPost = document.querySelector('#home-featured-post');
 
-	} else {
-		document.getElementById('home-header').style.removeProperty('height')
-		document.querySelector('#home-featured-post').style.removeProperty('padding-top')
-		document.querySelector('#home-featured-post').style.removeProperty('background')
+	if (window.innerHeight < 600 && window.innerWidth > 500) {
+		homeHeader.classList.add('landscape-mobile')
+		featuredPost.classList.add('landscape-mobile')
+	}
+	else {
+		homeHeader.classList.remove('landscape-mobile')
+		featuredPost.classList.remove('landscape-mobile')
 	}
 }
 
@@ -39,12 +40,13 @@ function getFeaturedPost() {
 	let featuredPostObject = blogPostArray[0]
 	let featuredPostHtml = `
 	<h2 class="header-post-title">${featuredPostObject.title}</h2>
-	<p class="header-post-content cut-off-text line-break">${featuredPostObject.content}</p>
-	<a href="post.html" class="continue-reading">read more&thinsp;<span>&#187;</span></a>`
+	<p class="cut-off-text line-break">${featuredPostObject.content}</p>
+	<a href="blog.html" class="continue-reading">read more&thinsp;<span>&#187;</span></a>`
 
 	document.getElementById('home-header').style.backgroundImage = `linear-gradient(
 		rgb(0, 0, 0, 0.1), rgb(0, 0, 0, 0.3), 41%, rgb(0, 0, 0, 0.66), rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.8)),
 		url("${featuredPostObject.image}")`;
+		// TODO: Can I move some of these into the css and then just have the js add the class? I can't remember if I tried that before.
 	document.getElementById('home-header').style.backgroundPosition = 'center';
 	document.getElementById('home-header').style.backgroundSize = 'cover';
 	document.getElementById('home-header').style.backgroundRepeat = 'no-repeat';
