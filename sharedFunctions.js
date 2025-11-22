@@ -1,5 +1,52 @@
 import { blogPostArray } from "./data.js"
 
+const navLinksBtn = document.getElementById('nav-links-btn')
+const navLinks = document.getElementById('nav-links')
+const menuIcon = document.getElementById('menu-icon')
+
+navLinksBtn.addEventListener('click', function () {
+	displayNavMenu()
+})
+
+window.addEventListener('load', function () {
+	displayCorrectNavBar()
+})
+
+window.addEventListener('resize', function () {
+	displayCorrectNavBar()
+})
+
+export function displayCorrectNavBar() {
+	navLinks.removeAttribute('class')
+	navLinks.removeAttribute('style')
+	menuIcon.classList.replace('fa-xmark', 'fa-bars')
+
+	if (window.innerWidth >= 560) {
+		navLinks.classList.add('nav-horizontal')
+	}
+	else {
+		navLinks.style.display = 'none'
+		navLinks.classList.add('nav-modal')
+	}
+}
+
+export function displayNavMenu() {
+	let hasBars = menuIcon?.classList.contains('fa-bars');
+
+	if (hasBars) {
+		// 1. display nav modal
+		navLinks.style.display = 'flex'
+		navLinks.style.transform = 'unset'
+		// 2. change icon class to fa-xmark.
+		menuIcon.classList.replace('fa-bars', 'fa-xmark')
+	}
+	else {
+		// 1. move menu above screen; replace X with bars.
+		navLinks.style.transform = 'translateY(-105%)'
+		menuIcon.classList.replace('fa-xmark', 'fa-bars')
+	}
+}
+
 export function createPostHtml(postToBuild, purpose = "grid-card") {
 	let wrapperClass = ''
 	let postContentClass = ''

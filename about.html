@@ -14,17 +14,21 @@
 
 <body id="about-body" class="roboto">
 	<div class="wrapper">
-		<nav id="nav">
-			<div id="nav-item-container">
+		<nav id="nav" class="nav-item-container">
 				<a class="nav-title" href="index.html">
-					<i class="fa-solid fa-floppy-disk title-icon"></i>
-					<h1>Coder in a Coma</h1>
+				<h1>
+					<img alt="cat with glasses" class="glasses-cat" src="images/glasses-cat.png" />
+					Cats & Coding
+				</h1>
 				</a>
-				<div class="nav-links">
-					<a href="about.html">about me</a>
-					<a href="blog.html">blog</a>
-				</div>
-			</div>
+			<ul id="nav-links" style="display: none;">
+				<li><a href="index.html">home<span class="double-arrow"></span></a></li>
+				<li><a href="blog.html">blog<span class="double-arrow"></span></a></li>
+				<li><a href="about.html">about me<span class="double-arrow"></span></a></li>
+			</ul>
+				<button type="button" id="nav-links-btn">
+					<i id="menu-icon" class="fa-solid fa-burger"></i>
+				</button>
 		</nav>
 		<header id="about-header">
 			<div class="about-image-wrapper">
@@ -42,7 +46,7 @@
 		<aside id="aside-section">
 			<p class="divider divider-borders">Recent Posts</p>
 			<div id="about-post-card-grid" class="post-card-grid" aria-label="recent posts"></div>
-			<button id="load-more-post-cards-btn" class="divider">Load More Posts</button>
+			<button type="button" id="load-more-post-cards-btn" class="divider">Load More Posts</button>
 		</aside>
 		<footer>
 			<p>Learning Journal Inc.</p>

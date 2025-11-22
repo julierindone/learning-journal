@@ -7,18 +7,19 @@
 	--sides: 4%;
 	--max-screen-width: 1200px;
 	--serif: 'Aleo', cambria, cochin, georgia, times, serif;
-	--expanded-spacing: .095em;
+	--expanded-spacing: 0.095em;
+	--line-height: 1.6;
 	/* TODO Explore why I did this... is it actually helping with anything? */
 	--wrapper-gap-height: 1.7rem;
 	--rule-gradient: linear-gradient(to right, rgb(0, 0, 0, 0.05), rgb(0, 0, 0, 0.25), rgb(0, 0, 0, 0.05));
-	--audrey-blue-gradient: linear-gradient(to right, rgb(223,239,240, .7), rgb(210, 233, 234), rgb(223,239,240, .7));
+	--audrey-blue-gradient: linear-gradient(to right, rgb(223, 239, 240, 0.7), rgb(210, 233, 234), rgb(223, 239, 240, 0.7));
 }
 
 /* =============================
 		SITE LAYOUT
 	============================== */
 
-html, body, h1, h2, p, img {
+html, body, h1, h2, p, ul, li, img {
 	margin: 0;
 	padding: 0;
 }
@@ -37,11 +38,12 @@ body {
 	height: 100%;
 }
 
-nav>#nav-item-container,
-header,
-main,
-aside {
+header, main, aside {
 	margin-inline: var(--sides);
+}
+
+nav {
+	padding-inline: var(--sides);
 }
 
 /* =============================
@@ -51,14 +53,14 @@ aside {
 .roboto {
 	font-family: "Roboto Flex", sans-serif;
 	font-optical-sizing: auto;
-	font-variation-settings: "wdth"100;
-	word-spacing: .02em;
+	font-variation-settings: "wdth" 100;
+	word-spacing: 0.02em;
 }
 
 h2 {
 	font-family: var(--serif);
 	letter-spacing: 0.006em;
-	word-spacing: .035em;
+	word-spacing: 0.035em;
 	}
 
 p {
@@ -71,7 +73,6 @@ p {
 }
 
 .cut-off-text {
-	--line-height: 1.6;
 	overflow: hidden;
 	position: relative;
 	max-height: calc(var(--line-height) * var(--max-lines) * 1em);
@@ -96,71 +97,101 @@ time {
 	opacity: 0.7;
 }
 
+
 /* ========= LINKS ========= */
-
 a, a:link, button {
-	text-decoration: underline dotted var(--transp-black);
-}
-
-a, a:link {
-	text-underline-offset: .25em;
-}
-
-a:link {
+	text-underline-offset: 0.3em;
+	text-decoration: underline dotted var(--transp-black) 1px;
 	color: inherit;
+}
+
+.nav-links > a {
+	text-decoration: none;
 }
 
 /* =============================
 		NAVIGATION
 	============================== */
 
-nav {
+nav, #nav-links-btn {
 	background-color: var(--black);
-	padding-block: 1.3em 1.05em;
 }
 
-nav>#nav-item-container {
+nav.nav-item-container {
 	display: flex;
-	flex-wrap: nowrap;
-	align-items: baseline;
+	align-items: center;
 	justify-content: space-between;
-	font-size: clamp(1.05rem, 0.73rem + 1.35vw, 1.5rem);
-}
-
-#nav-item-container > .nav-title,
-#nav-item-container > .nav-links > *  {
 	font-family: var(--serif);
 	color: var(--white);
+	font-size: clamp(1.15rem, 0.832rem + 1.4vw, 1.6rem);
 	text-transform: uppercase;
-	letter-spacing: 0.065em;
-	text-decoration: none;
-}
+	letter-spacing: 0.075em;
+	height: 3.3em;
+	padding-top: 0.35em;
 
-#nav-item-container > * {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-
+	& #nav-links-btn {
+		font-size: 1.42em;
+		border: none;
+    z-index: 150;
+		padding: 0;
+	}
 }
 
 .nav-title {
-	gap: .25em;
+	display: flex;
+	gap: 0.55em;
 	align-items: baseline;
-	h1 {
-		font-size: 1em;
-		font-weight: 625;
-		word-spacing: 1px;
+
+	> h1 {
+		font-size: 1.15em;
+		font-weight: 700;
 	}
-	i {
-		font-size: 1.06em;
+
+		& .glasses-cat {
+			display: inline;
+			height: 1.15em;
+			vertical-align: middle;
+			opacity: 0.97;
+			margin-right: 0.2em;
+			margin-bottom: 0.25em;
 	}
 }
 
-.nav-links {
-	gap: 0.7em;
-	align-items: center;
-	font-size: 0.85em;
-	font-weight: 500;
+
+
+#nav-links {
+  list-style: none;
+
+  span.double-arrow::after {
+    content: " »";
+    font-size: 1.6em;
+		vertical-align: middle;
+	}
+}
+
+.nav-modal {
+  gap: 1.3rem;
+	position: fixed;
+	top: 0.6rem;
+	right: 0.6rem;
+	width: 60%;
+	max-width: 270px;
+	min-height: 18em;
+	z-index: 50;
+	transition: transform 0.35s;
+	flex-direction: column;
+	background-color: #000000dc;
+	border-radius: 2px;
+	box-shadow: 1px 1px 4px var(--audrey-blue);
+	padding: 2.8em 2em 3em;
+
+	> li > a {
+		display: block;
+		font-size: 1.05rem;
+		font-weight: 350;
+		text-transform: lowercase;
+		width: 100%;
+	}
 }
 
 /* =============================
@@ -172,19 +203,19 @@ nav>#nav-item-container {
 #home-header {
 	display: flex;
 	align-items: end;
-	height: calc(100dvh - 2.8em);
+	height: calc(100dvh - 3.5em);
 	min-height: 40dvh;
-	padding-bottom: 2.2em;
+	padding-bottom: 2.6em;
 	margin-inline: unset;
-	margin-block: .9px 1.9em;
+	margin-block: 0.9px 1.9em;
 }
 
-#home-featured-post {
-	background: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.05), rgb(0, 0, 0, 0.15), rgb(0, 0, 0, 0.3), 20%, rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.7), rgb(0, 0, 0, .95));
-	font-size: clamp(1.17rem, 0.8rem + 1.75vw, 1.5rem);
+.home-featured-post {
+	background: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.05), rgb(0, 0, 0, 0.15), rgb(0, 0, 0, 0.3), 15%, rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.95));
+	font-size: clamp(1.12rem, 0.78rem + 1.7vw, 1.5rem);
 	color: var(--white);
 	word-spacing: 0.05em;
-	padding-block: 3.5em 0;
+	padding-block: 5.5em 0;
 	padding-inline: var(--sides);
 
 	> * {
@@ -195,54 +226,56 @@ nav>#nav-item-container {
 		font-size: 1.35em;
 		font-weight: 800;
 		line-height: 1.34;
-		letter-spacing: .02em;
+		letter-spacing: 0.03em;
 		text-shadow: 1px 1px 10px var(--black);
 		max-width: fit-content;
 	}
 
-	> .header-post-content {
-		--line-height: 1.7;
-		font-size: 1em;
+	> p {
+		--line-height: 1.9;
+		font-size: 0.93em;
 		font-weight: 425;
 		line-height: var(--line-height);
-		letter-spacing: .01em;
+		letter-spacing: 0.01em;
 		margin-top: 0.5em;
 	}
 
-	.cut-off-text {
-		--max-lines: 9;
+	& .cut-off-text {
+		--max-lines: 7;
 	}
 
-	.cut-off-text::before {
+	& .cut-off-text::before {
 		background: linear-gradient(to bottom, transparent, rgb(0, 0, 0, 0.95));
 	}
 }
 
-/* ------ BLOG HEADER ------ */
 
+/* ------ BLOG HEADER ------ */
 #blog-header {
 	margin-block: 2.8vh 2.7em;
 }
+
 #blog-featured-post {
 		font-size: clamp(1rem, 0.65em + 1.7vw, 1.125rem);
+
 	h2 {
-		font-size: clamp(1.084rem, 0.22rem + 5.27vw, 2.5rem); /* Has separate sizing, or it throws content & time off. */
+		font-size: clamp(1.084rem, 0.22rem + 5.27vw, 2.5rem);
+		/* Has separate sizing, or it throws content & time off. */
 		font-weight: 900;
 		margin-block: 0.4em -0.05em;
 	}
 
 	time {
-		font-size: .95em;
+		font-size: 0.95em;
 	}
 
-	.post-content {
+	& .post-content {
 		font-size: 1em;
 		margin-top: 1em;
 	}
 }
 
 /* ------ ABOUT HEADER ------ */
-
 #about-header {
 	margin-block: 1.6em 1.4em;
 }
@@ -254,21 +287,20 @@ nav>#nav-item-container {
 	gap: 0.65em;
 	container: about-header-text / inline-size;
 	margin-top: 0.7em;
+	line-height: 1.4;
 
 	h2 {
 		font-family: "Goblin One", sans-serif;
 		font-size: clamp(1.75rem, 7.5vw, 2.2rem);
 		font-weight: 600;
 		letter-spacing: 0.04em;
-		line-height: 1.4;
 	}
 
-	.subheading {
+	& .subheading {
 		font-size: clamp(1rem, 0.5rem + 2.4vw, 1.16rem);
 		font-weight: 450;
 		text-wrap: balance;
 		max-width: 92%;
-		line-height: 1.4;
 	}
 }
 
@@ -294,7 +326,7 @@ nav>#nav-item-container {
 
 #about-full-posts-wrapper {
 	gap: 2.2em;
-	margin-bottom:3em;
+	margin-bottom: 3em;
 
 	hr {
 		display: none;
@@ -314,12 +346,14 @@ nav>#nav-item-container {
 		font-size: clamp(1rem, 0.3rem + 4.2vw, 1.7rem);
 		font-weight: 800;
 		line-height: 1.3;
-		margin-block: .52em -0.15em;
+		margin-block: 0.52em -0.15em;
 	}
+
 	.post-content {
 		margin-top: 0.8em;
 	}
 }
+
 #about-full-posts-wrapper .single-full-post-wrapper {
 	h2 {
 		font-family: 'Aleo', serif;
@@ -327,7 +361,7 @@ nav>#nav-item-container {
 		font-size: clamp(1.25rem, 0.9rem + 0.96vw, 1.7rem);
 	}
 
-	.post-content {
+	& .post-content {
 		margin-top: 0.5em;
 	}
 
@@ -362,28 +396,28 @@ nav>#nav-item-container {
 
 	time {
 	margin-top: 0.18em;
-
 	}
 
-	.post-content {
+	& .post-content {
 		margin-top: 0.8em;
-		font-size: clamp(0.9rem, 0.7242rem + 0.4848vw, .95rem);
+		font-size: clamp(0.9rem, 0.7242rem + 0.4848vw, 0.95rem);
 	}
 }
 
 .thumbnail-card-grid {
 	grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
-	gap: .25rem;
+	gap: 0.25rem;
 	margin-top: 0.6em;
 }
 
 .thumbnail-card-wrapper {
 	container: thumbnail / inline-size;
+
 	> .image-wrapper {
 		position: relative;
 	}
 
-	h2 {
+	&h2 {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -410,6 +444,7 @@ nav>#nav-item-container {
 @container thumbnail (width < 290px) {
 	.thumbnail-card-wrapper > .image-wrapper {
 		aspect-ratio: 1/1;
+
 		h2 {
 			font-size: clamp(1.2rem, 0.4rem + 7.7cqw, 1.75rem);
 			min-height: 38%;
@@ -417,9 +452,10 @@ nav>#nav-item-container {
 	}
 }
 
-@container thumbnail (width >= 290px) {
+@container thumbnail (width >=290px) {
 	.thumbnail-card-wrapper > .image-wrapper {
 		aspect-ratio: 11/7;
+
 		h2 {
 			font-size: clamp(1.2rem, 0.6rem + 5.4cqw, 1.5rem);
 			max-height: 45%;
@@ -427,7 +463,7 @@ nav>#nav-item-container {
 	}
 }
 
-@container post-card (width >= 240px) {
+@container post-card (width >=240px) {
 	.post-card-wrapper h2 {
 		font-size: 1.25rem;
 	}
@@ -436,7 +472,6 @@ nav>#nav-item-container {
 /* ===============================
 		FOOTER & DIVIDERS
 	================================ */
-
 footer {
     background-color: var(--black);
 		padding-block: 1.7dvh;
@@ -450,7 +485,7 @@ footer p {
 }
 
 footer p:last-child {
-	font-size: .7rem;
+	font-size: 0.7rem;
 	margin-top: 0.45em;
 }
 
@@ -470,36 +505,27 @@ footer p:last-child {
 	margin-top: 1.2em;
 }
 
-button.divider, .end-of-post-cards, .end-of-thumbnails {
-	padding-inline: 1.6em;
+.divider, .end-of-post-cards, .end-of-thumbnails {
+	font-size: 0.95rem;
 	margin-top: 1.2em;
 }
 
 button.divider {
 	display: block;
-	font-size: 0.95rem;
 	background-color: unset;
-	text-underline-offset: .3em;
-	border: none;
-}
-
-#load-more-thumbnails-btn, .end-of-thumbnails {
-	font-size: 1.1rem;
-	text-transform: lowercase;
-	margin-top: 0.4em;
-}
-
-.end-of-post-cards, .end-of-thumbnails {
-	font-variant: all-petite-caps;
+	text-underline-offset: 0.3em;
+	/* FYI: border is set so the button size matches the hover style. */
+	border: 2.3px dotted #ffffff00;
+	padding: 0.4em 1.6em;
 }
 
 .divider-borders {
-	gap: .23em;
+	gap: 0.23em;
 	width: 90%;
 	border: #ffffff00 solid 1.7px;
 	border-image: var(--rule-gradient) 1;
 	border-inline: none;
-	padding-block: .5em;
+	padding-block: 0.5em;
 	text-align: center;
 }
 
@@ -528,7 +554,7 @@ button.divider {
 	width: min(49%, 210px);
 	border: 3px dotted var(--black);
 	border-radius: 100%;
-	padding: .2em;
+	padding: 0.2em;
 }
 
 /* =============================
@@ -549,13 +575,13 @@ hr {
 
 span.line-break {
 	display: block;
-	margin-bottom: .7em;
+	margin-bottom: 0.7em;
 }
 
 a.continue-reading, p.continue-reading {
 	display: block;
 	font-size: clamp(0.8rem, 0.6185rem + 0.3374vw, 0.88rem);
-	font-weight: 300;
+	font-weight: 100;
 	font-style: italic;
 	color: var(--transp-black);
 	letter-spacing: var(--expanded-spacing);
@@ -563,21 +589,21 @@ a.continue-reading, p.continue-reading {
 	margin-top: 0.7em;
 }
 
-.continue-reading>span {
+.continue-reading > span {
 	font-size: larger;
 	vertical-align: middle;
 }
 
-.continue-reading:not(#home-featured-post a) {
+.continue-reading:not(.home-featured-post a) {
 	text-decoration: none;
 }
 
-#home-featured-post .continue-reading {
-	font-size: 0.725em;
+.home-featured-post .continue-reading {
+	font-size: 0.6em;
 	font-weight: 200;
 	color: var(--transp-white);
-	text-decoration-color: var(--transp-white);
-	text-underline-offset: 0.35em;
+	text-decoration-color: var(--white);
+	text-underline-offset: 0.4em;
 	margin-top: 1em;
 }
 
@@ -588,8 +614,28 @@ MEDIA QUERIES
 ================================ */
 
 @media (width >=560px) {
-	nav {
-		padding-block: 1.45em 1.25em;
+
+	ul.nav-horizontal {
+		display: flex;
+		flex-direction: row;
+		gap: 0.85em;
+		padding-bottom: 0.1em;
+		/* TODO: Need to make sure these are centered vertically!. */
+		> li > a {
+			font-size: clamp(1.1rem, 0.7rem + 1.25vw, 1.4rem);
+			font-weight: 500;
+		}
+		> li:first-of-type {
+			display: none;
+		}
+	}
+
+	#nav-links span.double-arrow::after {
+		display: none;
+	}
+
+	#nav-links-btn {
+		display: none;
 	}
 
 	#home-header {
@@ -599,17 +645,27 @@ MEDIA QUERIES
       height: unset;
     }
 	}
-
-	#home-featured-post {
+	.home-featured-post {
+		font-size: clamp(1.7rem, 1.5rem + 0.6vw, 4rem);
 		width: 100%;
 
-		.header-post-content.cut-off-text {
+		h2 {
+			font-size: 1.45em;
+			/* max-width: 95%; */
+		}
+
+		> p {
+			font-size: 0.8em;
+			max-width: 98%;
+		}
+
+		& p.cut-off-text {
 			--line-height: 1.7;
-			--max-lines: 6;
+			--max-lines: 4;
 		}
 
     &.landscape-mobile {
-      background: linear-gradient(rgb(0, 0, 0, 0.4), 55%, rgb(0, 0, 0, .65));
+			background: linear-gradient(rgb(0, 0, 0, 0.4), 55%, rgb(0, 0, 0, 0.65));
       padding-block: 1.5em;
 
 		> * {
@@ -632,34 +688,27 @@ MEDIA QUERIES
 			gap: 0.4em;
 			justify-content: center;
 			align-items: center;
+		/* max-height necessary? */
 			max-height: 94%;
-			/* Had been removed... not needed? */
-			margin-top: 0;
 			flex: 0 0 68.5%;
+		font-weight: 575;
 
-		h2 {
-			/* flex: auto; ---HUH?---  */
+		> h2 {
 			font-size: clamp(2.1rem, 0.455rem + 4.85vw, 2rem);
 			letter-spacing: 0.08em;
-			text-align: center;
 			line-height: 1.3;
 			margin-block: 0;
 		}
 
-		.subheading {
+		> .subheading {
 			font-size: clamp(1.13rem, 0.6rem + 1.55vw, 1.6rem);
-			line-height: 1.3;
-			font-weight: 500;
-		}
-
-		p {
-			/* max-width: 85%; */
 			text-align: center;
 			line-height: 1.35;
 		}
 	}
 
-		@container about-header-text (width > 0px) {
+	/* end of #aboutheadertext styles */
+	@container about-header-text (width > 0) {
 		#about-header-text > h2 {
 			font-size: clamp(1.8rem, 9cqw, 4.1rem);
 		}
@@ -680,7 +729,7 @@ MEDIA QUERIES
 	}
 
 		.thumbnail-card-grid {
-		gap: .45rem;
+		gap: 0.45rem;
 	}
 
 		#about-img {
@@ -695,19 +744,18 @@ MEDIA QUERIES
 }
 
 /* ================================================================ */
-
 @media (width >=700px) {
-	.header-post-content {
+	.home-featured-post p {
 		line-height: 1.7;
 	}
+
 	.post-card-grid {
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
 /* ================================================================ */
-
-@media (width >= 750px) {
+@media (width >=750px) {
 	#home-header {
 		height: calc(100dvh - 4em);
 	}

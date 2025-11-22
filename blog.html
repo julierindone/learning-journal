@@ -7,24 +7,28 @@
 	<link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Coder in a Coma</title>
+	<title>Cats & Coding</title>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body id="blog-body" class="roboto">
 	<div class="wrapper">
-		<nav id="nav">
-			<div id="nav-item-container">
-				<a class="nav-title" href="index.html">
-					<i class="fa-solid fa-floppy-disk title-icon"></i>
-					<h1>Coder in a Coma</h1>
-				</a>
-				<div class="nav-links">
-					<a href="about.html">about me</a>
-					<a href="blog.html">blog</a>
-				</div>
-			</div>
+		<nav id="nav" class="nav-item-container">
+			<a class="nav-title" href="index.html">
+				<h1>
+					<img alt="cat with glasses" class="glasses-cat" src="images/glasses-cat.png" />
+					Cats & Coding
+				</h1>
+			</a>
+			<ul id="nav-links" style="display: none;">
+				<li><a href="index.html">home<span class="double-arrow"></span></a></li>
+				<li><a href="blog.html">blog<span class="double-arrow"></span></a></li>
+				<li><a href="about.html">about me<span class="double-arrow"></span></a></li>
+			</ul>
+			<button type="button" id="nav-links-btn">
+				<i id="menu-icon" class="fa-solid fa-bars"></i>
+			</button>
 		</nav>
 		<header id="blog-header">
 			<div id="blog-featured-post"></div>
@@ -37,7 +41,7 @@
 			<hr>
 			<p class="divider">Older Posts</p>
 			<div id="blog-thumbnail-grid" class="post-card-grid thumbnail-card-grid" aria-label="older posts"></div>
-			<button id="load-more-thumbnails-btn" class="divider">Load More</button>
+			<button type="button" id="load-more-thumbnails-btn" class="divider">Load More</button>
 		</aside>
 		<footer>
 			<p>Learning Journal Inc.</p>
